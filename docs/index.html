@@ -1961,6 +1961,11 @@ function addSearchResult(idx) {
   goToDay(dayIdx, false);
   closeAddModal();
   showToast('Added!', `${r.name} added to Day ${TRIP.days[dayIdx].day_number} with full Google data`);
+
+  // Switch to map and fly to the new place
+  if (item.lat && item.lng) {
+    setTimeout(() => showOnMap(item.lat, item.lng, item.name, item.type), 400);
+  }
 }
 
 function saveUserAdditions() {
