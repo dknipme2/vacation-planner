@@ -609,6 +609,20 @@ body{display:flex;flex-direction:column;position:relative}
 }
 .add-submit:active{opacity:0.8}
 .add-hint{font-size:11px;color:var(--text3);margin-top:8px;text-align:center}
+.search-result{
+  display:flex;align-items:center;gap:10px;padding:12px;
+  background:var(--surface-0);border:1px solid var(--border-subtle);
+  border-radius:var(--radius-sm);margin-bottom:6px;cursor:pointer;
+  transition:background .15s;
+}
+.search-result:active{background:var(--surface-2)}
+.sr-photo{width:48px;height:48px;border-radius:8px;object-fit:cover;background:var(--surface-2);flex-shrink:0}
+.sr-info{flex:1;min-width:0}
+.sr-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-addr{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-meta{display:flex;gap:6px;margin-top:2px;font-size:11px;color:var(--text2)}
+.sr-rating{color:var(--amber)}
+.sr-add{flex-shrink:0;color:var(--blue);font-size:20px;font-weight:300}
 
 /* ===== PLACE DETAIL BOTTOM SHEET ===== */
 .place-sheet{
@@ -768,7 +782,7 @@ body{display:flex;flex-direction:column;position:relative}
   <div class="add-modal-body">
     <div class="add-tabs">
       <button class="add-tab active" onclick="switchAddTab('manual',this)">Manual</button>
-      <button class="add-tab" onclick="switchAddTab('gmaps',this)">Google Maps Link</button>
+      <button class="add-tab" onclick="switchAddTab('search',this)">🔍 Search</button>
     </div>
     <div id="add-tab-manual" class="add-tab-content active">
       <input class="add-input" id="add-name" placeholder="Place name" autocomplete="off">
@@ -784,11 +798,12 @@ body{display:flex;flex-direction:column;position:relative}
       <textarea class="add-input" id="add-notes" placeholder="Notes (optional)" rows="2"></textarea>
       <button class="add-submit" onclick="submitManualAdd()">Add to Trip</button>
     </div>
-    <div id="add-tab-gmaps" class="add-tab-content">
-      <input class="add-input" id="add-gmaps-url" placeholder="Paste Google Maps link or place URL">
-      <select class="add-select" id="add-gmaps-day" style="width:100%;margin-top:8px"></select>
-      <button class="add-submit" onclick="submitGmapsAdd()" style="margin-top:12px">Import from Google Maps</button>
-      <div class="add-hint">Open Google Maps → find a place → Share → Copy link → Paste here</div>
+    <div id="add-tab-search" class="add-tab-content">
+      <input class="add-input" id="search-query" placeholder="Search for a place (e.g. 'pizza near Elounda')" autocomplete="off">
+      <select class="add-select" id="search-day" style="width:100%;margin-bottom:8px"></select>
+      <button class="add-submit" onclick="searchPlaces()" id="search-btn">Search Google Places</button>
+      <div id="search-results" style="margin-top:12px"></div>
+      <div class="add-hint">Searches Google Places API. Tap a result to add it with full details, photos, hours, and ratings.</div>
     </div>
   </div>
 </div>
@@ -1749,7 +1764,7 @@ function openAddModal() {
   const modal = document.getElementById('add-modal');
   const overlay = document.getElementById('add-overlay');
   // Populate day selectors
-  ['add-day', 'add-gmaps-day'].forEach(id => {
+  ['add-day', 'search-day'].forEach(id => {
     const sel = document.getElementById(id);
     sel.innerHTML = TRIP.days.map((d,i) => {
       const label = `Day ${d.day_number} — ${d.location.city}`;
@@ -1810,55 +1825,142 @@ function submitManualAdd() {
   document.getElementById('add-notes').value = '';
 }
 
-async function submitGmapsAdd() {
-  const url = document.getElementById('add-gmaps-url').value.trim();
-  if (!url) { showToast('Error', 'Please paste a Google Maps link'); return; }
-  const dayIdx = parseInt(document.getElementById('add-gmaps-day').value);
+let _searchResults = [];
 
-  // Extract place name from Google Maps URL patterns
-  // Formats: google.com/maps/place/Place+Name/... or maps.app.goo.gl/...
-  let placeName = '';
+async function searchPlaces() {
+  const query = document.getElementById('search-query').value.trim();
+  if (!query) { showToast('Error', 'Enter a search term'); return; }
+
+  const btn = document.getElementById('search-btn');
+  btn.textContent = 'Searching...';
+  btn.disabled = true;
+
+  // Get current day's city for location bias
+  const dayIdx = parseInt(document.getElementById('search-day').value);
+  const day = TRIP.days[dayIdx];
+  const lat = day.location ? (day.location.lat || 48.2) : 48.2;
+  const lng = day.location ? (day.location.lng || 16.37) : 16.37;
+
+  // Use current accommodation coords if available
+  let biasLat = lat, biasLng = lng;
+  if (day.accommodation && day.accommodation.lat) {
+    biasLat = day.accommodation.lat; biasLng = day.accommodation.lng;
+  }
+  // Try to get from COORDS
+  const dest = getDestination(dayIdx);
+  if (dest && COORDS && COORDS.accommodations && COORDS.accommodations[dest]) {
+    biasLat = COORDS.accommodations[dest].lat;
+    biasLng = COORDS.accommodations[dest].lng;
+  }
+
   try {
-    const match = url.match(/\/place\/([^\/]+)/);
-    if (match) {
-      placeName = decodeURIComponent(match[1].replace(/\+/g, ' '));
-    }
-  } catch(e) {}
+    const body = JSON.stringify({
+      textQuery: query,
+      locationBias: { circle: { center: { latitude: biasLat, longitude: biasLng }, radius: 15000.0 } },
+      maxResultCount: 5
+    });
+    const resp = await fetch('https://places.googleapis.com/v1/places:searchText', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': GPLACES_KEY,
+        'X-Goog-FieldMask': 'places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.location,places.googleMapsUri,places.websiteUri,places.nationalPhoneNumber,places.regularOpeningHours,places.photos,places.priceLevel,places.primaryType'
+      },
+      body
+    });
+    const data = await resp.json();
+    _searchResults = (data.places || []).map(p => ({
+      name: p.displayName ? p.displayName.text : 'Unknown',
+      address: p.formattedAddress || '',
+      lat: p.location ? p.location.latitude : 0,
+      lng: p.location ? p.location.longitude : 0,
+      google_rating: p.rating || null,
+      google_review_count: p.userRatingCount || 0,
+      website: p.websiteUri || '',
+      phone: p.nationalPhoneNumber || '',
+      google_maps_url: p.googleMapsUri || '',
+      google_price_level: p.priceLevel || '',
+      google_hours: p.regularOpeningHours ? p.regularOpeningHours.weekdayDescriptions : null,
+      photo_urls: (p.photos || []).slice(0, 3).map(ph => `https://places.googleapis.com/v1/${ph.name}/media?maxHeightPx=400&maxWidthPx=600`),
+      primaryType: p.primaryType || ''
+    }));
 
-  if (!placeName) {
-    placeName = prompt('Could not extract name from URL. Enter the place name:') || '';
-    if (!placeName) return;
+    renderSearchResults();
+  } catch(e) {
+    showToast('Search Error', e.message);
   }
+  btn.textContent = 'Search Google Places';
+  btn.disabled = false;
+}
 
-  // Extract coordinates if present
-  let lat = 0, lng = 0;
-  const coordMatch = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
-  if (coordMatch) {
-    lat = parseFloat(coordMatch[1]);
-    lng = parseFloat(coordMatch[2]);
+function renderSearchResults() {
+  const el = document.getElementById('search-results');
+  if (_searchResults.length === 0) {
+    el.innerHTML = '<div class="add-hint">No results found. Try a different search term.</div>';
+    return;
   }
+  el.innerHTML = _searchResults.map((r, i) => {
+    const photoUrl = r.photo_urls[0] ? photoUrl_fn(r.photo_urls[0]) : '';
+    const photoHtml = photoUrl ? `<img class="sr-photo" src="${photoUrl}" alt="" onerror="this.style.display='none'">` : `<div class="sr-photo" style="display:flex;align-items:center;justify-content:center;font-size:20px">📍</div>`;
+    return `<div class="search-result" onclick="addSearchResult(${i})">
+      ${photoHtml}
+      <div class="sr-info">
+        <div class="sr-name">${r.name}</div>
+        <div class="sr-addr">${r.address}</div>
+        <div class="sr-meta">
+          ${r.google_rating ? `<span class="sr-rating">★ ${r.google_rating}</span>` : ''}
+          ${r.google_review_count ? `<span>(${r.google_review_count.toLocaleString()})</span>` : ''}
+          ${r.primaryType ? `<span>${r.primaryType.replace(/_/g,' ')}</span>` : ''}
+        </div>
+      </div>
+      <span class="sr-add">+</span>
+    </div>`;
+  }).join('');
+}
+
+// Helper to avoid name collision with openSheet's photoUrl
+function photoUrl_fn(url) {
+  if (!url) return '';
+  if (url.includes('places.googleapis.com') && !url.includes('key=')) {
+    return url + (url.includes('?') ? '&' : '?') + 'key=' + GPLACES_KEY;
+  }
+  return url;
+}
+
+function addSearchResult(idx) {
+  const r = _searchResults[idx];
+  const dayIdx = parseInt(document.getElementById('search-day').value);
 
   const item = {
-    name: placeName,
-    type: 'activity',
-    subtype: 'place',
-    lat: lat, lng: lng,
-    google_maps_url: url,
+    name: r.name,
+    type: r.primaryType && r.primaryType.includes('restaurant') ? 'restaurant' : 'activity',
+    subtype: r.primaryType ? r.primaryType.replace(/_/g, ' ') : 'place',
+    lat: r.lat, lng: r.lng,
+    address: r.address,
+    google_rating: r.google_rating,
+    google_review_count: r.google_review_count,
+    website: r.website,
+    phone: r.phone,
+    google_maps_url: r.google_maps_url,
+    google_price_level: r.google_price_level,
+    google_hours: r.google_hours,
+    photo_urls: r.photo_urls,
     description: '',
     baby_friendly: true,
-    tags: ['user-added', 'google-maps-import'],
+    baby_notes: '',
+    tags: ['user-added', 'google-search'],
     _userAdded: true
   };
 
-  if (!TRIP.days[dayIdx].activities) TRIP.days[dayIdx].activities = [];
-  TRIP.days[dayIdx].activities.push(item);
+  const category = item.type === 'restaurant' ? 'restaurants' : 'activities';
+  if (!TRIP.days[dayIdx][category]) TRIP.days[dayIdx][category] = [];
+  TRIP.days[dayIdx][category].push(item);
 
   saveUserAdditions();
   buildAllPanels();
   goToDay(dayIdx, false);
   closeAddModal();
-  showToast('Imported!', `${placeName} added to Day ${TRIP.days[dayIdx].day_number}`);
-  document.getElementById('add-gmaps-url').value = '';
+  showToast('Added!', `${r.name} added to Day ${TRIP.days[dayIdx].day_number} with full Google data`);
 }
 
 function saveUserAdditions() {
@@ -2150,12 +2252,12 @@ function getMapConfigForDay(dayIdx) {
     const dynamicPois = [];
     if (dayData.activities) {
       dayData.activities.forEach(a => {
-        if (a.lat && a.lng) dynamicPois.push({lat:a.lat, lng:a.lng, name:a.name, type: a.subtype === 'beach' ? 'beach' : 'activity'});
+        if (a.lat && a.lng) dynamicPois.push({lat:a.lat, lng:a.lng, name:a.name, type: a.subtype === 'beach' ? 'beach' : 'activity', _source: a});
       });
     }
     if (dayData.restaurants) {
       dayData.restaurants.forEach(r => {
-        if (r.lat && r.lng) dynamicPois.push({lat:r.lat, lng:r.lng, name:r.name, type:'restaurant'});
+        if (r.lat && r.lng) dynamicPois.push({lat:r.lat, lng:r.lng, name:r.name, type:'restaurant', _source: r});
       });
     }
     // Fallback to hardcoded POIs if no dynamic data
@@ -2268,7 +2370,7 @@ function clearMap() {
   }
 }
 
-function addMarker(lat, lng, name, type) {
+function addMarker(lat, lng, name, type, sourceItem) {
   const el = createMarkerEl(type);
   const marker = new mapboxgl.Marker({ element: el })
     .setLngLat([lng, lat])
@@ -2276,10 +2378,15 @@ function addMarker(lat, lng, name, type) {
   el.addEventListener('click', (e) => {
     e.stopPropagation();
     if (mapPopup) mapPopup.remove();
-    mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
-      .setLngLat([lng, lat])
-      .setHTML(makePopupHTML(name, type, lat, lng))
-      .addTo(mapInstance);
+    // If we have full source data, open the bottom sheet
+    if (sourceItem && sourceItem.google_rating) {
+      openSheet(sourceItem);
+    } else {
+      mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
+        .setLngLat([lng, lat])
+        .setHTML(makePopupHTML(name, type, lat, lng))
+        .addTo(mapInstance);
+    }
   });
   mapMarkers.push({ marker, type, el });
 }
@@ -2329,7 +2436,7 @@ function renderMapForDay(dayIdx) {
     // Accommodation marker
     addMarker(config.accommodation.lat, config.accommodation.lng, config.accommodation.name, 'accommodation');
     // POI markers
-    config.pois.forEach(p => addMarker(p.lat, p.lng, p.name, p.type));
+    config.pois.forEach(p => addMarker(p.lat, p.lng, p.name, p.type, p._source || p));
     applyFilter();
     return;
   }
