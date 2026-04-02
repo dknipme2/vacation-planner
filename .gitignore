@@ -1,0 +1,18 @@
+# Secrets
+credentials.json
+token.json
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Superpowers visual companion
+.superpowers/
+
+# Raw email data (contains personal info)
+bookings/raw_emails.json
+
+# OS
+.DS_Store
+Thumbs.db

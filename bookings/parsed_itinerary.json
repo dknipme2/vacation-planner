@@ -1,0 +1,538 @@
+{
+  "trip_summary": {
+    "title": "Knipmeyer European Vacation - May 2026",
+    "route": "Chicago (ORD) → Vienna (VIE) → Crete/Heraklion (HER) → Zurich (ZRH) → Chicago (ORD)",
+    "dates": "May 3 - May 17, 2026",
+    "travelers": [
+      {
+        "name": "Daniel Ryan Knipmeyer",
+        "type": "adult"
+      },
+      {
+        "name": "Michelle Violet Knipmeyer",
+        "type": "adult"
+      },
+      {
+        "name": "Owen S. Knipmeyer",
+        "type": "infant"
+      }
+    ]
+  },
+  "itinerary_by_date": {
+    "2026-05-03": {
+      "day_label": "Day 1 - Saturday, May 3 - Depart Chicago",
+      "events": [
+        {
+          "type": "flight",
+          "airline": "Austrian Airlines (operated for United Airlines)",
+          "flight_number": "OS46",
+          "confirmation_code": "NZFNK5",
+          "route": {
+            "from": "Chicago O'Hare (ORD)",
+            "to": "Vienna Schwechat (VIE)"
+          },
+          "departure": {
+            "date": "2026-05-03",
+            "time": "16:20",
+            "timezone": "local (CDT)"
+          },
+          "arrival": {
+            "date": "2026-05-04",
+            "time": "08:15",
+            "timezone": "local (CEST)"
+          },
+          "class": "Economy (X)",
+          "passengers": [
+            {
+              "name": "Daniel Ryan Knipmeyer",
+              "eticket": "0162376748844",
+              "frequent_flyer": "UA MileagePlus (ending 798)"
+            },
+            {
+              "name": "Michelle Violet Knipmeyer",
+              "eticket": "0162376748845",
+              "frequent_flyer": "UA MileagePlus (ending 939)"
+            },
+            {
+              "name": "Owen S. Knipmeyer",
+              "eticket": "0162376748846",
+              "notes": "Infant"
+            }
+          ],
+          "payment": {
+            "total": "120,000 MileagePlus miles + $16.80 USD",
+            "method": "MileagePlus (acct ending 798) + Visa ending 8660"
+          },
+          "extras": {
+            "legroom_seats": "$82.77 per person (3x = $248.31 total)",
+            "checked_bags": "1st bag free, 2nd bag $110.00"
+          },
+          "booked_via": "United Airlines"
+        },
+        {
+          "type": "accommodation_checkin",
+          "property": "LUXUS-Apartment mit Weitblick",
+          "confirmation": "6729256409",
+          "pin": "9183",
+          "check_in": {
+            "date": "2026-05-03",
+            "time": "15:00-18:00"
+          },
+          "notes": "Updated from original May 4 check-in to May 3. Flight arrives May 4 at 08:15, so check-in will happen May 4 morning (apartment available from May 3)."
+        }
+      ]
+    },
+    "2026-05-04": {
+      "day_label": "Day 2 - Sunday, May 4 - Arrive Vienna",
+      "events": [
+        {
+          "type": "arrival",
+          "description": "Arrive Vienna International Airport (VIE) at 08:15 AM",
+          "notes": "Flight OS46 from Chicago"
+        },
+        {
+          "type": "accommodation",
+          "property": "LUXUS-Apartment mit Weitblick",
+          "status": "Already checked in (check-in was May 3)"
+        }
+      ]
+    },
+    "2026-05-05": {
+      "day_label": "Day 3 - Monday, May 5 - Vienna",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "LUXUS-Apartment mit Weitblick",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-06": {
+      "day_label": "Day 4 - Tuesday, May 6 - Vienna",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "LUXUS-Apartment mit Weitblick",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-07": {
+      "day_label": "Day 5 - Wednesday, May 7 - Vienna → Crete",
+      "events": [
+        {
+          "type": "accommodation_checkout",
+          "property": "LUXUS-Apartment mit Weitblick",
+          "check_out": {
+            "date": "2026-05-07",
+            "time": "10:30-11:00"
+          }
+        },
+        {
+          "type": "car_rental",
+          "company": "Expedia car rental",
+          "confirmation": "73378810976626",
+          "pickup_date": "2026-05-07",
+          "notes": "Details limited - Expedia confirmation email body was empty. Itinerary number 73378810976626. Likely pickup at Vienna airport for drive/drop before flight, or at Heraklion upon arrival. Verify on Expedia.com."
+        },
+        {
+          "type": "flight",
+          "airline": "Austrian Airlines",
+          "flight_number": "OS811",
+          "confirmation_code": "7O7964",
+          "route": {
+            "from": "Vienna International Airport (VIE) - Terminal 3",
+            "to": "Heraklion Airport (HER)"
+          },
+          "departure": {
+            "date": "2026-05-07",
+            "time": "14:55",
+            "timezone": "local (CEST)"
+          },
+          "arrival": {
+            "date": "2026-05-07",
+            "time": "18:20",
+            "timezone": "local (EEST)"
+          },
+          "duration": "2h 25m",
+          "nonstop": true,
+          "aircraft": "Airbus A320",
+          "class": "Economy Classic",
+          "passengers": [
+            {
+              "name": "Michelle Knipmeyer",
+              "type": "adult",
+              "ticket_number": "2572171206386",
+              "baggage": "1x carry-on (up to 8 kg), 1x checked bag (up to 23 kg)"
+            },
+            {
+              "name": "Daniel Knipmeyer",
+              "type": "adult",
+              "ticket_number": "2572171206387",
+              "baggage": "1x carry-on (up to 8 kg), 1x checked bag (up to 23 kg)"
+            }
+          ],
+          "payment": {
+            "total": "EUR 542.94 (incl. taxes, fees and surcharges)"
+          },
+          "notes": "Owen (infant) not ticketed separately on this flight - likely lap infant."
+        },
+        {
+          "type": "accommodation_checkin",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "confirmation": "57306164",
+          "check_in": {
+            "date": "2026-05-07",
+            "time": "15:00",
+            "timezone": "EEST (UTC+3)"
+          },
+          "notes": "Arrival at resort after 18:20 flight landing."
+        }
+      ]
+    },
+    "2026-05-08": {
+      "day_label": "Day 6 - Thursday, May 8 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-09": {
+      "day_label": "Day 7 - Friday, May 9 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-10": {
+      "day_label": "Day 8 - Saturday, May 10 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-11": {
+      "day_label": "Day 9 - Sunday, May 11 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-12": {
+      "day_label": "Day 10 - Monday, May 12 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-13": {
+      "day_label": "Day 11 - Tuesday, May 13 - Crete",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "status": "Staying (last night)"
+        }
+      ]
+    },
+    "2026-05-14": {
+      "day_label": "Day 12 - Wednesday, May 14 - Crete → Zurich",
+      "events": [
+        {
+          "type": "accommodation_checkout",
+          "property": "Daios Cove Luxury Resort & Villas",
+          "check_out": {
+            "date": "2026-05-14"
+          },
+          "notes": "Check out early for 10:55 flight"
+        },
+        {
+          "type": "flight",
+          "airline": "SWISS (operated by Edelweiss Air)",
+          "flight_number": "LX8349",
+          "confirmation_codes": {
+            "michelle_and_owen": "ZWQAO7",
+            "daniel": "BO3KQS"
+          },
+          "route": {
+            "from": "Heraklion Airport (HER)",
+            "to": "Zurich Airport (ZRH)"
+          },
+          "departure": {
+            "date": "2026-05-14",
+            "time": "10:55",
+            "timezone": "local (EEST)"
+          },
+          "arrival": {
+            "date": "2026-05-14",
+            "time": "12:50",
+            "timezone": "local (CEST)"
+          },
+          "duration": "2h 55m",
+          "nonstop": true,
+          "aircraft": "Airbus A320",
+          "class": "Economy",
+          "passengers": [
+            {
+              "name": "Michelle Knipmeyer",
+              "type": "adult",
+              "booking_code": "ZWQAO7",
+              "ticket_number": "7242347953634",
+              "fare_class": "Economy Green",
+              "seat": "34C (Standard Seat, Aisle)",
+              "baggage": "1x carry-on (up to 8 kg), 1x checked bag (up to 23 kg)"
+            },
+            {
+              "name": "Owen Knipmeyer",
+              "type": "infant (travelling with Michelle)",
+              "booking_code": "ZWQAO7",
+              "ticket_number": "7242347953633",
+              "baggage": "No carry-on, 1x checked bag (up to 23 kg)"
+            },
+            {
+              "name": "Daniel Ryan Knipmeyer",
+              "type": "adult",
+              "booking_code": "BO3KQS",
+              "fare_class": "Economy (Flex economy class K via Chase)",
+              "seat": "34A (Standard Seat, Window)",
+              "baggage": "1x carry-on (up to 8 kg), 1x checked bag (up to 23 kg)"
+            }
+          ],
+          "payment": {
+            "zwqao7_total": "EUR 269.80 (Michelle + Owen)",
+            "bo3kqs_total": "$381.50 via Chase Travel (Daniel), 38,150 Chase points redeemed",
+            "chase_trip_id": "1015413814"
+          }
+        },
+        {
+          "type": "accommodation_checkin",
+          "property": "Radisson Blu Hotel, Zurich Airport",
+          "confirmation": {
+            "chase_trip_id": "1013771579",
+            "hotel_confirmation": "2398178005"
+          },
+          "check_in": {
+            "date": "2026-05-14",
+            "time": "15:00"
+          },
+          "address": "Zurich Airport, Kloten 8058, CH",
+          "room": "Standard Room, 1 Twin/King bed",
+          "guests": 3,
+          "nights": 3,
+          "payment": {
+            "total": "$1,346.38",
+            "promotion": "-$500.00 Travel Promotion",
+            "billed": "$819.33 to Visa ending 8660",
+            "resort_fee": "$27.05 (due at property)"
+          },
+          "notes": "City tax: CHF 3.50 per person per night (not applicable to children). Free cancellation until May 14, 2026 5:00 PM local time."
+        }
+      ]
+    },
+    "2026-05-15": {
+      "day_label": "Day 13 - Thursday, May 15 - Zurich",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Radisson Blu Hotel, Zurich Airport",
+          "status": "Staying"
+        }
+      ]
+    },
+    "2026-05-16": {
+      "day_label": "Day 14 - Friday, May 16 - Zurich",
+      "events": [
+        {
+          "type": "accommodation",
+          "property": "Radisson Blu Hotel, Zurich Airport",
+          "status": "Staying (last night)"
+        }
+      ]
+    },
+    "2026-05-17": {
+      "day_label": "Day 15 - Saturday, May 17 - Depart Zurich → Chicago",
+      "events": [
+        {
+          "type": "accommodation_checkout",
+          "property": "Radisson Blu Hotel, Zurich Airport",
+          "check_out": {
+            "date": "2026-05-17",
+            "time": "12:00"
+          },
+          "notes": "Flight departs at 09:50 - must check out before flight. Hotel is at the airport."
+        },
+        {
+          "type": "flight",
+          "airline": "United Airlines",
+          "flight_number": "UA12",
+          "confirmation_code": "N0RGPN",
+          "route": {
+            "from": "Zurich Airport (ZRH)",
+            "to": "Chicago O'Hare (ORD)"
+          },
+          "departure": {
+            "date": "2026-05-17",
+            "time": "09:50",
+            "timezone": "local (CEST)"
+          },
+          "arrival": {
+            "date": "2026-05-17",
+            "time": "12:45",
+            "timezone": "local (CDT)"
+          },
+          "duration": "9h 55m",
+          "nonstop": true,
+          "aircraft": "Boeing 767-300",
+          "class": "United Economy (X)",
+          "passengers": [
+            {
+              "name": "Daniel Knipmeyer",
+              "eticket": "01623767605305",
+              "seat": "42D",
+              "frequent_flyer": "UA MileagePlus (ending 798)"
+            },
+            {
+              "name": "Michelle Knipmeyer",
+              "eticket": "01623767605316",
+              "seat": "42E",
+              "frequent_flyer": "UA MileagePlus (ending 939)"
+            },
+            {
+              "name": "Owen Knipmeyer",
+              "type": "infant"
+            }
+          ],
+          "payment": {
+            "total": "120,000 MileagePlus miles + $145.49 USD",
+            "method": "MileagePlus (acct ending 798) + Visa ending 8660",
+            "taxes_fees_breakdown": "US Immigration $7.00, US Customs $7.39, Switzerland Airport $45.40, US APHIS $3.84 (per passenger)"
+          }
+        }
+      ]
+    }
+  },
+  "bookings_summary": {
+    "flights": [
+      {
+        "segment": "Outbound: Chicago → Vienna",
+        "flight": "OS46 (Austrian Airlines, booked via United)",
+        "confirmation": "NZFNK5",
+        "date": "2026-05-03",
+        "depart": "16:20 ORD",
+        "arrive": "08:15+1 VIE",
+        "passengers": "Daniel, Michelle, Owen"
+      },
+      {
+        "segment": "Intra-Europe: Vienna → Heraklion (Crete)",
+        "flight": "OS811 (Austrian Airlines)",
+        "confirmation": "7O7964",
+        "date": "2026-05-07",
+        "depart": "14:55 VIE (Terminal 3)",
+        "arrive": "18:20 HER",
+        "passengers": "Daniel, Michelle (Owen likely lap infant)"
+      },
+      {
+        "segment": "Intra-Europe: Heraklion (Crete) → Zurich",
+        "flight": "LX8349 (SWISS, operated by Edelweiss Air)",
+        "confirmations": "ZWQAO7 (Michelle+Owen), BO3KQS (Daniel)",
+        "chase_trip_id": "1015413814 (Daniel's ticket)",
+        "date": "2026-05-14",
+        "depart": "10:55 HER",
+        "arrive": "12:50 ZRH",
+        "passengers": "Daniel, Michelle, Owen"
+      },
+      {
+        "segment": "Return: Zurich → Chicago",
+        "flight": "UA12 (United Airlines)",
+        "confirmation": "N0RGPN",
+        "date": "2026-05-17",
+        "depart": "09:50 ZRH",
+        "arrive": "12:45 ORD",
+        "passengers": "Daniel, Michelle, Owen"
+      }
+    ],
+    "accommodations": [
+      {
+        "property": "LUXUS-Apartment mit Weitblick",
+        "platform": "Booking.com",
+        "confirmation": "6729256409",
+        "pin": "9183",
+        "address": "12 Arsenalstrasse, 10. Favoriten, Vienna, 1100, Austria",
+        "check_in": "2026-05-03 (3:00 PM - 6:00 PM)",
+        "check_out": "2026-05-07 (10:30 AM - 11:00 AM)",
+        "nights": 4,
+        "room": "One-Bedroom Apartment",
+        "guests": "2 adults",
+        "price": "EUR 519.84",
+        "contact_phone": "+436766435101",
+        "notes": "Someone will meet you on arrival. Updated booking (originally May 4-7, changed to May 3-7 on March 20)."
+      },
+      {
+        "property": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "address": "Vathi, Agios Nikolaos, Crete 72100, Greece",
+        "phone": "+302841062600",
+        "check_in": "2026-05-07 (3:00 PM EEST)",
+        "check_out": "2026-05-14",
+        "nights": 7,
+        "room": "Deluxe Room Sea View with Individual Pool - Flexible",
+        "guests": "2 adults + 1 baby (7 months old)",
+        "deposit_paid": "EUR 1,011.60",
+        "remaining_balance": "Due at arrival",
+        "baby_amenities_confirmed": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market.",
+        "reservation_contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      {
+        "property": "Radisson Blu Hotel, Zurich Airport",
+        "platform": "Chase Travel",
+        "chase_trip_id": "1013771579",
+        "hotel_confirmation": "2398178005",
+        "address": "Zurich Airport, Kloten 8058, CH",
+        "check_in": "2026-05-14 (3:00 PM)",
+        "check_out": "2026-05-17 (12:00 PM)",
+        "nights": 3,
+        "room": "Standard Room, 1 Twin/King bed",
+        "guests": 3,
+        "price": "$1,346.38 (after $500 promo = $846.38; billed $819.33)",
+        "resort_fee": "$27.05 (due at property)",
+        "city_tax": "CHF 3.50 per person per night",
+        "primary_guest": "Michelle Violet Knipmeyer",
+        "cancellation": "Free until May 14, 2026 5:00 PM local time"
+      }
+    ],
+    "car_rental": {
+      "platform": "Expedia",
+      "itinerary_number": "73378810976626",
+      "pickup_date": "2026-05-07",
+      "notes": "Email body was empty (only subject line and snippet available). Full details must be retrieved from Expedia.com. Subject line confirms: 'Expedia car rental confirmation - Thu, May 7'."
+    },
+    "chase_travel_trips": {
+      "1013771579": "Radisson Blu Hotel Zurich Airport (May 14-17)",
+      "1015413814": "SWISS flight LX8349 HER→ZRH for Daniel (May 14)",
+      "1015418589": "NOT part of Europe trip - Hotel Indigo St. Louis Oct 9-11, 2026"
+    }
+  }
+}
