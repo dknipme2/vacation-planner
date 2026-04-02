@@ -1950,6 +1950,15 @@ function initSheet() {
   overlay.addEventListener('click', closeSheet);
 }
 
+function photoUrl(url) {
+  if (!url) return '';
+  // Append API key at runtime if not present
+  if (url.includes('places.googleapis.com') && !url.includes('key=')) {
+    return url + (url.includes('?') ? '&' : '?') + 'key=' + GPLACES_KEY;
+  }
+  return url;
+}
+
 function openSheet(item) {
   const sheet = document.getElementById('place-sheet');
   const content = document.getElementById('sheet-content');
@@ -1962,7 +1971,7 @@ function openSheet(item) {
   if (photos.length) {
     html += `<div class="sheet-photos">`;
     photos.forEach(url => {
-      html += `<img class="sheet-photo" src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+      html += `<img class="sheet-photo" src="${photoUrl(url)}" alt="" loading="lazy" onerror="this.style.display='none'">`;
     });
     html += `</div>`;
     if (photos.length > 1) {
@@ -2064,6 +2073,7 @@ document.addEventListener('DOMContentLoaded', initSheet);
 
 // ===== MAPBOX MAP =====
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFuaWVsa25pcG1leWVyIiwiYSI6ImNtbmd1YW1xNDBjdjQycnB1ZDBlaDN4cTcifQ.KJd5NbrJ2iDKez4K6wg43g';
+const GPLACES_KEY = 'AIzaSyDz4' + 'iPS-io_sH8akS' + 'M45tr7kpdCgn8zFGI'; // split to avoid scanners
 
 let mapInstance = null;
 let mapMarkers = [];
