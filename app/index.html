@@ -1183,6 +1183,11 @@ const LOCAL_TIPS = {
       {title:'🚇 Transit',text:'Vienna has excellent public transit. Buy a 72-hour pass (€17.10). Strollers ride free.'},
       {title:'💧 Water',text:'Tap water is excellent — Vienna\'s comes from Alpine springs. Safe for baby formula.'},
       {title:'👶 Baby Supplies',text:'DM and BIPA drugstores have great baby sections. Formula brands: Aptamil, HiPP.'}
+    ],
+    resources: [
+      {icon:'🍴',name:'Eater — Vienna',desc:'Essential restaurant guides and food maps',url:'https://www.eater.com/maps/best-restaurants-vienna'},
+      {icon:'⭐',name:'Michelin Guide — Vienna',desc:'Bib Gourmand & starred restaurants',url:'https://guide.michelin.com/en/vienna-region/vienna/restaurants/bib-gourmand'},
+      {icon:'🗺️',name:'Google Maps — Vienna',desc:'Saved places and reviews',url:'https://www.google.com/maps/place/Vienna'}
     ]
   },
   crete: {
@@ -1216,6 +1221,11 @@ const LOCAL_TIPS = {
       {title:'💧 Water',text:'Bottled water recommended for baby formula in Crete. Tap water is safe but tastes mineral-heavy.'},
       {title:'☀️ Sun Safety',text:'May sun is strong (UV 7-8). Keep Owen in shade 11AM-3PM. SPF 50+ baby sunscreen.'},
       {title:'👶 Baby Supplies',text:'Pharmacies stock Frezyderm and Apivita baby products. Formula: Nutrilak, NAN.'}
+    ],
+    resources: [
+      {icon:'🍴',name:'Eater — Greece',desc:'Food guides and restaurant recommendations',url:'https://www.eater.com/maps/best-restaurants-greece-crete'},
+      {icon:'⭐',name:'Michelin Guide — Crete',desc:'Bib Gourmand & recommended restaurants',url:'https://guide.michelin.com/en/crete/restaurants'},
+      {icon:'🗺️',name:'Google Maps — Elounda',desc:'Saved places and reviews',url:'https://www.google.com/maps/place/Elounda'}
     ]
   },
   zurich: {
@@ -1246,6 +1256,12 @@ const LOCAL_TIPS = {
       {title:'💧 Water',text:'Tap water is pristine. Zurich fountains are safe to drink from. Perfect for formula.'},
       {title:'👶 Baby Supplies',text:'Migros and Coop supermarkets have excellent baby aisles. Formula: Aptamil, HiPP.'},
       {title:'💶 Currency',text:'Swiss Francs (CHF), not Euros. Cards accepted almost everywhere. Current rate ~1 CHF = $1.10 USD.'}
+    ],
+    resources: [
+      {icon:'🍴',name:'Eater — Zurich',desc:'Essential restaurant guides and food maps',url:'https://www.eater.com/maps/best-restaurants-zurich'},
+      {icon:'⭐',name:'Michelin Guide — Zurich',desc:'Bib Gourmand & starred restaurants',url:'https://guide.michelin.com/en/zurich/restaurants/bib-gourmand'},
+      {icon:'🚂',name:'Lucerne Day Trip',desc:'~45 min by train from Zurich HB',url:'https://www.google.com/maps/dir/Zurich+HB/Lucerne'},
+      {icon:'🗺️',name:'Google Maps — Zurich',desc:'Saved places and reviews',url:'https://www.google.com/maps/place/Zurich'}
     ]
   }
 };
@@ -1299,6 +1315,19 @@ function buildTips() {
   tips.tips.forEach(t => {
     html += `<div class="tip-info-card"><div class="tip-info-title">${t.title}</div><div class="tip-info-text">${t.text}</div></div>`;
   });
+  html += `</div>`;
+
+  // Resources
+  html += `<div class="tips-section"><div class="tips-section-title">🔗 Food & Travel Resources</div>`;
+  if (tips.resources) {
+    tips.resources.forEach(r => {
+      html += `<a href="${r.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--surface-1);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);margin-bottom:6px;text-decoration:none;color:var(--text);transition:background .15s">
+        <span style="font-size:18px">${r.icon}</span>
+        <div style="flex:1"><div style="font-size:13px;font-weight:600">${r.name}</div><div style="font-size:11px;color:var(--text2)">${r.desc}</div></div>
+        <span style="color:var(--blue);font-size:12px">↗</span>
+      </a>`;
+    });
+  }
   html += `</div>`;
 
   el.innerHTML = html;

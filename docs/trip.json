@@ -2395,6 +2395,181 @@
             "scenic",
             "relaxing"
           ]
+        },
+        {
+          "name": "Chapel Bridge (Kapellbrücke)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0514,
+          "lng": 8.3075,
+          "address": "Kapellbrücke, 6003 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "30min",
+          "baby_friendly": true,
+          "baby_notes": "Flat wooden bridge, stroller accessible, covered from rain. Great photo spot with Water Tower.",
+          "description": "Europe's oldest covered wooden bridge, dating from 1333. Spans the Reuss River with 17th-century paintings in the roof gables and the iconic octagonal Water Tower.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "iconic",
+            "old-town",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lion Monument (Löwendenkmal)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0583,
+          "lng": 8.3106,
+          "address": "Denkmalstrasse 4, 6002 Luzern",
+          "hours": "Open 24/7 (illuminated at night)",
+          "cost": "Free",
+          "duration": "20min",
+          "baby_friendly": true,
+          "baby_notes": "Short walk from Old Town, paved path to viewing area. Stroller accessible. Quiet pond setting good for babies.",
+          "description": "Mark Twain called it the most mournful piece of stone in the world. Carved into a rock face in 1821, it commemorates the Swiss Guards who fell during the French Revolution.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "historic",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lake Lucerne Waterfront Promenade",
+          "type": "activity",
+          "subtype": "walking",
+          "lat": 47.0502,
+          "lng": 8.3093,
+          "address": "Schweizerhofquai / Nationalquai, 6002 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "30-60min",
+          "baby_friendly": true,
+          "baby_notes": "Flat, wide paved promenade perfect for strollers. Benches everywhere for nursing breaks. Stunning Alpine views across the lake.",
+          "description": "The lakefront promenade stretching from the train station along Schweizerhofquai offers panoramic views of Lake Lucerne, Mount Pilatus, and Mount Rigi. Ideal for a leisurely stroll.",
+          "tags": [
+            "walking",
+            "free",
+            "stroller-ok",
+            "scenic",
+            "lakefront",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Old Town (Altstadt) Stroll",
+          "type": "activity",
+          "subtype": "walking",
+          "lat": 47.052,
+          "lng": 8.305,
+          "address": "Weinmarkt / Hirschenplatz, 6004 Luzern",
+          "hours": "Anytime (shops ~9:00-18:30)",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Nearly car-free cobblestone streets. Mostly flat with some gentle slopes. Many cafes for rest stops. Weinmarkt fountain square is a nice pause spot.",
+          "description": "Lucerne's medieval Old Town on the north bank of the Reuss features painted frescoed facades, charming squares like Weinmarkt and Hirschenplatz, and boutique shopping streets.",
+          "tags": [
+            "walking",
+            "free",
+            "stroller-ok",
+            "old-town",
+            "shopping",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Spreuer Bridge (Spreuerbrücke)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0524,
+          "lng": 8.3028,
+          "address": "Spreuerbrücke, 6004 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "15min",
+          "baby_friendly": true,
+          "baby_notes": "Flat covered wooden bridge, stroller accessible. Less crowded than Chapel Bridge.",
+          "description": "A 15th-century covered wooden footbridge featuring Kaspar Meglinger's 'Dance of Death' paintings from the 1600s in the roof gables. Quieter alternative to the Chapel Bridge.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "historic",
+            "old-town",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Jesuit Church (Jesuitenkirche)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0507,
+          "lng": 8.3065,
+          "address": "Bahnhofstrasse 11a, 6003 Luzern",
+          "hours": "Daily 6:30-18:30",
+          "cost": "Free",
+          "duration": "15-20min",
+          "baby_friendly": true,
+          "baby_notes": "Ground-level entrance, spacious interior. Keep baby quiet during services. Stroller fits easily.",
+          "description": "Switzerland's first large Baroque church, built 1666-1677. The stunning pink-and-white stucco interior is one of the finest Baroque interiors in the country.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "baroque",
+            "architecture",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lake Lucerne Panoramic Boat Cruise (1 hour)",
+          "type": "activity",
+          "subtype": "cruise",
+          "lat": 47.05,
+          "lng": 8.3102,
+          "address": "SGV Terminal, Werftestrasse 5, 6002 Luzern (directly across from Lucerne HB)",
+          "hours": "Multiple daily departures, ~10:00-17:00 (May schedule)",
+          "cost": "CHF 28 adults / free under 6",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Strollers roll right on board. Indoor and outdoor seating. Smooth ride suitable for infants. On-board cafe for warm drinks. Baby under 6 rides free.",
+          "description": "A scenic one-hour panoramic cruise on Lake Lucerne with views of Mount Pilatus, Mount Rigi, and the surrounding Alps. Departs from the pier right across from the train station.",
+          "tags": [
+            "cruise",
+            "scenic",
+            "stroller-ok",
+            "lakefront",
+            "alpine-views",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Musegg Wall (Museggmauer)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0558,
+          "lng": 8.3055,
+          "address": "Museggmauer, 6004 Luzern",
+          "hours": "Apr 1 - Nov 1, daily 8:00-19:00",
+          "cost": "Free",
+          "duration": "30-45min",
+          "baby_friendly": false,
+          "baby_notes": "Narrow steep tower stairs are NOT stroller accessible. Best with a baby carrier if you want to climb a tower. The wall-top walkway is narrow. Consider skipping towers and just viewing from below.",
+          "description": "Lucerne's remarkably preserved medieval city wall stretches 870 meters with nine watchtowers. The Zyt Tower houses the city's oldest clock, which chimes one minute before all others.",
+          "tags": [
+            "landmark",
+            "free",
+            "historic",
+            "views",
+            "baby-carrier-only",
+            "lucerne-day-trip"
+          ]
         }
       ],
       "restaurants": [
@@ -2522,6 +2697,135 @@
             "hot-chocolate",
             "old-town",
             "pastry"
+          ]
+        },
+        {
+          "name": "Soul Chicken",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 47.0545,
+          "lng": 8.3055,
+          "address": "Löwengraben 31, 6004 Luzern",
+          "hours": "Tue-Fri 11:30-14:30 & 17:30-22:00, Sat-Sun 11:30-22:00, closed Mon",
+          "price_range": "CHF 15-25",
+          "cuisine": "Chicken / Street Food",
+          "baby_friendly": true,
+          "baby_notes": "Casual relaxed atmosphere, no fuss dining. Compact space so stroller may need folding at peak times. Good for a quick satisfying meal.",
+          "description": "Beloved local spot famous for crispy fried chicken served in a basket with garlic or soul sauce and fresh baguette. Cozy artistic interior with a loyal following.",
+          "tags": [
+            "chicken",
+            "casual",
+            "central",
+            "popular",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Rathaus Brauerei",
+          "type": "restaurant",
+          "subtype": "brewpub",
+          "lat": 47.0515,
+          "lng": 8.3065,
+          "address": "Unter der Egg 2, 6004 Luzern",
+          "hours": "Daily 11:30-23:30",
+          "price_range": "CHF 25-45",
+          "cuisine": "Swiss / Bavarian",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, kids menu with coloring sheets, baby changing table. Riverside outdoor terrace with Chapel Bridge view is ideal for families.",
+          "description": "Lucerne's own craft brewpub right on the Reuss River with views of Chapel Bridge. Serves house-brewed beers alongside hearty Swiss and Bavarian dishes.",
+          "tags": [
+            "swiss",
+            "brewpub",
+            "riverside",
+            "central",
+            "family-friendly",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "tibits Luzern",
+          "type": "restaurant",
+          "subtype": "vegetarian",
+          "lat": 47.0501,
+          "lng": 8.31,
+          "address": "Zentralstrasse 1, 6003 Luzern (inside Lucerne train station, 1st floor)",
+          "hours": "Mon-Thu 7:00-22:30, Fri-Sat 7:00-23:00, Sun 8:00-22:30",
+          "price_range": "CHF 15-30 (pay by weight)",
+          "cuisine": "Vegetarian / Vegan buffet",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, baby changing table. Buffet style lets you grab exactly what you need quickly. Located in the train station -- perfect for arrival or departure meal.",
+          "description": "Popular vegetarian and vegan buffet restaurant inside Lucerne train station. Over 40 freshly prepared dishes from salads to hot mains, paid by plate weight.",
+          "tags": [
+            "vegetarian",
+            "buffet",
+            "train-station",
+            "quick",
+            "family-friendly",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Wirtshaus Galliker",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 47.049,
+          "lng": 8.3042,
+          "address": "Schützenstrasse 1, 6003 Luzern",
+          "hours": "Tue-Sat 9:30-00:00, closed Sun & Mon",
+          "price_range": "CHF 25-45",
+          "cuisine": "Traditional Swiss",
+          "baby_friendly": true,
+          "baby_notes": "Relaxed traditional atmosphere, spacious wooden tables. Reservation recommended. A genuine local institution -- not touristy.",
+          "description": "A fourth-generation family-run restaurant serving traditional Swiss home cooking since the 1880s. Known for classics like Rösti, bratwurst, cordon bleu, and seasonal specialties.",
+          "tags": [
+            "swiss",
+            "traditional",
+            "local-gem",
+            "historic",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Restaurant Ammos",
+          "type": "restaurant",
+          "subtype": "mediterranean",
+          "lat": 47.0512,
+          "lng": 8.3058,
+          "address": "Pfistergasse 16, 6003 Luzern",
+          "hours": "Tue-Sat 11:30-14:00 & 18:00-23:00, closed Sun & Mon",
+          "price_range": "CHF 25-50",
+          "cuisine": "Greek / Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, riverside terrace is spacious for strollers. Mezze sharing plates work well when dining with a baby on your lap.",
+          "description": "Authentic Greek restaurant on the banks of the Reuss River with a terrace overlooking the Chapel Bridge. Known for fresh mezze, grilled meats, and seafood.",
+          "tags": [
+            "greek",
+            "riverside",
+            "terrace",
+            "central",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Bierliebe and Friends",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 47.0518,
+          "lng": 8.307,
+          "address": "Unter der Egg 5, 6004 Luzern",
+          "hours": "Mon-Sat 11:00-23:00, Sun 11:00-22:00",
+          "price_range": "CHF 20-35",
+          "cuisine": "Burgers / Pub Food",
+          "baby_friendly": true,
+          "baby_notes": "Baby chairs available, kids menu, changing table, toys upstairs. Right next to Chapel Bridge. The Raclette Burger is large enough to share.",
+          "description": "Family-friendly burger restaurant next to Chapel Bridge with craft beers on tap. Popular for their Raclette Burger and relaxed riverside vibe.",
+          "tags": [
+            "burgers",
+            "family-friendly",
+            "central",
+            "casual",
+            "riverside",
+            "lucerne-day-trip"
           ]
         }
       ],
@@ -2681,6 +2985,181 @@
             "stroller-ok",
             "market"
           ]
+        },
+        {
+          "name": "Chapel Bridge (Kapellbrücke)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0514,
+          "lng": 8.3075,
+          "address": "Kapellbrücke, 6003 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "30min",
+          "baby_friendly": true,
+          "baby_notes": "Flat wooden bridge, stroller accessible, covered from rain. Great photo spot with Water Tower.",
+          "description": "Europe's oldest covered wooden bridge, dating from 1333. Spans the Reuss River with 17th-century paintings in the roof gables and the iconic octagonal Water Tower.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "iconic",
+            "old-town",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lion Monument (Löwendenkmal)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0583,
+          "lng": 8.3106,
+          "address": "Denkmalstrasse 4, 6002 Luzern",
+          "hours": "Open 24/7 (illuminated at night)",
+          "cost": "Free",
+          "duration": "20min",
+          "baby_friendly": true,
+          "baby_notes": "Short walk from Old Town, paved path to viewing area. Stroller accessible. Quiet pond setting good for babies.",
+          "description": "Mark Twain called it the most mournful piece of stone in the world. Carved into a rock face in 1821, it commemorates the Swiss Guards who fell during the French Revolution.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "historic",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lake Lucerne Waterfront Promenade",
+          "type": "activity",
+          "subtype": "walking",
+          "lat": 47.0502,
+          "lng": 8.3093,
+          "address": "Schweizerhofquai / Nationalquai, 6002 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "30-60min",
+          "baby_friendly": true,
+          "baby_notes": "Flat, wide paved promenade perfect for strollers. Benches everywhere for nursing breaks. Stunning Alpine views across the lake.",
+          "description": "The lakefront promenade stretching from the train station along Schweizerhofquai offers panoramic views of Lake Lucerne, Mount Pilatus, and Mount Rigi. Ideal for a leisurely stroll.",
+          "tags": [
+            "walking",
+            "free",
+            "stroller-ok",
+            "scenic",
+            "lakefront",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Old Town (Altstadt) Stroll",
+          "type": "activity",
+          "subtype": "walking",
+          "lat": 47.052,
+          "lng": 8.305,
+          "address": "Weinmarkt / Hirschenplatz, 6004 Luzern",
+          "hours": "Anytime (shops ~9:00-18:30)",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Nearly car-free cobblestone streets. Mostly flat with some gentle slopes. Many cafes for rest stops. Weinmarkt fountain square is a nice pause spot.",
+          "description": "Lucerne's medieval Old Town on the north bank of the Reuss features painted frescoed facades, charming squares like Weinmarkt and Hirschenplatz, and boutique shopping streets.",
+          "tags": [
+            "walking",
+            "free",
+            "stroller-ok",
+            "old-town",
+            "shopping",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Spreuer Bridge (Spreuerbrücke)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0524,
+          "lng": 8.3028,
+          "address": "Spreuerbrücke, 6004 Luzern",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "15min",
+          "baby_friendly": true,
+          "baby_notes": "Flat covered wooden bridge, stroller accessible. Less crowded than Chapel Bridge.",
+          "description": "A 15th-century covered wooden footbridge featuring Kaspar Meglinger's 'Dance of Death' paintings from the 1600s in the roof gables. Quieter alternative to the Chapel Bridge.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "historic",
+            "old-town",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Jesuit Church (Jesuitenkirche)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0507,
+          "lng": 8.3065,
+          "address": "Bahnhofstrasse 11a, 6003 Luzern",
+          "hours": "Daily 6:30-18:30",
+          "cost": "Free",
+          "duration": "15-20min",
+          "baby_friendly": true,
+          "baby_notes": "Ground-level entrance, spacious interior. Keep baby quiet during services. Stroller fits easily.",
+          "description": "Switzerland's first large Baroque church, built 1666-1677. The stunning pink-and-white stucco interior is one of the finest Baroque interiors in the country.",
+          "tags": [
+            "landmark",
+            "free",
+            "stroller-ok",
+            "baroque",
+            "architecture",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Lake Lucerne Panoramic Boat Cruise (1 hour)",
+          "type": "activity",
+          "subtype": "cruise",
+          "lat": 47.05,
+          "lng": 8.3102,
+          "address": "SGV Terminal, Werftestrasse 5, 6002 Luzern (directly across from Lucerne HB)",
+          "hours": "Multiple daily departures, ~10:00-17:00 (May schedule)",
+          "cost": "CHF 28 adults / free under 6",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Strollers roll right on board. Indoor and outdoor seating. Smooth ride suitable for infants. On-board cafe for warm drinks. Baby under 6 rides free.",
+          "description": "A scenic one-hour panoramic cruise on Lake Lucerne with views of Mount Pilatus, Mount Rigi, and the surrounding Alps. Departs from the pier right across from the train station.",
+          "tags": [
+            "cruise",
+            "scenic",
+            "stroller-ok",
+            "lakefront",
+            "alpine-views",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Musegg Wall (Museggmauer)",
+          "type": "activity",
+          "subtype": "landmark",
+          "lat": 47.0558,
+          "lng": 8.3055,
+          "address": "Museggmauer, 6004 Luzern",
+          "hours": "Apr 1 - Nov 1, daily 8:00-19:00",
+          "cost": "Free",
+          "duration": "30-45min",
+          "baby_friendly": false,
+          "baby_notes": "Narrow steep tower stairs are NOT stroller accessible. Best with a baby carrier if you want to climb a tower. The wall-top walkway is narrow. Consider skipping towers and just viewing from below.",
+          "description": "Lucerne's remarkably preserved medieval city wall stretches 870 meters with nine watchtowers. The Zyt Tower houses the city's oldest clock, which chimes one minute before all others.",
+          "tags": [
+            "landmark",
+            "free",
+            "historic",
+            "views",
+            "baby-carrier-only",
+            "lucerne-day-trip"
+          ]
         }
       ],
       "restaurants": [
@@ -2808,6 +3287,135 @@
             "old-town",
             "hearty",
             "cozy"
+          ]
+        },
+        {
+          "name": "Soul Chicken",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 47.0545,
+          "lng": 8.3055,
+          "address": "Löwengraben 31, 6004 Luzern",
+          "hours": "Tue-Fri 11:30-14:30 & 17:30-22:00, Sat-Sun 11:30-22:00, closed Mon",
+          "price_range": "CHF 15-25",
+          "cuisine": "Chicken / Street Food",
+          "baby_friendly": true,
+          "baby_notes": "Casual relaxed atmosphere, no fuss dining. Compact space so stroller may need folding at peak times. Good for a quick satisfying meal.",
+          "description": "Beloved local spot famous for crispy fried chicken served in a basket with garlic or soul sauce and fresh baguette. Cozy artistic interior with a loyal following.",
+          "tags": [
+            "chicken",
+            "casual",
+            "central",
+            "popular",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Rathaus Brauerei",
+          "type": "restaurant",
+          "subtype": "brewpub",
+          "lat": 47.0515,
+          "lng": 8.3065,
+          "address": "Unter der Egg 2, 6004 Luzern",
+          "hours": "Daily 11:30-23:30",
+          "price_range": "CHF 25-45",
+          "cuisine": "Swiss / Bavarian",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, kids menu with coloring sheets, baby changing table. Riverside outdoor terrace with Chapel Bridge view is ideal for families.",
+          "description": "Lucerne's own craft brewpub right on the Reuss River with views of Chapel Bridge. Serves house-brewed beers alongside hearty Swiss and Bavarian dishes.",
+          "tags": [
+            "swiss",
+            "brewpub",
+            "riverside",
+            "central",
+            "family-friendly",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "tibits Luzern",
+          "type": "restaurant",
+          "subtype": "vegetarian",
+          "lat": 47.0501,
+          "lng": 8.31,
+          "address": "Zentralstrasse 1, 6003 Luzern (inside Lucerne train station, 1st floor)",
+          "hours": "Mon-Thu 7:00-22:30, Fri-Sat 7:00-23:00, Sun 8:00-22:30",
+          "price_range": "CHF 15-30 (pay by weight)",
+          "cuisine": "Vegetarian / Vegan buffet",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, baby changing table. Buffet style lets you grab exactly what you need quickly. Located in the train station -- perfect for arrival or departure meal.",
+          "description": "Popular vegetarian and vegan buffet restaurant inside Lucerne train station. Over 40 freshly prepared dishes from salads to hot mains, paid by plate weight.",
+          "tags": [
+            "vegetarian",
+            "buffet",
+            "train-station",
+            "quick",
+            "family-friendly",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Wirtshaus Galliker",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 47.049,
+          "lng": 8.3042,
+          "address": "Schützenstrasse 1, 6003 Luzern",
+          "hours": "Tue-Sat 9:30-00:00, closed Sun & Mon",
+          "price_range": "CHF 25-45",
+          "cuisine": "Traditional Swiss",
+          "baby_friendly": true,
+          "baby_notes": "Relaxed traditional atmosphere, spacious wooden tables. Reservation recommended. A genuine local institution -- not touristy.",
+          "description": "A fourth-generation family-run restaurant serving traditional Swiss home cooking since the 1880s. Known for classics like Rösti, bratwurst, cordon bleu, and seasonal specialties.",
+          "tags": [
+            "swiss",
+            "traditional",
+            "local-gem",
+            "historic",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Restaurant Ammos",
+          "type": "restaurant",
+          "subtype": "mediterranean",
+          "lat": 47.0512,
+          "lng": 8.3058,
+          "address": "Pfistergasse 16, 6003 Luzern",
+          "hours": "Tue-Sat 11:30-14:00 & 18:00-23:00, closed Sun & Mon",
+          "price_range": "CHF 25-50",
+          "cuisine": "Greek / Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, riverside terrace is spacious for strollers. Mezze sharing plates work well when dining with a baby on your lap.",
+          "description": "Authentic Greek restaurant on the banks of the Reuss River with a terrace overlooking the Chapel Bridge. Known for fresh mezze, grilled meats, and seafood.",
+          "tags": [
+            "greek",
+            "riverside",
+            "terrace",
+            "central",
+            "lucerne-day-trip"
+          ]
+        },
+        {
+          "name": "Bierliebe and Friends",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 47.0518,
+          "lng": 8.307,
+          "address": "Unter der Egg 5, 6004 Luzern",
+          "hours": "Mon-Sat 11:00-23:00, Sun 11:00-22:00",
+          "price_range": "CHF 20-35",
+          "cuisine": "Burgers / Pub Food",
+          "baby_friendly": true,
+          "baby_notes": "Baby chairs available, kids menu, changing table, toys upstairs. Right next to Chapel Bridge. The Raclette Burger is large enough to share.",
+          "description": "Family-friendly burger restaurant next to Chapel Bridge with craft beers on tap. Popular for their Raclette Burger and relaxed riverside vibe.",
+          "tags": [
+            "burgers",
+            "family-friendly",
+            "central",
+            "casual",
+            "riverside",
+            "lucerne-day-trip"
           ]
         }
       ],
