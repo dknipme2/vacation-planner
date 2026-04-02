@@ -1553,12 +1553,27 @@ function getMapConfigForDay(dayIdx) {
     else if (city === 'zurich') { accomKey = 'zurich'; poisKey = 'zurich'; }
     else return null;
     const accom = COORDS.accommodations[accomKey];
+    // Build POIs from trip.json activities + restaurants for this day
+    const dayData = TRIP.days[dayIdx];
+    const dynamicPois = [];
+    if (dayData.activities) {
+      dayData.activities.forEach(a => {
+        if (a.lat && a.lng) dynamicPois.push({lat:a.lat, lng:a.lng, name:a.name, type: a.subtype === 'beach' ? 'beach' : 'activity'});
+      });
+    }
+    if (dayData.restaurants) {
+      dayData.restaurants.forEach(r => {
+        if (r.lat && r.lng) dynamicPois.push({lat:r.lat, lng:r.lng, name:r.name, type:'restaurant'});
+      });
+    }
+    // Fallback to hardcoded POIs if no dynamic data
+    const pois = dynamicPois.length > 0 ? dynamicPois : (COORDS.pois[poisKey] || []);
     return {
       type: 'stay',
       center: [accom.lng, accom.lat],
       zoom: poisKey === 'crete' ? 11 : 12,
       accommodation: accom,
-      pois: COORDS.pois[poisKey] || []
+      pois: pois
     };
   }
 

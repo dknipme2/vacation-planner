@@ -2,13 +2,28 @@
   "trip": {
     "title": "Knipmeyer European Vacation",
     "subtitle": "May 2026",
-    "route": "Chicago \u2192 Vienna \u2192 Crete \u2192 Zurich \u2192 Chicago",
-    "dates": { "start": "2026-05-03", "end": "2026-05-17" },
+    "route": "Chicago → Vienna → Crete → Zurich → Chicago",
+    "dates": {
+      "start": "2026-05-03",
+      "end": "2026-05-17"
+    },
     "total_days": 15,
     "travelers": [
-      { "name": "Daniel", "full_name": "Daniel Ryan Knipmeyer", "type": "adult" },
-      { "name": "Michelle", "full_name": "Michelle Violet Knipmeyer", "type": "adult" },
-      { "name": "Owen", "full_name": "Owen S. Knipmeyer", "type": "infant" }
+      {
+        "name": "Daniel",
+        "full_name": "Daniel Ryan Knipmeyer",
+        "type": "adult"
+      },
+      {
+        "name": "Michelle",
+        "full_name": "Michelle Violet Knipmeyer",
+        "type": "adult"
+      },
+      {
+        "name": "Owen",
+        "full_name": "Owen S. Knipmeyer",
+        "type": "infant"
+      }
     ]
   },
   "days": [
@@ -17,7 +32,11 @@
       "day_number": 1,
       "day_type": "travel",
       "label": "Depart Chicago",
-      "location": { "city": "Chicago", "country": "USA", "emoji": "\ud83c\uddfa\ud83c\uddf8" },
+      "location": {
+        "city": "Chicago",
+        "country": "USA",
+        "emoji": "🇺🇸"
+      },
       "accommodation": null,
       "flights": [
         {
@@ -25,8 +44,14 @@
           "operated_for": "United Airlines",
           "flight_number": "OS46",
           "confirmation": "NZFNK5",
-          "from": { "code": "ORD", "name": "Chicago O'Hare" },
-          "to": { "code": "VIE", "name": "Vienna Schwechat" },
+          "from": {
+            "code": "ORD",
+            "name": "Chicago O'Hare"
+          },
+          "to": {
+            "code": "VIE",
+            "name": "Vienna Schwechat"
+          },
           "depart_time": "16:20",
           "depart_date": "2026-05-03",
           "arrive_time": "08:15",
@@ -36,9 +61,21 @@
           "aircraft": null,
           "class": "Economy (X)",
           "passengers": [
-            { "name": "Daniel", "seat": null, "eticket": "0162376748844" },
-            { "name": "Michelle", "seat": null, "eticket": "0162376748845" },
-            { "name": "Owen", "seat": null, "notes": "Infant" }
+            {
+              "name": "Daniel",
+              "seat": null,
+              "eticket": "0162376748844"
+            },
+            {
+              "name": "Michelle",
+              "seat": null,
+              "eticket": "0162376748845"
+            },
+            {
+              "name": "Owen",
+              "seat": null,
+              "notes": "Infant"
+            }
           ],
           "payment": "120,000 MileagePlus miles + $16.80"
         }
@@ -47,14 +84,20 @@
       "transport_mode": null,
       "activities": [],
       "restaurants": [],
-      "notes": ["Flight departs 4:20 PM CDT, arrives 8:15 AM+1 CEST"]
+      "notes": [
+        "Flight departs 4:20 PM CDT, arrives 8:15 AM+1 CEST"
+      ]
     },
     {
       "date": "2026-05-04",
       "day_number": 2,
       "day_type": "stay",
       "label": "Arrive Vienna",
-      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "emoji": "🇦🇹"
+      },
       "accommodation": {
         "name": "LUXUS-Apartment mit Weitblick",
         "confirmation": "6729256409",
@@ -72,16 +115,234 @@
       "flights": [],
       "car_rental": null,
       "transport_mode": "transit",
-      "activities": [],
-      "restaurants": [],
-      "notes": ["Arrive VIE 8:15 AM from OS46", "Head to apartment via train/transit"]
+      "activities": [
+        {
+          "name": "Schonbrunn Palace",
+          "type": "activity",
+          "subtype": "palace",
+          "lat": 48.1845,
+          "lng": 16.3122,
+          "address": "Schonbrunner Schlossstrasse 47, 1130 Wien",
+          "hours": "9:30-17:30",
+          "cost": "EUR 22",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Stroller accessible via side entrance, elevator inside palace, huge flat gardens perfect for stroller walks, baby changing facilities available",
+          "description": "Imperial summer residence with 1,441 rooms, stunning Baroque gardens, and the world's oldest zoo next door",
+          "tags": [
+            "history",
+            "gardens",
+            "stroller-ok",
+            "must-see",
+            "palace"
+          ]
+        },
+        {
+          "name": "St. Stephen's Cathedral (Stephansdom)",
+          "type": "activity",
+          "subtype": "church",
+          "lat": 48.2082,
+          "lng": 16.3738,
+          "address": "Stephansplatz 3, 1010 Wien",
+          "hours": "Mon-Sat 9:00-11:30 & 13:00-16:30, Sun 13:00-16:30",
+          "cost": "Free (tower EUR 6)",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Ground floor fully stroller accessible, skip the narrow south tower stairs with baby, north tower has elevator",
+          "description": "Vienna's iconic Gothic cathedral with its colorful tiled roof, the heart of the city since the 12th century",
+          "tags": [
+            "history",
+            "church",
+            "landmark",
+            "must-see",
+            "free"
+          ]
+        },
+        {
+          "name": "Belvedere Palace",
+          "type": "activity",
+          "subtype": "palace",
+          "lat": 48.1913,
+          "lng": 16.3808,
+          "address": "Prinz-Eugen-Strasse 27, 1030 Wien",
+          "hours": "9:00-18:00 daily",
+          "cost": "EUR 16.70",
+          "duration": "2h",
+          "baby_friendly": true,
+          "baby_notes": "Elevator access in Upper Belvedere, strollers allowed inside, large flat gardens between Upper and Lower palaces ideal for walks",
+          "description": "Baroque palace complex housing Klimt's The Kiss, with magnificent gardens offering city views",
+          "tags": [
+            "art",
+            "palace",
+            "gardens",
+            "stroller-ok",
+            "must-see"
+          ]
+        },
+        {
+          "name": "Naschmarkt",
+          "type": "activity",
+          "subtype": "market",
+          "lat": 48.199,
+          "lng": 16.363,
+          "address": "Rechte Wienzeile 35, 1040 Wien",
+          "hours": "Mon-Fri 6:00-21:00, Sat 6:00-18:00 (stalls); restaurants open Sun",
+          "cost": "Free entry",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Flat outdoor market, wide walkways for strollers on weekday mornings, can get crowded on Saturdays -- go early",
+          "description": "Vienna's most famous open-air market with 120+ stalls selling international foods, spices, cheese, and produce",
+          "tags": [
+            "food",
+            "market",
+            "outdoor",
+            "stroller-ok",
+            "local-life"
+          ]
+        },
+        {
+          "name": "Prater Park & Riesenrad",
+          "type": "activity",
+          "subtype": "park",
+          "lat": 48.2166,
+          "lng": 16.3966,
+          "address": "Riesenradplatz 1, 1020 Wien",
+          "hours": "10:00-23:45 (May)",
+          "cost": "Park free; Riesenrad EUR 13.50",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Giant ferris wheel cabin is stroller accessible, Prater park has wide flat paths, shaded areas, and the Hauptallee is perfect for a long stroller walk",
+          "description": "Iconic amusement park with the 1897 giant ferris wheel, plus a vast green park with tree-lined avenues",
+          "tags": [
+            "park",
+            "amusement",
+            "outdoor",
+            "stroller-ok",
+            "must-see",
+            "iconic"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Figlmuller",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 48.2082,
+          "lng": 16.3738,
+          "address": "Wollzeile 5, 1010 Wien",
+          "hours": "11:00-22:30 daily",
+          "price_range": "EUR 15-25",
+          "cuisine": "Austrian",
+          "baby_friendly": true,
+          "baby_notes": "High chairs available, the Backerstrasse location at #6 has more spacious seating and is less cramped than Wollzeile for strollers",
+          "description": "Vienna's most famous schnitzel -- plate-sized and perfectly golden, a must-visit institution since 1905",
+          "tags": [
+            "schnitzel",
+            "traditional",
+            "must-visit",
+            "iconic"
+          ]
+        },
+        {
+          "name": "Cafe Central (at DECENTRAL during renovation)",
+          "type": "restaurant",
+          "subtype": "coffeehouse",
+          "lat": 48.21,
+          "lng": 16.366,
+          "address": "Freyung (DECENTRAL pop-up), 1010 Wien (main location Herrengasse 14 closed for renovation until autumn 2026)",
+          "hours": "8:00-20:00 daily (check current hours for DECENTRAL pop-up)",
+          "price_range": "EUR 10-20",
+          "cuisine": "Viennese cafe",
+          "baby_friendly": true,
+          "baby_notes": "NOTE: Cafe Central main location is closed for renovation March-Autumn 2026. Visit DECENTRAL at Freyung instead -- same quality coffeehouse experience in a modern space",
+          "description": "Legendary coffeehouse where Freud and Trotsky once sat -- temporarily at DECENTRAL pop-up during 2026 renovation",
+          "tags": [
+            "coffeehouse",
+            "historic",
+            "must-visit",
+            "cakes",
+            "renovation-2026"
+          ]
+        },
+        {
+          "name": "Cafe Sacher",
+          "type": "restaurant",
+          "subtype": "coffeehouse",
+          "lat": 48.2031,
+          "lng": 16.3695,
+          "address": "Philharmoniker Strasse 4, 1010 Wien",
+          "hours": "7:00-23:00 daily",
+          "price_range": "EUR 12-25",
+          "cuisine": "Viennese cafe",
+          "baby_friendly": true,
+          "baby_notes": "Spacious interior, high chairs available on request, stroller can stay tableside, go early morning (before 9am) to avoid tourist queues",
+          "description": "Home of the original Sachertorte since 1832, an opulent coffeehouse opposite the Vienna State Opera",
+          "tags": [
+            "coffeehouse",
+            "historic",
+            "sachertorte",
+            "must-visit",
+            "iconic"
+          ]
+        },
+        {
+          "name": "Demel",
+          "type": "restaurant",
+          "subtype": "coffeehouse",
+          "lat": 48.2088,
+          "lng": 16.3668,
+          "address": "Kohlmarkt 14, 1010 Wien",
+          "hours": "8:00-19:00 daily",
+          "price_range": "EUR 10-20",
+          "cuisine": "Viennese patisserie & cafe",
+          "baby_friendly": true,
+          "baby_notes": "Can be tight with a full stroller -- consider baby carrier, staff accommodating, no reservations so go off-peak, beautiful display cases mesmerize babies",
+          "description": "Imperial court confectioner since 1786 with legendary pastries, cakes, and an ornate Baroque interior",
+          "tags": [
+            "coffeehouse",
+            "patisserie",
+            "historic",
+            "elegant"
+          ]
+        },
+        {
+          "name": "Cafe Sperl",
+          "type": "restaurant",
+          "subtype": "coffeehouse",
+          "lat": 48.1989,
+          "lng": 16.3587,
+          "address": "Gumpendorfer Strasse 11-13, 1060 Wien",
+          "hours": "Mon-Sat 7:00-22:00, Sun 10:00-20:00",
+          "price_range": "EUR 8-18",
+          "cuisine": "Viennese cafe",
+          "baby_friendly": true,
+          "baby_notes": "Spacious booths and tables with room for stroller, relaxed old-world atmosphere, less touristy than Sacher or Central, near Naschmarkt",
+          "description": "Beautifully preserved 1880 coffeehouse with billiard tables, newspapers, and authentic fin-de-siecle atmosphere",
+          "tags": [
+            "coffeehouse",
+            "historic",
+            "authentic",
+            "relaxed",
+            "hidden-gem"
+          ]
+        }
+      ],
+      "notes": [
+        "Arrive VIE 8:15 AM from OS46",
+        "Head to apartment via train/transit"
+      ]
     },
     {
       "date": "2026-05-05",
       "day_number": 3,
       "day_type": "stay",
       "label": "Vienna",
-      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "emoji": "🇦🇹"
+      },
       "accommodation": {
         "name": "LUXUS-Apartment mit Weitblick",
         "confirmation": "6729256409",
@@ -99,8 +360,221 @@
       "flights": [],
       "car_rental": null,
       "transport_mode": "transit",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Stadtpark",
+          "type": "activity",
+          "subtype": "park",
+          "lat": 48.2037,
+          "lng": 16.3796,
+          "address": "Parkring 1, 1010 Wien",
+          "hours": "Open 24h",
+          "cost": "Free",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Fully paved paths ideal for strollers even in rain, fenced toddler playground with sandpit and swings, benches throughout for nursing breaks",
+          "description": "Vienna's first public park with the golden Johann Strauss statue, shady walkways, and a children's playground",
+          "tags": [
+            "park",
+            "free",
+            "stroller-ok",
+            "playground",
+            "must-see",
+            "relaxing"
+          ]
+        },
+        {
+          "name": "Kunsthistorisches Museum",
+          "type": "activity",
+          "subtype": "museum",
+          "lat": 48.2038,
+          "lng": 16.3616,
+          "address": "Maria-Theresien-Platz, 1010 Wien",
+          "hours": "Tue-Sun 10:00-18:00, Thu until 21:00 (closed Mon)",
+          "cost": "EUR 21 (under 19 free)",
+          "duration": "2h",
+          "baby_friendly": true,
+          "baby_notes": "Stroller entry via side entrance at Burgring 5 with staff escort to elevator, baby free admission, cloakroom stores strollers if needed",
+          "description": "World-class art museum with masterpieces by Bruegel, Vermeer, Raphael, and the Habsburg art collection",
+          "tags": [
+            "art",
+            "museum",
+            "stroller-ok",
+            "rainy-day",
+            "culture"
+          ]
+        },
+        {
+          "name": "Haus der Musik",
+          "type": "activity",
+          "subtype": "museum",
+          "lat": 48.203,
+          "lng": 16.375,
+          "address": "Seilerstatte 30, 1010 Wien",
+          "hours": "10:00-22:00 daily",
+          "cost": "EUR 16",
+          "duration": "1.5h",
+          "baby_friendly": true,
+          "baby_notes": "Barrier-free entrance, elevator to all floors, strollers welcome or can be stored at cloakroom, accessible restroom on ground floor",
+          "description": "Interactive sound museum where you can conduct a virtual orchestra and explore music through hands-on exhibits",
+          "tags": [
+            "music",
+            "interactive",
+            "museum",
+            "stroller-ok",
+            "rainy-day"
+          ]
+        },
+        {
+          "name": "Schmetterlinghaus (Butterfly House)",
+          "type": "activity",
+          "subtype": "nature",
+          "lat": 48.2053,
+          "lng": 16.3666,
+          "address": "Burggarten, Hofburg, 1010 Wien",
+          "hours": "Apr-Oct 10:00-17:45 daily",
+          "cost": "EUR 10",
+          "duration": "45min",
+          "baby_friendly": true,
+          "baby_notes": "Small space but stroller navigable, warm tropical climate inside -- dress baby lightly, visually stimulating for infants with hundreds of free-flying butterflies",
+          "description": "Art Nouveau greenhouse in the Burggarten filled with hundreds of tropical butterflies from around the world",
+          "tags": [
+            "nature",
+            "butterflies",
+            "unique",
+            "indoor",
+            "hidden-gem"
+          ]
+        },
+        {
+          "name": "Burggarten",
+          "type": "activity",
+          "subtype": "park",
+          "lat": 48.2045,
+          "lng": 16.366,
+          "address": "Josefsplatz 1, 1010 Wien",
+          "hours": "Apr-Oct 6:00-22:00",
+          "cost": "Free",
+          "duration": "30-45min",
+          "baby_friendly": true,
+          "baby_notes": "Flat manicured lawns perfect for a blanket and tummy time, paved paths for strollers, shady benches, Mozart statue nearby",
+          "description": "Elegant imperial garden behind the Hofburg with lawns, the Mozart monument, and the Palmenhaus cafe",
+          "tags": [
+            "park",
+            "free",
+            "stroller-ok",
+            "relaxing",
+            "scenic"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Plachutta Wollzeile",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 48.2078,
+          "lng": 16.3778,
+          "address": "Wollzeile 38, 1010 Wien",
+          "hours": "11:30-00:00 daily",
+          "price_range": "EUR 20-35",
+          "cuisine": "Austrian",
+          "baby_friendly": true,
+          "baby_notes": "High chairs provided, spacious dining room and winter garden section, staff very accommodating to families, stroller storage available",
+          "description": "The temple of Tafelspitz -- Vienna's definitive boiled beef, served in copper pots with traditional sides",
+          "tags": [
+            "traditional",
+            "tafelspitz",
+            "elegant",
+            "institution"
+          ]
+        },
+        {
+          "name": "Gasthaus Poschl",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 48.2068,
+          "lng": 16.3763,
+          "address": "Weihburggasse 17, 1010 Wien",
+          "hours": "Mon-Sat 12:00-23:00 (closed Sun)",
+          "price_range": "EUR 12-22",
+          "cuisine": "Austrian",
+          "baby_friendly": true,
+          "baby_notes": "Small and cozy -- book ahead and request a corner table, high chairs available, authentic local crowd, less stroller-friendly so baby carrier recommended",
+          "description": "Beloved neighborhood Gasthaus with outstanding schnitzel, Tafelspitz, and Kaiserschmarrn -- a locals' favorite",
+          "tags": [
+            "traditional",
+            "local-favorite",
+            "schnitzel",
+            "cozy",
+            "hidden-gem"
+          ]
+        },
+        {
+          "name": "Luftburg - Kolarik im Prater",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 48.2148,
+          "lng": 16.403,
+          "address": "Waldsteingartenstrasse 128, 1020 Wien",
+          "hours": "11:00-23:00 daily (seasonal, check for May hours)",
+          "price_range": "EUR 10-20",
+          "cuisine": "Austrian organic",
+          "baby_friendly": true,
+          "baby_notes": "Extremely family-friendly: huge beer garden, 1000m2 bouncy castle adventure world for older kids, high chairs, indoor kids room, changing facilities, wide paths for strollers",
+          "description": "World's largest organic restaurant in the Prater -- legendary pork knuckle, ribs, and schnitzel in a massive beer garden",
+          "tags": [
+            "family-friendly",
+            "beer-garden",
+            "organic",
+            "prater",
+            "outdoor"
+          ]
+        },
+        {
+          "name": "Vollpension",
+          "type": "restaurant",
+          "subtype": "cafe",
+          "lat": 48.1978,
+          "lng": 16.3672,
+          "address": "Schleifmuhlgasse 16, 1040 Wien",
+          "hours": "8:00-20:00 daily",
+          "price_range": "EUR 8-16",
+          "cuisine": "Viennese cakes & brunch",
+          "baby_friendly": true,
+          "baby_notes": "Stroller-friendly with wide layout, welcoming atmosphere run by seniors who love babies, changing facilities, near Naschmarkt for a combined outing",
+          "description": "Generational cafe where grandmas bake -- traditional cakes, brunch, and heartwarming intergenerational concept",
+          "tags": [
+            "cafe",
+            "cakes",
+            "brunch",
+            "unique",
+            "stroller-ok",
+            "hidden-gem"
+          ]
+        },
+        {
+          "name": "Palmenhaus",
+          "type": "restaurant",
+          "subtype": "brasserie",
+          "lat": 48.204,
+          "lng": 16.3653,
+          "address": "Burggarten 1, 1010 Wien",
+          "hours": "10:00-00:00 daily",
+          "price_range": "EUR 15-28",
+          "cuisine": "Austrian-Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "Gorgeous Art Nouveau glass house, spacious interior, stroller fits easily, outdoor terrace in Burggarten garden perfect for families in May weather",
+          "description": "Stunning Art Nouveau greenhouse brasserie in the Burggarten -- brunch, lunch, or cocktails in a botanical setting",
+          "tags": [
+            "brasserie",
+            "scenic",
+            "outdoor-terrace",
+            "elegant",
+            "unique"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -108,7 +582,11 @@
       "day_number": 4,
       "day_type": "stay",
       "label": "Vienna",
-      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "emoji": "🇦🇹"
+      },
       "accommodation": {
         "name": "LUXUS-Apartment mit Weitblick",
         "confirmation": "6729256409",
@@ -126,16 +604,238 @@
       "flights": [],
       "car_rental": null,
       "transport_mode": "transit",
-      "activities": [],
-      "restaurants": [],
-      "notes": ["Last full day in Vienna"]
+      "activities": [
+        {
+          "name": "Karlskirche (St. Charles's Church)",
+          "type": "activity",
+          "subtype": "church",
+          "lat": 48.1983,
+          "lng": 16.3716,
+          "address": "Kreuzherrengasse 1, 1040 Wien",
+          "hours": "Mon-Sat 9:00-18:00, Sun 11:00-19:00",
+          "cost": "EUR 9.50",
+          "duration": "45min",
+          "baby_friendly": true,
+          "baby_notes": "Ground floor accessible with stroller, panoramic elevator inside takes you to dome frescoes -- baby carrier recommended for upper level, reflecting pool outside is lovely",
+          "description": "Magnificent Baroque church with a panoramic elevator to the dome frescoes, fronted by a beautiful reflecting pool",
+          "tags": [
+            "church",
+            "baroque",
+            "architecture",
+            "scenic"
+          ]
+        },
+        {
+          "name": "Danube Canal Walk",
+          "type": "activity",
+          "subtype": "walk",
+          "lat": 48.212,
+          "lng": 16.373,
+          "address": "Donaukanal, Franz-Josefs-Kai, 1010 Wien",
+          "hours": "Open 24h",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Flat paved promenade ideal for strollers, vibrant street art to look at, several cafes along the canal for feeding/nursing stops",
+          "description": "Scenic waterside promenade with street art, pop-up bars, and views of Vienna -- the city's creative hub",
+          "tags": [
+            "walk",
+            "free",
+            "street-art",
+            "stroller-ok",
+            "outdoor",
+            "hidden-gem"
+          ]
+        },
+        {
+          "name": "Augarten Park",
+          "type": "activity",
+          "subtype": "park",
+          "lat": 48.2252,
+          "lng": 16.3782,
+          "address": "Obere Augartenstrasse 1, 1020 Wien",
+          "hours": "Apr-Oct 6:00-21:00",
+          "cost": "Free",
+          "duration": "1-1.5h",
+          "baby_friendly": true,
+          "baby_notes": "Flat gravel and paved paths throughout, four playgrounds including toddler area, quiet and uncrowded compared to Stadtpark -- great for a peaceful stroller walk",
+          "description": "Vienna's oldest Baroque park with chestnut-lined avenues, playgrounds, the Porcelain Manufactory, and far fewer tourists",
+          "tags": [
+            "park",
+            "free",
+            "stroller-ok",
+            "hidden-gem",
+            "playground",
+            "quiet"
+          ]
+        },
+        {
+          "name": "Ringstrasse Tram Ride (Tram 1 or 2)",
+          "type": "activity",
+          "subtype": "scenic",
+          "lat": 48.2003,
+          "lng": 16.3688,
+          "address": "Board at Oper/Karlsplatz stop, 1010 Wien",
+          "hours": "5:00-0:00 (regular service)",
+          "cost": "EUR 2.40 (single ticket)",
+          "duration": "30-45min",
+          "baby_friendly": true,
+          "baby_notes": "Low-floor trams with stroller space, baby rides free, a relaxing sightseeing loop past Opera, Parliament, Rathaus, Hofburg -- great if baby needs a nap on the go",
+          "description": "Ride the regular tram along the grand Ringstrasse boulevard past all major monuments -- a budget sightseeing tour",
+          "tags": [
+            "scenic",
+            "budget",
+            "stroller-ok",
+            "relaxing",
+            "transport-hack"
+          ]
+        },
+        {
+          "name": "Viktor-Adler-Markt (Favoriten local market)",
+          "type": "activity",
+          "subtype": "market",
+          "lat": 48.1826,
+          "lng": 16.3718,
+          "address": "Viktor-Adler-Platz, 1100 Wien",
+          "hours": "Mon-Sat 6:00-19:00",
+          "cost": "Free entry",
+          "duration": "30-45min",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor market with easy stroller access, close to your Favoriten accommodation, authentic local experience with Turkish bakeries and fresh produce",
+          "description": "Multicultural neighborhood market in your home district -- Turkish bakeries, fresh produce, and local everyday Vienna",
+          "tags": [
+            "market",
+            "local-life",
+            "free",
+            "stroller-ok",
+            "hidden-gem",
+            "favoriten"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Mayer am Pfarrplatz",
+          "type": "restaurant",
+          "subtype": "heuriger",
+          "lat": 48.257,
+          "lng": 16.361,
+          "address": "Pfarrplatz 2, 1190 Wien",
+          "hours": "Mon-Thu from 16:00, Fri-Sun from 12:00",
+          "price_range": "EUR 12-22",
+          "cuisine": "Heuriger (wine tavern)",
+          "baby_friendly": true,
+          "baby_notes": "Large garden with outdoor seating ideal for families, relaxed atmosphere, stroller easy in garden area, Beethoven once lived here -- a special evening out",
+          "description": "Historic wine tavern where Beethoven composed, set in vineyard hills with own-grown wines and traditional cold buffet",
+          "tags": [
+            "heuriger",
+            "wine",
+            "garden",
+            "historic",
+            "evening",
+            "hidden-gem"
+          ]
+        },
+        {
+          "name": "Schweizerhaus",
+          "type": "restaurant",
+          "subtype": "beer-garden",
+          "lat": 48.2175,
+          "lng": 16.3988,
+          "address": "Prater 116, 1020 Wien",
+          "hours": "11:00-23:00 daily (Mar-Oct)",
+          "price_range": "EUR 10-20",
+          "cuisine": "Austrian-Czech",
+          "baby_friendly": true,
+          "baby_notes": "Huge outdoor beer garden with ample stroller space, casual atmosphere, Budvar on tap, famous Stelze (pork knuckle) -- combine with a Prater park visit",
+          "description": "Legendary Prater beer garden since 1920 known for crispy Stelze and Budweiser Budvar on tap",
+          "tags": [
+            "beer-garden",
+            "outdoor",
+            "prater",
+            "casual",
+            "traditional"
+          ]
+        },
+        {
+          "name": "Motto am Fluss",
+          "type": "restaurant",
+          "subtype": "modern",
+          "lat": 48.212,
+          "lng": 16.377,
+          "address": "Franz-Josefs-Kai 2, Schwedenplatz, 1010 Wien",
+          "hours": "8:00-00:00 daily",
+          "price_range": "EUR 15-30",
+          "cuisine": "Modern Austrian",
+          "baby_friendly": true,
+          "baby_notes": "Spacious modern interior, river terrace with views, high chairs available, relaxed daytime cafe on upper deck great for lunch with baby",
+          "description": "Sleek floating restaurant on the Danube Canal with panoramic windows, serving modern Austrian cuisine and great breakfast",
+          "tags": [
+            "modern",
+            "riverside",
+            "brunch",
+            "scenic",
+            "trendy"
+          ]
+        },
+        {
+          "name": "Glacis Beisl",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 48.203,
+          "lng": 16.3586,
+          "address": "Breite Gasse 4 (Museumsplatz), 1070 Wien",
+          "hours": "11:00-00:00 daily",
+          "price_range": "EUR 12-22",
+          "cuisine": "Austrian",
+          "baby_friendly": true,
+          "baby_notes": "Beautiful tree-shaded garden terrace next to MuseumsQuartier, stroller-friendly outdoor area, high chairs, relaxed family vibe at lunch",
+          "description": "Charming garden restaurant tucked beside the MuseumsQuartier with Austrian classics and a shaded courtyard terrace",
+          "tags": [
+            "garden",
+            "outdoor",
+            "casual",
+            "relaxed",
+            "stroller-ok"
+          ]
+        },
+        {
+          "name": "Bitzinger Wurststand (Albertina)",
+          "type": "restaurant",
+          "subtype": "street-food",
+          "lat": 48.204,
+          "lng": 16.368,
+          "address": "Albertinaplatz, 1010 Wien",
+          "hours": "8:00-4:00 daily",
+          "price_range": "EUR 4-8",
+          "cuisine": "Viennese sausage stand",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor standing tables only -- no seating, but quick and easy, eat by the Opera House, good for a fast bite when baby is in the carrier or stroller",
+          "description": "Vienna's most upscale sausage stand where opera-goers in tuxedos eat Kasekrainer beside the Albertina -- a quintessential Vienna experience",
+          "tags": [
+            "street-food",
+            "quick",
+            "budget",
+            "iconic",
+            "outdoor",
+            "must-try"
+          ]
+        }
+      ],
+      "notes": [
+        "Last full day in Vienna"
+      ]
     },
     {
       "date": "2026-05-07",
       "day_number": 5,
       "day_type": "transfer",
-      "label": "Vienna \u2192 Crete",
-      "location": { "city": "Vienna \u2192 Crete", "country": "Austria/Greece", "emoji": "\ud83c\udde6\ud83c\uddf9\u2192\ud83c\uddec\ud83c\uddf7" },
+      "label": "Vienna → Crete",
+      "location": {
+        "city": "Vienna → Crete",
+        "country": "Austria/Greece",
+        "emoji": "🇦🇹→🇬🇷"
+      },
       "checkout": {
         "property": "LUXUS-Apartment mit Weitblick",
         "time": "10:30 AM",
@@ -153,8 +853,14 @@
           "operated_for": null,
           "flight_number": "OS811",
           "confirmation": "7O7964",
-          "from": { "code": "VIE", "name": "Vienna (Terminal 3)" },
-          "to": { "code": "HER", "name": "Heraklion" },
+          "from": {
+            "code": "VIE",
+            "name": "Vienna (Terminal 3)"
+          },
+          "to": {
+            "code": "HER",
+            "name": "Heraklion"
+          },
           "depart_time": "14:55",
           "depart_date": "2026-05-07",
           "arrive_time": "18:20",
@@ -164,9 +870,21 @@
           "aircraft": "Airbus A320",
           "class": "Economy Classic",
           "passengers": [
-            { "name": "Daniel", "seat": null, "ticket": "2572171206387" },
-            { "name": "Michelle", "seat": null, "ticket": "2572171206386" },
-            { "name": "Owen", "seat": null, "notes": "Lap infant" }
+            {
+              "name": "Daniel",
+              "seat": null,
+              "ticket": "2572171206387"
+            },
+            {
+              "name": "Michelle",
+              "seat": null,
+              "ticket": "2572171206386"
+            },
+            {
+              "name": "Owen",
+              "seat": null,
+              "notes": "Lap infant"
+            }
           ],
           "payment": "EUR 542.94"
         }
@@ -181,14 +899,23 @@
       "transport_mode": "driving",
       "activities": [],
       "restaurants": [],
-      "notes": ["Checkout Vienna apartment by 10:30 AM", "Flight VIE 2:55 PM \u2192 HER 6:20 PM", "Pick up rental car at airport", "Drive to Daios Cove resort"]
+      "notes": [
+        "Checkout Vienna apartment by 10:30 AM",
+        "Flight VIE 2:55 PM → HER 6:20 PM",
+        "Pick up rental car at airport",
+        "Drive to Daios Cove resort"
+      ]
     },
     {
       "date": "2026-05-08",
       "day_number": 6,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -201,15 +928,192 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Spinalonga Island",
+          "type": "activity",
+          "subtype": "historical",
+          "lat": 35.3019,
+          "lng": 25.7442,
+          "address": "Spinalonga, Elounda",
+          "hours": "8:30-18:00 (boats 9:00-17:00)",
+          "cost": "EUR 20 entry + EUR 12 boat from Elounda",
+          "duration": "3h",
+          "baby_friendly": true,
+          "baby_notes": "Boat ride ~20 min each way; use baby carrier on island as paths are uneven cobblestone; no stroller access. Shaded areas limited, bring sun hat.",
+          "description": "Venetian fortress and former leper colony on a small island opposite Elounda. Fascinating history with well-preserved buildings and fortifications.",
+          "tags": [
+            "history",
+            "island",
+            "boat-trip",
+            "venetian"
+          ]
+        },
+        {
+          "name": "Voulisma (Golden) Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.1253,
+          "lng": 25.7444,
+          "address": "Istron, Agios Nikolaos",
+          "hours": "All day (sunbeds ~9:00-18:00)",
+          "cost": "Free (sunbeds EUR 8-10)",
+          "duration": "2-4h",
+          "baby_friendly": true,
+          "baby_notes": "Excellent for babies: very shallow warm water extends far out, fine soft sand, gentle entry. Sunbed umbrellas provide shade. Parking lot right above beach. ~20 min drive from Daios Cove.",
+          "description": "Award-winning beach with Caribbean-like turquoise water and fine golden sand. One of the best family beaches in eastern Crete.",
+          "tags": [
+            "beach",
+            "swimming",
+            "shallow-water",
+            "sand"
+          ]
+        },
+        {
+          "name": "Almyros Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.177,
+          "lng": 25.719,
+          "address": "Almyros, Agios Nikolaos",
+          "hours": "All day",
+          "cost": "Free (sunbeds EUR 7-10)",
+          "duration": "2-4h",
+          "baby_friendly": true,
+          "baby_notes": "Extremely shallow calm water perfect for babies. Has a playground on the beach. Freshwater river meets the sea creating cool spots. Wide sandy area for crawling/sitting. Free roadside parking. ~10 min drive from Daios Cove.",
+          "description": "Popular sandy beach south of Agios Nikolaos with a unique freshwater river flowing into the sea. Shallow, calm, and well-organized with lifeguards.",
+          "tags": [
+            "beach",
+            "swimming",
+            "playground",
+            "shallow-water",
+            "sand"
+          ]
+        },
+        {
+          "name": "Kolokytha Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.2598,
+          "lng": 25.7518,
+          "address": "Spinalonga Peninsula, Elounda",
+          "hours": "All day (no facilities)",
+          "cost": "Free",
+          "duration": "2-3h",
+          "baby_friendly": false,
+          "baby_notes": "Requires a 30-min walk on a rough dirt path from parking at Church of Agios Loukas. Not stroller accessible. Better for older children. Beautiful but remote.",
+          "description": "Secluded beach on the eastern side of the Spinalonga peninsula with crystal-clear water and wild natural beauty. Reached by foot or boat.",
+          "tags": [
+            "beach",
+            "secluded",
+            "nature",
+            "hiking"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Pangea (Daios Cove)",
+          "type": "restaurant",
+          "subtype": "buffet",
+          "lat": 35.218,
+          "lng": 25.738,
+          "address": "Daios Cove Luxury Resort, Vathi",
+          "hours": "7:30-10:30, 19:00-22:00",
+          "price_range": "Included half-board",
+          "cuisine": "International/Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "Main resort restaurant. High chairs available. Buffet format lets you eat quickly if baby is fussy. Wide food variety including plain options for picky eaters.",
+          "description": "Daios Cove's main dining venue with lavish breakfast and dinner buffet featuring global cuisines, pasta bar, fresh seafood, and themed evening events.",
+          "tags": [
+            "resort",
+            "buffet",
+            "breakfast",
+            "dinner",
+            "international"
+          ]
+        },
+        {
+          "name": "Ocean Club (Daios Cove)",
+          "type": "restaurant",
+          "subtype": "fine-dining",
+          "lat": 35.218,
+          "lng": 25.7385,
+          "address": "Daios Cove Luxury Resort, Vathi",
+          "hours": "19:00-22:30",
+          "price_range": "EUR 40-70",
+          "cuisine": "Italian/Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "More upscale evening dining. High chairs available. Pool-view terrace is pleasant with baby. Creative Italian cuisine in collaboration with Ducasse Conseil.",
+          "description": "Elegant poolside restaurant serving creative Italian cuisine, transforming from a daytime breakfast spot into a refined evening dining experience.",
+          "tags": [
+            "resort",
+            "italian",
+            "fine-dining",
+            "poolside"
+          ]
+        },
+        {
+          "name": "Beach House (Daios Cove)",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 35.2175,
+          "lng": 25.7375,
+          "address": "Daios Cove Luxury Resort, Beach Level, Vathi",
+          "hours": "11:00-18:00",
+          "price_range": "EUR 15-35",
+          "cuisine": "Mediterranean/Light bites",
+          "baby_friendly": true,
+          "baby_notes": "Most baby-friendly resort option. Casual beachside cabana setting. No need to dress up. Fresh juices and light healthy dishes. Feet-in-sand vibe.",
+          "description": "Rustic open-air beachfront restaurant serving seasonally-inspired light bites, salads, grilled fish, and creative cocktails from beach cabanas.",
+          "tags": [
+            "resort",
+            "beachfront",
+            "casual",
+            "lunch",
+            "cocktails"
+          ]
+        },
+        {
+          "name": "Taverna (Daios Cove)",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.2178,
+          "lng": 25.737,
+          "address": "Daios Cove Luxury Resort, Vathi",
+          "hours": "19:00-22:30",
+          "price_range": "EUR 25-50",
+          "cuisine": "Greek/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Water's edge setting. Local Cretan specialties. High chairs available. Relaxed taverna atmosphere within the resort. Daily fresh catch.",
+          "description": "Resort taverna at the water's edge serving authentic Cretan specialties, fresh daily catch, and local wines in a traditional atmosphere.",
+          "tags": [
+            "resort",
+            "greek",
+            "cretan",
+            "seafood",
+            "waterfront"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -217,7 +1121,11 @@
       "day_number": 7,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -228,15 +1136,192 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Elounda Beach (Town Beach)",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.252,
+          "lng": 25.731,
+          "address": "Elounda Village Center",
+          "hours": "All day (sunbeds ~9:00-18:00)",
+          "cost": "Free (sunbeds EUR 7-10)",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Blue Flag beach right in town center. Shallow, protected water. Easy stroller access along the promenade. Restaurants and shops steps away for feeding/changing. ~5 min drive from Daios Cove.",
+          "description": "Blue Flag-rated beach in the center of Elounda with calm protected waters and full amenities. Walking distance to tavernas and shops.",
+          "tags": [
+            "beach",
+            "swimming",
+            "blue-flag",
+            "convenient"
+          ]
+        },
+        {
+          "name": "Havania Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.205,
+          "lng": 25.724,
+          "address": "Elounda Road, north of Agios Nikolaos",
+          "hours": "All day",
+          "cost": "Free (sunbeds EUR 7-10)",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Blue Flag beach with lifeguards, calm shallow water, and a canteen. Easy access with ample parking. Some pebbles near shore - bring water shoes. ~8 min drive from Daios Cove.",
+          "description": "Organized municipal beach between Agios Nikolaos and Elounda with clear calm water and Blue Flag certification. Well-equipped with facilities.",
+          "tags": [
+            "beach",
+            "blue-flag",
+            "organized",
+            "calm-water"
+          ]
+        },
+        {
+          "name": "Daios Cove Private Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.218,
+          "lng": 25.738,
+          "address": "Daios Cove Luxury Resort, Vathi",
+          "hours": "8:00-19:00",
+          "cost": "Included with stay",
+          "duration": "2-4h",
+          "baby_friendly": true,
+          "baby_notes": "Resort's own sandy beach with calm bay. Sunbeds and umbrellas included. Beach House restaurant on-site for refreshments. Easiest option with infant - no driving required.",
+          "description": "The resort's private sandy cove with crystal-clear water, full service, and the Beach House restaurant for light bites and cocktails.",
+          "tags": [
+            "beach",
+            "resort",
+            "luxury",
+            "convenient"
+          ]
+        },
+        {
+          "name": "Elounda Harbour & Old Town Walk",
+          "type": "activity",
+          "subtype": "sightseeing",
+          "lat": 35.2515,
+          "lng": 25.7295,
+          "address": "Elounda Village Harbor",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Flat waterfront promenade is stroller-friendly. Plenty of cafes for breaks. Fishing boats and harbor are visually engaging for baby. Shaded areas available at cafes.",
+          "description": "Stroll the picturesque fishing harbour, browse shops, and enjoy waterfront cafes in the charming village of Elounda.",
+          "tags": [
+            "walking",
+            "harbor",
+            "village",
+            "shopping",
+            "cafes"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Ferryman Taverna",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.251,
+          "lng": 25.7285,
+          "address": "Elounda Harbour, Elounda",
+          "hours": "11:00-23:00",
+          "price_range": "EUR 15-30",
+          "cuisine": "Greek/Cretan/Seafood",
+          "baby_friendly": true,
+          "baby_notes": "Waterfront terrace with sea views. Relaxed atmosphere. Popular with families. Fresh grilled fish and Cretan classics. Book ahead in high season.",
+          "description": "Iconic Elounda taverna made famous by the TV series 'Who Pays the Ferryman.' Seaside setting with excellent fresh fish and warm hospitality.",
+          "tags": [
+            "taverna",
+            "seafood",
+            "waterfront",
+            "elounda",
+            "iconic"
+          ]
+        },
+        {
+          "name": "Olondi Restaurant",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.2525,
+          "lng": 25.73,
+          "address": "Elounda Harbour, Elounda",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 15-35",
+          "cuisine": "Greek/Mediterranean/Seafood",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor terrace overlooking Elounda Bay and Spinalonga. Steps from the sea. Relaxed family atmosphere. Known for generous fish platters and classic Cretan dishes.",
+          "description": "Elounda institution since 1990, famous for its fish platters and bay views. Combines excellent seafood with Cretan hospitality and stunning Spinalonga views.",
+          "tags": [
+            "seafood",
+            "waterfront",
+            "elounda",
+            "views",
+            "established"
+          ]
+        },
+        {
+          "name": "Kanali Restaurant",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.254,
+          "lng": 25.734,
+          "address": "Near Olous Canal, Elounda",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 15-35",
+          "cuisine": "Greek/Mediterranean/Seafood",
+          "baby_friendly": true,
+          "baby_notes": "Beautiful bay-view setting. Outdoor seating with gentle breeze. Spacious enough for a stroller. House salad and octopus are highlights.",
+          "description": "Waterfront restaurant overlooking Elounda Bay known for its extensive seafood menu, grilled octopus, and the house Kanali salad.",
+          "tags": [
+            "seafood",
+            "waterfront",
+            "elounda",
+            "grilled-fish"
+          ]
+        },
+        {
+          "name": "Babel Restaurant",
+          "type": "restaurant",
+          "subtype": "mediterranean",
+          "lat": 35.2518,
+          "lng": 25.729,
+          "address": "Town Square, Elounda",
+          "hours": "10:00-23:00",
+          "price_range": "EUR 12-25",
+          "cuisine": "Greek/Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "Central square location with outdoor seating. Great people-watching spot. Good for a casual meal or coffee break. Stroller-friendly area.",
+          "description": "Popular cafe-restaurant on Elounda's main square with views of the harbour. Serves breakfast through dinner with Greek and Mediterranean dishes.",
+          "tags": [
+            "cafe",
+            "mediterranean",
+            "elounda",
+            "central",
+            "casual"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -244,7 +1329,11 @@
       "day_number": 8,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -255,15 +1344,194 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Lake Voulismeni & Agios Nikolaos Town",
+          "type": "activity",
+          "subtype": "sightseeing",
+          "lat": 35.191,
+          "lng": 25.715,
+          "address": "Agios Nikolaos Town Center",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Flat walkways around the lake are stroller-friendly. Many cafes with shaded outdoor seating line the lakeside. Small playground near the marina. ~15 min drive from Daios Cove.",
+          "description": "Explore the famous bottomless lake connected to the sea by a canal, surrounded by cafes and restaurants. The lively town has shops, a marina, and a small archaeological museum.",
+          "tags": [
+            "sightseeing",
+            "lake",
+            "town",
+            "cafes",
+            "shopping"
+          ]
+        },
+        {
+          "name": "Plaka Village",
+          "type": "activity",
+          "subtype": "sightseeing",
+          "lat": 35.269,
+          "lng": 25.736,
+          "address": "Plaka, Elounda",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Tiny charming village, mostly flat along the waterfront. Tavernas have outdoor seating perfect for lunch with a baby. Views of Spinalonga from the harbor.",
+          "description": "Small traditional fishing village opposite Spinalonga Island. Known for excellent seafood tavernas on the waterfront and a relaxed atmosphere.",
+          "tags": [
+            "village",
+            "waterfront",
+            "seafood",
+            "relaxing"
+          ]
+        },
+        {
+          "name": "Sunken City of Olous",
+          "type": "activity",
+          "subtype": "historical",
+          "lat": 35.256,
+          "lng": 25.743,
+          "address": "Olous Causeway, Elounda",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Flat walk along the causeway. Can see ancient ruins in shallow water from the path. Baby carrier or stroller both work on the paved road.",
+          "description": "Walk along the canal causeway to see the remains of the ancient Minoan-Roman city of Olous submerged in the shallow waters. Visible mosaics and walls.",
+          "tags": [
+            "history",
+            "ancient",
+            "walking",
+            "free"
+          ]
+        },
+        {
+          "name": "Kritsa Village",
+          "type": "activity",
+          "subtype": "cultural",
+          "lat": 35.158,
+          "lng": 25.646,
+          "address": "Kritsa, Agios Nikolaos",
+          "hours": "Shops open ~9:00-18:00",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Narrow lanes with some steps - baby carrier recommended over stroller. Shaded alleys are pleasant. Known for handmade textiles and crafts. ~20 min drive from Daios Cove.",
+          "description": "One of the oldest and most picturesque villages in Crete, perched on a hillside. Famous for traditional textiles, crafts, excellent olive oil, and Venetian-era architecture.",
+          "tags": [
+            "village",
+            "culture",
+            "crafts",
+            "traditional",
+            "shopping"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Vritomartes Restaurant",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.2505,
+          "lng": 25.728,
+          "address": "Elounda Harbour, Elounda",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 12-25",
+          "cuisine": "Greek/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Harbourside taverna with outdoor tables. Traditional Cretan dishes at reasonable prices. Family-run with welcoming atmosphere.",
+          "description": "Traditional harbourside taverna in Elounda serving authentic Cretan cuisine with fresh ingredients and reasonable prices.",
+          "tags": [
+            "taverna",
+            "cretan",
+            "harbor",
+            "elounda",
+            "traditional"
+          ]
+        },
+        {
+          "name": "Ergospasio",
+          "type": "restaurant",
+          "subtype": "mediterranean",
+          "lat": 35.253,
+          "lng": 25.732,
+          "address": "Elounda (former carob factory)",
+          "hours": "18:00-23:30",
+          "price_range": "EUR 20-40",
+          "cuisine": "Mediterranean/Creative Greek",
+          "baby_friendly": true,
+          "baby_notes": "Atmospheric converted factory above the sea. Outdoor terrace with sunset views. More upscale but relaxed. Good for a special dinner out with baby.",
+          "description": "Stylish restaurant in a converted carob processing factory above the sea, serving creative Mediterranean cuisine with stunning sunset views.",
+          "tags": [
+            "mediterranean",
+            "sunset",
+            "creative",
+            "elounda",
+            "romantic"
+          ]
+        },
+        {
+          "name": "Giorgos Fish Tavern",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.2695,
+          "lng": 25.7355,
+          "address": "Harbour, Plaka",
+          "hours": "11:00-23:00",
+          "price_range": "EUR 15-30",
+          "cuisine": "Seafood/Greek",
+          "baby_friendly": true,
+          "baby_notes": "Waterfront tables on the rocks right by the sea. Very relaxed village atmosphere. Fresh catch of the day. Views of Spinalonga. Combine with Plaka village walk.",
+          "description": "Traditional fish tavern set on the sea rocks of Plaka harbour, overlooking Spinalonga Island. Famous for the freshest seafood in the area.",
+          "tags": [
+            "seafood",
+            "waterfront",
+            "plaka",
+            "fresh-fish",
+            "spinalonga-view"
+          ]
+        },
+        {
+          "name": "Taverna Manolis (Plaka)",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.2688,
+          "lng": 25.735,
+          "address": "Waterfront, Plaka",
+          "hours": "11:00-22:00",
+          "price_range": "EUR 10-25",
+          "cuisine": "Greek/Cretan/Seafood",
+          "baby_friendly": true,
+          "baby_notes": "Family-run with warm hospitality. Outdoor waterfront seating. Simple, fresh Cretan food. Relaxed pace perfect for dining with an infant.",
+          "description": "Family-run waterfront taverna in Plaka serving honest Cretan home cooking, fresh grilled fish, and local wines with Spinalonga views.",
+          "tags": [
+            "taverna",
+            "plaka",
+            "family-run",
+            "waterfront",
+            "homestyle"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -271,7 +1539,11 @@
       "day_number": 9,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -282,15 +1554,197 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Panagia Kera Byzantine Church",
+          "type": "activity",
+          "subtype": "historical",
+          "lat": 35.163,
+          "lng": 25.65,
+          "address": "1km before Kritsa, Agios Nikolaos",
+          "hours": "8:30-15:30 (closed Tuesdays)",
+          "cost": "EUR 2",
+          "duration": "30-45min",
+          "baby_friendly": true,
+          "baby_notes": "Small church, quick visit. Keep baby quiet inside. Shaded olive trees outside. Combine with Kritsa village visit. ~20 min drive from Daios Cove.",
+          "description": "13th-century Byzantine church with some of the finest and best-preserved frescoes in Crete. A small but culturally significant site.",
+          "tags": [
+            "history",
+            "byzantine",
+            "church",
+            "frescoes",
+            "culture"
+          ]
+        },
+        {
+          "name": "Cretan Olive Oil Farm Tour",
+          "type": "activity",
+          "subtype": "food-experience",
+          "lat": 35.205,
+          "lng": 25.705,
+          "address": "Near Agios Nikolaos (Spiridi area)",
+          "hours": "By appointment, typically 10:00-17:00",
+          "cost": "EUR 15-25 per person",
+          "duration": "1.5-2h",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor farm setting, relaxed pace. Baby can be in carrier. Olive oil and raki tasting for adults. Some farms have shaded seating areas. Call ahead to confirm baby-friendliness.",
+          "description": "Visit a working olive farm to learn about Cretan olive oil production, walk through ancient olive groves, and taste local olive oil, honey, and raki.",
+          "tags": [
+            "food",
+            "olive-oil",
+            "tasting",
+            "farm",
+            "local"
+          ]
+        },
+        {
+          "name": "Elounda Salt Pans & Windmills Walk",
+          "type": "activity",
+          "subtype": "nature",
+          "lat": 35.257,
+          "lng": 25.74,
+          "address": "Elounda to Kolokitha road",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Flat dirt road past old salt pans and stone windmills. Stroller possible but rough in spots - carrier is better. Beautiful views of Spinalonga.",
+          "description": "Walk past historic Venetian salt pans and ruined windmills on the road to the Spinalonga peninsula. Scenic photo opportunities with views of the fortress.",
+          "tags": [
+            "walking",
+            "nature",
+            "history",
+            "photography",
+            "free"
+          ]
+        },
+        {
+          "name": "Lassithi Plateau & Dikti Cave (Cave of Zeus)",
+          "type": "activity",
+          "subtype": "nature",
+          "lat": 35.163,
+          "lng": 25.445,
+          "address": "Lassithi Plateau, Psychro",
+          "hours": "8:00-20:00 (summer)",
+          "cost": "EUR 6",
+          "duration": "Half day (with drive)",
+          "baby_friendly": false,
+          "baby_notes": "The cave descent has steep slippery steps - not suitable with a baby. However, the plateau drive itself is beautiful and you could enjoy the villages and scenery without entering the cave. ~50 min drive from Daios Cove.",
+          "description": "Dramatic mountain plateau at 850m elevation ringed by mountains. The mythological birthplace of Zeus is in the Dikteon Cave. Scenic drive through mountain villages.",
+          "tags": [
+            "nature",
+            "mythology",
+            "cave",
+            "drive",
+            "mountains"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Gioma Meze",
+          "type": "restaurant",
+          "subtype": "mezedopoleio",
+          "lat": 35.192,
+          "lng": 25.714,
+          "address": "Above Lake Voulismeni, Agios Nikolaos",
+          "hours": "12:00-24:00",
+          "price_range": "EUR 12-25",
+          "cuisine": "Greek/Meze/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Terrace with stunning lake and sea views. Traditional meze sharing plates work well for flexible dining with baby. Romantic ambiance in the evening.",
+          "description": "Atmospheric meze restaurant perched above Lake Voulismeni with panoramic views. Serves traditional Cretan small plates and sharing dishes.",
+          "tags": [
+            "meze",
+            "lake-view",
+            "agios-nikolaos",
+            "panoramic",
+            "cretan"
+          ]
+        },
+        {
+          "name": "Karnagio (Pita tou Riga)",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.19,
+          "lng": 25.7155,
+          "address": "Lakeside, Agios Nikolaos",
+          "hours": "11:00-23:00",
+          "price_range": "EUR 10-22",
+          "cuisine": "Greek/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Lakeside outdoor seating. Uses local Cretan ingredients. Known for excellent pitas and traditional dishes. Casual family-friendly atmosphere.",
+          "description": "Charming lakeside eatery overlooking Lake Voulismeni, committed to using only local Cretan ingredients. Known for traditional pitas and home-style cooking.",
+          "tags": [
+            "taverna",
+            "lakeside",
+            "cretan",
+            "agios-nikolaos",
+            "local"
+          ]
+        },
+        {
+          "name": "Zygos Urban Garden",
+          "type": "restaurant",
+          "subtype": "cafe-restaurant",
+          "lat": 35.1905,
+          "lng": 25.7145,
+          "address": "Lake Voulismeni, Agios Nikolaos",
+          "hours": "10:00-24:00",
+          "price_range": "EUR 10-25",
+          "cuisine": "Mediterranean/Modern Greek",
+          "baby_friendly": true,
+          "baby_notes": "Relaxed outdoor garden setting under trees by the lake. Shaded seating is ideal with baby. Good for lunch or drinks. Stylish but casual.",
+          "description": "Stylish outdoor garden restaurant next to Lake Voulismeni with tree-shaded seating, creative cocktails, and modern Mediterranean dishes.",
+          "tags": [
+            "garden",
+            "lakeside",
+            "modern",
+            "agios-nikolaos",
+            "cocktails",
+            "shaded"
+          ]
+        },
+        {
+          "name": "Migomis",
+          "type": "restaurant",
+          "subtype": "fine-dining",
+          "lat": 35.1895,
+          "lng": 25.713,
+          "address": "Nikolaou Plastira 20, Agios Nikolaos",
+          "hours": "18:00-23:30",
+          "price_range": "EUR 25-50",
+          "cuisine": "Mediterranean/Creative Greek",
+          "baby_friendly": false,
+          "baby_notes": "Cliffside fine dining with live piano. Romantic adults-oriented atmosphere. Consider for a special night out if hotel offers babysitting. Stunning panoramic views.",
+          "description": "Clifftop restaurant in a historic building with panoramic views of Agios Nikolaos, live piano, and creative Mediterranean cuisine.",
+          "tags": [
+            "fine-dining",
+            "panoramic",
+            "romantic",
+            "agios-nikolaos",
+            "piano"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -298,7 +1752,11 @@
       "day_number": 10,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -309,15 +1767,192 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Agios Nikolaos Archaeological Museum",
+          "type": "activity",
+          "subtype": "museum",
+          "lat": 35.189,
+          "lng": 25.714,
+          "address": "Konstantinou Paleologou 74, Agios Nikolaos",
+          "hours": "8:30-16:00 (closed Mondays)",
+          "cost": "EUR 6",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Small air-conditioned museum, good for a hot afternoon. Baby carrier works well. Quick visit with Minoan artifacts. Near Lake Voulismeni for a combined outing.",
+          "description": "Compact museum showcasing Minoan, Roman, and Byzantine artifacts from the Lassithi region including pottery, jewelry, and the famous Goddess of Myrtos.",
+          "tags": [
+            "museum",
+            "history",
+            "minoan",
+            "culture",
+            "indoor"
+          ]
+        },
+        {
+          "name": "Boat Trip Around Mirabello Bay",
+          "type": "activity",
+          "subtype": "excursion",
+          "lat": 35.21,
+          "lng": 25.72,
+          "address": "Agios Nikolaos Marina",
+          "hours": "Various departures, typically 10:00-14:00",
+          "cost": "EUR 25-40 per person",
+          "duration": "3-4h",
+          "baby_friendly": true,
+          "baby_notes": "Choose a calmer bay cruise rather than open sea. Bring sun protection, hat, and shade for baby. May include swimming stops in calm coves. Check operator for life vests for infants.",
+          "description": "Scenic boat excursion around the Gulf of Mirabello with swimming stops in secluded coves, passing by Spinalonga and the dramatic coastline.",
+          "tags": [
+            "boat-trip",
+            "swimming",
+            "scenic",
+            "sea"
+          ]
+        },
+        {
+          "name": "Elounda to Plaka Coastal Walk",
+          "type": "activity",
+          "subtype": "nature",
+          "lat": 35.26,
+          "lng": 25.733,
+          "address": "Elounda to Plaka coastal path",
+          "hours": "All day (best morning or late afternoon)",
+          "cost": "Free",
+          "duration": "1-1.5h one way",
+          "baby_friendly": true,
+          "baby_notes": "Paved road along the coast, stroller-friendly. Stunning sea views the entire way. End in Plaka for lunch at a taverna. Can drive back or walk both ways. ~3km each way.",
+          "description": "Scenic coastal walk from Elounda village north to Plaka, with views of Spinalonga Island and the turquoise bay the entire route.",
+          "tags": [
+            "walking",
+            "coastal",
+            "scenic",
+            "nature",
+            "free"
+          ]
+        },
+        {
+          "name": "Tholos Beach",
+          "type": "activity",
+          "subtype": "beach",
+          "lat": 35.17,
+          "lng": 25.759,
+          "address": "Kavousi, east of Agios Nikolaos",
+          "hours": "All day",
+          "cost": "Free (sunbeds EUR 7-10)",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Small sheltered cove with very calm water. Sandy beach with shallow entry. Less crowded than Voulisma. Good alternative on busy days. ~25 min drive from Daios Cove.",
+          "description": "Pretty sheltered cove with golden sand and calm turquoise water, less crowded than the more famous nearby beaches.",
+          "tags": [
+            "beach",
+            "calm-water",
+            "sheltered",
+            "quiet"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Piato",
+          "type": "restaurant",
+          "subtype": "creative-greek",
+          "lat": 35.1885,
+          "lng": 25.716,
+          "address": "Central Agios Nikolaos",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 15-35",
+          "cuisine": "Modern Greek/Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "Well-regarded restaurant with courteous service. Outdoor seating available. Creative dishes using local ingredients. Accommodating to families.",
+          "description": "Highly-rated restaurant in Agios Nikolaos center serving refined Greek cuisine with creative interpretations of local dishes.",
+          "tags": [
+            "modern-greek",
+            "agios-nikolaos",
+            "creative",
+            "quality"
+          ]
+        },
+        {
+          "name": "Chrysofyllis Taverna",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.189,
+          "lng": 25.712,
+          "address": "28is Oktovriou, Agios Nikolaos",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 8-18",
+          "cuisine": "Greek/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Budget-friendly traditional taverna. Generous portions of home-style Cretan food. Locals' favorite. Unpretentious and welcoming for families.",
+          "description": "No-frills traditional taverna beloved by locals for generous portions of authentic Cretan home cooking at very reasonable prices.",
+          "tags": [
+            "taverna",
+            "budget",
+            "local",
+            "agios-nikolaos",
+            "traditional"
+          ]
+        },
+        {
+          "name": "Pelagos",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.188,
+          "lng": 25.7175,
+          "address": "Stratigou Koraka 11, Agios Nikolaos",
+          "hours": "12:00-23:30",
+          "price_range": "EUR 15-35",
+          "cuisine": "Seafood/Greek",
+          "baby_friendly": true,
+          "baby_notes": "Near the harbor with outdoor seating. Fresh fish displayed on ice. Mediterranean breeze keeps it cool. Baby-friendly relaxed atmosphere.",
+          "description": "Well-established seafood restaurant near the harbor of Agios Nikolaos, known for its fresh fish display and expertly prepared Greek seafood dishes.",
+          "tags": [
+            "seafood",
+            "harbor",
+            "agios-nikolaos",
+            "fresh-fish"
+          ]
+        },
+        {
+          "name": "Poulis Restaurant",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.1915,
+          "lng": 25.716,
+          "address": "Kitroplateia, Agios Nikolaos",
+          "hours": "11:00-23:00",
+          "price_range": "EUR 12-28",
+          "cuisine": "Seafood/Greek/Mediterranean",
+          "baby_friendly": true,
+          "baby_notes": "Located at Kitroplateia beach area. Tables near the waterfront. Baby can enjoy the sea view and breeze. Casual beachside dining.",
+          "description": "Waterfront restaurant at the popular Kitroplateia area serving fresh seafood and Mediterranean dishes with views of the small beach and open sea.",
+          "tags": [
+            "seafood",
+            "waterfront",
+            "beach",
+            "agios-nikolaos",
+            "casual"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -325,7 +1960,11 @@
       "day_number": 11,
       "day_type": "stay",
       "label": "Crete",
-      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "location": {
+        "city": "Crete",
+        "country": "Greece",
+        "emoji": "🇬🇷"
+      },
       "accommodation": {
         "name": "Daios Cove Luxury Resort & Villas",
         "confirmation": "57306164",
@@ -336,23 +1975,207 @@
         "total_nights": 7,
         "check_in": "2026-05-07",
         "check_out": "2026-05-14",
-        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "baby_amenities": [
+          "Baby cot",
+          "Baby bath",
+          "Changing mat",
+          "Baby audio monitor (upon availability)",
+          "Bottle sterilizer",
+          "Baby high chair"
+        ],
         "dining_notes": "Baby puree available at all restaurants and Mini Market",
         "contact": "Elena Andritsa, reservations@daioscove.com"
       },
       "flights": [],
-      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626"
+      },
       "transport_mode": "driving",
-      "activities": [],
-      "restaurants": [],
-      "notes": ["Last full day at Daios Cove", "Pack for tomorrow's transfer"]
+      "activities": [
+        {
+          "name": "Agios Nikolaos Marina & Waterfront Stroll",
+          "type": "activity",
+          "subtype": "sightseeing",
+          "lat": 35.187,
+          "lng": 25.717,
+          "address": "Marina, Agios Nikolaos",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Wide flat promenade along the marina is excellent for strollers. Many ice cream shops and cafes for breaks. Small playground nearby.",
+          "description": "Walk along the charming marina with its bobbing boats, then along the waterfront promenade connecting to the town center and Lake Voulismeni.",
+          "tags": [
+            "walking",
+            "marina",
+            "waterfront",
+            "sightseeing"
+          ]
+        },
+        {
+          "name": "Katharo Plateau Drive",
+          "type": "activity",
+          "subtype": "nature",
+          "lat": 35.14,
+          "lng": 25.62,
+          "address": "Katharo Plateau, above Kritsa",
+          "hours": "All day",
+          "cost": "Free",
+          "duration": "Half day",
+          "baby_friendly": true,
+          "baby_notes": "Scenic drive on winding mountain road - baby will likely sleep in car seat. The plateau itself is flat and peaceful for a short walk. Stop at Kritsa on the way. ~40 min drive from Daios Cove.",
+          "description": "Dramatic drive up to 1100m elevation to a remote mountain plateau used for grazing. Stunning views of Mirabello Bay on the ascent.",
+          "tags": [
+            "drive",
+            "mountains",
+            "nature",
+            "scenic",
+            "off-beaten-path"
+          ]
+        },
+        {
+          "name": "Cretan Aquarium (CretAquarium)",
+          "type": "activity",
+          "subtype": "attraction",
+          "lat": 35.332,
+          "lng": 25.282,
+          "address": "Gournes, Heraklion",
+          "hours": "9:30-17:00 (May)",
+          "cost": "EUR 12 adults, free under 4",
+          "duration": "1.5-2h",
+          "baby_friendly": true,
+          "baby_notes": "Fully stroller-accessible, air-conditioned. Colorful fish tanks captivate even young babies. Changing facilities available. Good rainy-day option. ~45 min drive from Daios Cove.",
+          "description": "One of the largest aquariums in the Mediterranean with 60 tanks showcasing Mediterranean marine life including sharks, jellyfish, and sea turtles.",
+          "tags": [
+            "aquarium",
+            "indoor",
+            "family",
+            "marine-life"
+          ]
+        },
+        {
+          "name": "Amazonas Park",
+          "type": "activity",
+          "subtype": "attraction",
+          "lat": 35.15,
+          "lng": 25.665,
+          "address": "Neapoli-Kritsa road, near Agios Nikolaos",
+          "hours": "10:00-18:00",
+          "cost": "EUR 9 adults, free under 3",
+          "duration": "1-1.5h",
+          "baby_friendly": true,
+          "baby_notes": "Small animal rescue park with shaded paths. Stroller-friendly. Monkeys, donkeys, goats, and birds engage young children. Relaxed pace. ~15 min drive from Daios Cove.",
+          "description": "Small family-run animal rescue park with monkeys, farm animals, and exotic birds in a natural hillside setting near Kritsa.",
+          "tags": [
+            "animals",
+            "family",
+            "nature",
+            "rescue-park"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Despina Taverna",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.2522,
+          "lng": 25.7305,
+          "address": "Waterfront, Elounda",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 15-30",
+          "cuisine": "Seafood/Greek",
+          "baby_friendly": true,
+          "baby_notes": "Seaside paradise with relaxed atmosphere. Fresh expertly crafted seafood. Book ahead as very popular. Outdoor terrace right by the water.",
+          "description": "Popular waterfront taverna in Elounda known for fresh seafood dishes, attentive service, and a lovely seaside setting.",
+          "tags": [
+            "taverna",
+            "seafood",
+            "waterfront",
+            "elounda",
+            "popular"
+          ]
+        },
+        {
+          "name": "Thalassino Ageri",
+          "type": "restaurant",
+          "subtype": "seafood",
+          "lat": 35.1862,
+          "lng": 25.719,
+          "address": "Akti Iosif Koundourou, Agios Nikolaos",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 15-35",
+          "cuisine": "Seafood/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Seaside terrace on the waterfront promenade. Renowned seafood. Tables are spacious enough for a stroller or high chair. Relaxed pace of service.",
+          "description": "Waterfront seafood restaurant along the Agios Nikolaos promenade, praised for its fresh fish, seafood platters, and beautiful sea views.",
+          "tags": [
+            "seafood",
+            "waterfront",
+            "agios-nikolaos",
+            "promenade"
+          ]
+        },
+        {
+          "name": "Istron Bay Taverna",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.13,
+          "lng": 25.743,
+          "address": "Istron Bay, near Voulisma Beach",
+          "hours": "10:00-22:00",
+          "price_range": "EUR 10-22",
+          "cuisine": "Greek/Cretan/Seafood",
+          "baby_friendly": true,
+          "baby_notes": "Perfect lunch stop after Voulisma Beach. Shaded outdoor seating with bay views. Simple grilled fish and salads. Very laid-back. ~20 min drive from Daios Cove.",
+          "description": "Relaxed beachside taverna near Voulisma Beach serving fresh grilled fish, Cretan salads, and cold drinks with gorgeous bay views.",
+          "tags": [
+            "taverna",
+            "beachside",
+            "istron",
+            "casual",
+            "lunch"
+          ]
+        },
+        {
+          "name": "Marilena Restaurant",
+          "type": "restaurant",
+          "subtype": "taverna",
+          "lat": 35.253,
+          "lng": 25.731,
+          "address": "Elounda Village",
+          "hours": "12:00-23:00",
+          "price_range": "EUR 10-22",
+          "cuisine": "Greek/Cretan",
+          "baby_friendly": true,
+          "baby_notes": "Laid-back village taverna with outdoor seating. Home-cooked Cretan food. Friendly service accommodating to families. Good value for money.",
+          "description": "Friendly village taverna in Elounda serving generous portions of traditional Cretan home cooking at honest prices.",
+          "tags": [
+            "taverna",
+            "elounda",
+            "homestyle",
+            "value",
+            "traditional"
+          ]
+        }
+      ],
+      "notes": [
+        "Last full day at Daios Cove",
+        "Pack for tomorrow's transfer"
+      ]
     },
     {
       "date": "2026-05-14",
       "day_number": 12,
       "day_type": "transfer",
-      "label": "Crete \u2192 Zurich",
-      "location": { "city": "Crete \u2192 Zurich", "country": "Greece/Switzerland", "emoji": "\ud83c\uddec\ud83c\uddf7\u2192\ud83c\udde8\ud83c\udded" },
+      "label": "Crete → Zurich",
+      "location": {
+        "city": "Crete → Zurich",
+        "country": "Greece/Switzerland",
+        "emoji": "🇬🇷→🇨🇭"
+      },
       "checkout": {
         "property": "Daios Cove Luxury Resort & Villas",
         "time": "Early AM",
@@ -370,8 +2193,14 @@
           "operated_for": "Edelweiss Air",
           "flight_number": "LX8349",
           "confirmation": "ZWQAO7 / BO3KQS",
-          "from": { "code": "HER", "name": "Heraklion" },
-          "to": { "code": "ZRH", "name": "Zurich" },
+          "from": {
+            "code": "HER",
+            "name": "Heraklion"
+          },
+          "to": {
+            "code": "ZRH",
+            "name": "Zurich"
+          },
           "depart_time": "10:55",
           "depart_date": "2026-05-14",
           "arrive_time": "12:50",
@@ -381,9 +2210,21 @@
           "aircraft": "Airbus A320",
           "class": "Economy",
           "passengers": [
-            { "name": "Michelle", "seat": "34C (Aisle)", "booking": "ZWQAO7" },
-            { "name": "Owen", "seat": "Lap", "booking": "ZWQAO7" },
-            { "name": "Daniel", "seat": "34A (Window)", "booking": "BO3KQS" }
+            {
+              "name": "Michelle",
+              "seat": "34C (Aisle)",
+              "booking": "ZWQAO7"
+            },
+            {
+              "name": "Owen",
+              "seat": "Lap",
+              "booking": "ZWQAO7"
+            },
+            {
+              "name": "Daniel",
+              "seat": "34A (Window)",
+              "booking": "BO3KQS"
+            }
           ],
           "payment": "EUR 269.80 + $381.50 (Chase)"
         }
@@ -395,14 +2236,22 @@
       "transport_mode": "transit",
       "activities": [],
       "restaurants": [],
-      "notes": ["Return rental car at Heraklion airport", "Flight HER 10:55 AM \u2192 ZRH 12:50 PM", "Hotel is at Zurich Airport - walk from terminal"]
+      "notes": [
+        "Return rental car at Heraklion airport",
+        "Flight HER 10:55 AM → ZRH 12:50 PM",
+        "Hotel is at Zurich Airport - walk from terminal"
+      ]
     },
     {
       "date": "2026-05-15",
       "day_number": 13,
       "day_type": "stay",
       "label": "Zurich",
-      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "location": {
+        "city": "Zurich",
+        "country": "Switzerland",
+        "emoji": "🇨🇭"
+      },
       "accommodation": {
         "name": "Radisson Blu Hotel, Zurich Airport",
         "confirmation": "2398178005",
@@ -420,8 +2269,262 @@
       "flights": [],
       "car_rental": null,
       "transport_mode": "transit",
-      "activities": [],
-      "restaurants": [],
+      "activities": [
+        {
+          "name": "Swiss National Museum (Landesmuseum)",
+          "type": "activity",
+          "subtype": "museum",
+          "lat": 47.3793,
+          "lng": 8.5397,
+          "address": "Museumstrasse 2, 8001 Zürich",
+          "hours": "Tue-Sun 10:00-17:00, Thu until 19:00, closed Mon",
+          "cost": "CHF 10 (free under 16)",
+          "duration": "2h",
+          "baby_friendly": true,
+          "baby_notes": "Elevator access throughout, stroller-friendly galleries, free entry for children, baby changing facilities available",
+          "description": "Switzerland's most-visited cultural history museum, right next to Hauptbahnhof. Covers Swiss history from prehistory to present day.",
+          "tags": [
+            "museum",
+            "history",
+            "stroller-ok",
+            "near-hbf",
+            "rainy-day"
+          ]
+        },
+        {
+          "name": "Kunsthaus Zürich",
+          "type": "activity",
+          "subtype": "museum",
+          "lat": 47.3703,
+          "lng": 8.5487,
+          "address": "Heimplatz 1, 8001 Zürich",
+          "hours": "Tue-Wed & Fri-Sun 10:00-18:00, Thu 10:00-20:00, closed Mon",
+          "cost": "CHF 24 (free Wed for collection, free under 16)",
+          "duration": "2h",
+          "baby_friendly": true,
+          "baby_notes": "Strollers allowed in exhibition rooms; baby carriers recommended for some galleries. Cafe in entrance area is stroller-accessible.",
+          "description": "Switzerland's largest art museum with works by Picasso, Monet, Chagall, and Giacometti. The 2021 Chipperfield extension doubled the space.",
+          "tags": [
+            "museum",
+            "art",
+            "stroller-ok",
+            "rainy-day"
+          ]
+        },
+        {
+          "name": "Old Town (Altstadt) Walking Tour",
+          "type": "activity",
+          "subtype": "walking",
+          "lat": 47.3717,
+          "lng": 8.5423,
+          "address": "Start at Hauptbahnhof, through Niederdorf and Lindenhof",
+          "hours": "Anytime (shops open ~10:00-19:00)",
+          "cost": "Free",
+          "duration": "2-3h",
+          "baby_friendly": true,
+          "baby_notes": "Mostly flat cobblestone streets, some steep sections near Lindenhof. Best with a sturdy stroller or baby carrier. Many cafes for nursing breaks.",
+          "description": "Wander medieval lanes through Niederdorf, discover hidden squares, guild houses, and street fountains. The heart of historic Zurich.",
+          "tags": [
+            "old-town",
+            "walking",
+            "free",
+            "stroller-ok",
+            "scenic"
+          ]
+        },
+        {
+          "name": "Lindenhof",
+          "type": "activity",
+          "subtype": "viewpoint",
+          "lat": 47.3727,
+          "lng": 8.5404,
+          "address": "Lindenhof, 8001 Zürich",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "30min",
+          "baby_friendly": true,
+          "baby_notes": "Shaded hilltop park with benches. Reached via stairs or gentle slope from Bahnhofstrasse side. Great spot for a rest with baby.",
+          "description": "Historic hilltop park with panoramic views over the Limmat river, Old Town rooftops, and university. Site of a Roman fort.",
+          "tags": [
+            "viewpoint",
+            "park",
+            "free",
+            "scenic",
+            "relaxing"
+          ]
+        },
+        {
+          "name": "Fraumünster Church",
+          "type": "activity",
+          "subtype": "church",
+          "lat": 47.3699,
+          "lng": 8.5414,
+          "address": "Münsterhof 2, 8001 Zürich",
+          "hours": "10:00-18:00 (Apr-Oct)",
+          "cost": "CHF 5 (free under 16)",
+          "duration": "30-45min",
+          "baby_friendly": true,
+          "baby_notes": "Stroller access available. Quiet interior — baby carrier preferred to keep noise low. Quick visit works well with infant.",
+          "description": "13th-century church famous for its stunning stained-glass windows by Marc Chagall and a rosette by Augusto Giacometti.",
+          "tags": [
+            "church",
+            "art",
+            "chagall",
+            "old-town",
+            "quick-visit"
+          ]
+        },
+        {
+          "name": "Lake Zurich Promenade",
+          "type": "activity",
+          "subtype": "walk",
+          "lat": 47.365,
+          "lng": 8.542,
+          "address": "Bürkliplatz to Zürichhorn, 8002 Zürich",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Flat, paved lakeside path perfect for strollers. Benches everywhere, public restrooms at Bürkliplatz. Great for morning or evening walks.",
+          "description": "Scenic lakeside stroll along Lake Zurich with views of the Alps on clear days. Pass parks, sculptures, and boat docks.",
+          "tags": [
+            "lake",
+            "walking",
+            "free",
+            "stroller-ok",
+            "scenic",
+            "relaxing"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Confiserie Sprüngli",
+          "type": "restaurant",
+          "subtype": "cafe",
+          "lat": 47.3697,
+          "lng": 8.539,
+          "address": "Bahnhofstrasse 21, 8001 Zürich",
+          "hours": "Mon-Fri 07:00-18:30, Sat 08:30-18:30, Sun 09:30-17:30",
+          "price_range": "CHF 15-30",
+          "cuisine": "Swiss pastry & cafe",
+          "baby_friendly": true,
+          "baby_notes": "Famous Luxemburgerli macarons — easy to eat one-handed while holding baby. Indoor seating can be tight; ground floor counter service works well.",
+          "description": "Zurich's iconic luxury confiserie since 1836. Famous for Luxemburgerli macarons, truffles, and elegant pastries. A must-visit chocolate experience.",
+          "tags": [
+            "cafe",
+            "chocolate",
+            "pastry",
+            "iconic",
+            "bahnhofstrasse"
+          ]
+        },
+        {
+          "name": "Zeughauskeller",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 47.3723,
+          "lng": 8.5389,
+          "address": "Bahnhofstrasse 28a, 8001 Zürich",
+          "hours": "Daily 11:30-23:00",
+          "price_range": "CHF 20-40",
+          "cuisine": "Swiss traditional",
+          "baby_friendly": true,
+          "baby_notes": "Very spacious beer-hall seating with long tables — easy to park a stroller. High chairs available. Bustling atmosphere covers baby noise.",
+          "description": "Historic 15th-century armoury turned restaurant serving Swiss classics: Zürcher Geschnetzeltes, sausages, rösti, and schnitzel since 1926.",
+          "tags": [
+            "swiss",
+            "traditional",
+            "historic",
+            "central",
+            "spacious"
+          ]
+        },
+        {
+          "name": "Swiss Chuchi (Hotel Adler)",
+          "type": "restaurant",
+          "subtype": "fondue",
+          "lat": 47.3726,
+          "lng": 8.5445,
+          "address": "Rosengasse 10, 8001 Zürich",
+          "hours": "Daily 11:00-23:00",
+          "price_range": "CHF 30-55",
+          "cuisine": "Swiss fondue & raclette",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor terrace on the Niederdorf pedestrian lane — great for strollers. High chairs available. Note: keep baby away from hot fondue pot.",
+          "description": "The Old Town's premier fondue destination since 1953. Nine fondue varieties, raclette, and classic Swiss dishes in a charming Niederdorf setting.",
+          "tags": [
+            "fondue",
+            "raclette",
+            "swiss",
+            "old-town",
+            "outdoor-seating"
+          ]
+        },
+        {
+          "name": "Restaurant Kronenhalle",
+          "type": "restaurant",
+          "subtype": "fine-dining",
+          "lat": 47.3683,
+          "lng": 8.5475,
+          "address": "Rämistrasse 4, 8001 Zürich",
+          "hours": "Daily 12:00-24:00",
+          "price_range": "CHF 45-75",
+          "cuisine": "Swiss-French classic",
+          "baby_friendly": true,
+          "baby_notes": "Upscale but welcoming. High chairs available. Best at lunch when atmosphere is more relaxed. Original Chagall and Miró on the walls.",
+          "description": "Legendary Zurich institution since 1924 with original art by Chagall, Miró, and Matisse on the walls. Famous for Zürcher Geschnetzeltes and rösti.",
+          "tags": [
+            "fine-dining",
+            "classic",
+            "art",
+            "swiss-french",
+            "splurge"
+          ]
+        },
+        {
+          "name": "Haus Hiltl",
+          "type": "restaurant",
+          "subtype": "vegetarian",
+          "lat": 47.3732,
+          "lng": 8.5345,
+          "address": "Sihlstrasse 28, 8001 Zürich",
+          "hours": "Mon-Sat 06:00-23:00, Sun 08:00-23:00",
+          "price_range": "CHF 20-35",
+          "cuisine": "Vegetarian (world's oldest)",
+          "baby_friendly": true,
+          "baby_notes": "Buffet style — perfect for parents since you serve yourself quickly. Spacious, high chairs available, baby changing facilities. Very relaxed vibe.",
+          "description": "The world's oldest vegetarian restaurant (Guinness record, since 1898). Over 100 dishes from the daily buffet — pay by weight. Indian, Asian, Swiss options.",
+          "tags": [
+            "vegetarian",
+            "buffet",
+            "historic",
+            "family-friendly",
+            "near-hbf"
+          ]
+        },
+        {
+          "name": "Café & Confiserie 1842 (Schober)",
+          "type": "restaurant",
+          "subtype": "cafe",
+          "lat": 47.3719,
+          "lng": 8.5448,
+          "address": "Napfgasse 4, 8001 Zürich",
+          "hours": "Daily 09:00-19:00",
+          "price_range": "CHF 12-25",
+          "cuisine": "Swiss cafe & patisserie",
+          "baby_friendly": true,
+          "baby_notes": "Multiple cozy rooms with space for strollers. Famous hot chocolate is a treat for parents. Historic Old Town setting with calm daytime atmosphere.",
+          "description": "Zurich's oldest cafe (est. 1842) in the heart of Niederdorf. Legendary hot chocolate, handmade pastries, and ornate Belle Époque interiors.",
+          "tags": [
+            "cafe",
+            "historic",
+            "hot-chocolate",
+            "old-town",
+            "pastry"
+          ]
+        }
+      ],
       "notes": []
     },
     {
@@ -429,7 +2532,11 @@
       "day_number": 14,
       "day_type": "stay",
       "label": "Zurich",
-      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "location": {
+        "city": "Zurich",
+        "country": "Switzerland",
+        "emoji": "🇨🇭"
+      },
       "accommodation": {
         "name": "Radisson Blu Hotel, Zurich Airport",
         "confirmation": "2398178005",
@@ -447,16 +2554,278 @@
       "flights": [],
       "car_rental": null,
       "transport_mode": "transit",
-      "activities": [],
-      "restaurants": [],
-      "notes": ["Last full day in Zurich", "Pack for tomorrow's flight home"]
+      "activities": [
+        {
+          "name": "Zoo Zürich",
+          "type": "activity",
+          "subtype": "zoo",
+          "lat": 47.3854,
+          "lng": 8.5745,
+          "address": "Zürichbergstrasse 221, 8044 Zürich",
+          "hours": "09:00-18:00 (Mar-Oct)",
+          "cost": "CHF 29 adults (free under 6)",
+          "duration": "3-4h",
+          "baby_friendly": true,
+          "baby_notes": "Fully stroller accessible with paved paths. Baby changing stations available. Masoala Rainforest hall is warm and great for babies. Nursing rooms on site.",
+          "description": "Award-winning zoo with the Masoala Rainforest hall, Kaeng Krachan elephant park, and Australian outback exhibit. Reach via tram 6 from HB.",
+          "tags": [
+            "zoo",
+            "animals",
+            "stroller-ok",
+            "half-day",
+            "tram-6"
+          ]
+        },
+        {
+          "name": "Old Botanical Garden (Alter Botanischer Garten)",
+          "type": "activity",
+          "subtype": "garden",
+          "lat": 47.3741,
+          "lng": 8.5335,
+          "address": "Talstrasse 71, 8001 Zürich",
+          "hours": "07:00-19:00 daily (Mar-Sep)",
+          "cost": "Free",
+          "duration": "45min-1h",
+          "baby_friendly": true,
+          "baby_notes": "Flat paths through gardens, shaded areas under old trees. A peaceful escape near Hauptbahnhof for feeding or nap breaks.",
+          "description": "Dating to 1837, this tranquil garden features rare trees, medicinal herb beds, and a historic palm house. A hidden gem steps from Bahnhofstrasse.",
+          "tags": [
+            "garden",
+            "free",
+            "stroller-ok",
+            "relaxing",
+            "near-hbf"
+          ]
+        },
+        {
+          "name": "Bahnhofstrasse Shopping Stroll",
+          "type": "activity",
+          "subtype": "shopping",
+          "lat": 47.3716,
+          "lng": 8.5387,
+          "address": "Bahnhofstrasse, 8001 Zürich (HB to Bürkliplatz)",
+          "hours": "Shops Mon-Sat ~09:00-20:00",
+          "cost": "Free to walk",
+          "duration": "1-2h",
+          "baby_friendly": true,
+          "baby_notes": "Wide, flat, car-free boulevard ideal for strollers. Sprüngli and other shops provide pleasant rest stops along the way.",
+          "description": "One of the world's most famous shopping streets, stretching 1.4 km from Hauptbahnhof to Lake Zurich. Luxury boutiques, watch shops, and chocolate.",
+          "tags": [
+            "shopping",
+            "walking",
+            "free",
+            "stroller-ok",
+            "central"
+          ]
+        },
+        {
+          "name": "Limmat River Walk",
+          "type": "activity",
+          "subtype": "walk",
+          "lat": 47.3724,
+          "lng": 8.5446,
+          "address": "Limmatquai, 8001 Zürich (along the river)",
+          "hours": "Open 24/7",
+          "cost": "Free",
+          "duration": "1h",
+          "baby_friendly": true,
+          "baby_notes": "Flat riverside path. Many cafes with outdoor seating line the quay. Good stroller terrain with views of guild houses and churches.",
+          "description": "Walk along the Limmat river through the heart of Zurich, passing the Rathaus, Grossmünster, and colorful guild houses reflected in the water.",
+          "tags": [
+            "river",
+            "walking",
+            "free",
+            "stroller-ok",
+            "scenic",
+            "old-town"
+          ]
+        },
+        {
+          "name": "Lindt Home of Chocolate",
+          "type": "activity",
+          "subtype": "chocolate",
+          "lat": 47.3222,
+          "lng": 8.5472,
+          "address": "Schokoladenplatz 1, 8802 Kilchberg",
+          "hours": "10:00-19:00 daily",
+          "cost": "CHF 17 adults (free under 6)",
+          "duration": "2h",
+          "baby_friendly": true,
+          "baby_notes": "Modern facility with elevator access and stroller-friendly paths. Baby carrier recommended for the museum tour. Chocolate shop at end is stroller-ok.",
+          "description": "Interactive chocolate museum with the world's tallest chocolate fountain, tasting stations, and a massive Lindt shop. Book time slots in advance.",
+          "tags": [
+            "chocolate",
+            "museum",
+            "stroller-ok",
+            "tasting",
+            "book-ahead"
+          ]
+        },
+        {
+          "name": "Bürkliplatz & Boat Dock",
+          "type": "activity",
+          "subtype": "scenic",
+          "lat": 47.366,
+          "lng": 8.5408,
+          "address": "Bürkliplatz, 8001 Zürich",
+          "hours": "Open 24/7 (boat cruises 10:00-18:00 seasonal)",
+          "cost": "Free (boat cruises from CHF 9)",
+          "duration": "30min-1.5h",
+          "baby_friendly": true,
+          "baby_notes": "Flat open plaza at the lake. Optional short boat cruise — strollers allowed on boats. Sat flea market is fun to browse. Public restrooms nearby.",
+          "description": "Where Bahnhofstrasse meets Lake Zurich. Watch boats, enjoy lake views, or take a short cruise. Saturday flea market in summer.",
+          "tags": [
+            "lake",
+            "scenic",
+            "boats",
+            "stroller-ok",
+            "market"
+          ]
+        }
+      ],
+      "restaurants": [
+        {
+          "name": "Café Bar Odeon",
+          "type": "restaurant",
+          "subtype": "cafe",
+          "lat": 47.3672,
+          "lng": 8.5458,
+          "address": "Limmatquai 2, 8001 Zürich",
+          "hours": "Mon-Fri 07:00-00:00, Sat 09:00-02:00, Sun 09:00-00:00",
+          "price_range": "CHF 15-30",
+          "cuisine": "European cafe",
+          "baby_friendly": true,
+          "baby_notes": "Art Nouveau interior is spacious. Best for breakfast or lunch when quieter. Terrace has outdoor seating facing Bellevueplatz and the lake.",
+          "description": "Legendary 1911 Art Nouveau grand cafe at Bellevueplatz where Lenin and Einstein once sat. Great for coffee, breakfast, or a light lunch.",
+          "tags": [
+            "cafe",
+            "historic",
+            "art-nouveau",
+            "terrace",
+            "bellevue"
+          ]
+        },
+        {
+          "name": "Tibits Seefeld",
+          "type": "restaurant",
+          "subtype": "vegetarian",
+          "lat": 47.3655,
+          "lng": 8.5488,
+          "address": "Seefeldstrasse 2, 8008 Zürich",
+          "hours": "Mon-Thu 06:30-23:00, Fri 06:30-00:00, Sat 08:00-00:00, Sun 09:00-23:00",
+          "price_range": "CHF 15-30",
+          "cuisine": "Vegetarian & vegan buffet",
+          "baby_friendly": true,
+          "baby_notes": "Self-service buffet is quick and easy for parents. Spacious modern space near Bellevue tram stop. Stroller-friendly. Good for a fast healthy meal.",
+          "description": "Popular vegetarian buffet chain — over 50 items daily, pay by weight. Fresh, colorful, and quick. Near Bellevueplatz, perfect post-lake-walk refuel.",
+          "tags": [
+            "vegetarian",
+            "buffet",
+            "healthy",
+            "quick",
+            "stroller-ok"
+          ]
+        },
+        {
+          "name": "Raclette Stube",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 47.3714,
+          "lng": 8.5442,
+          "address": "Zähringerstrasse 16, 8001 Zürich",
+          "hours": "Tue-Sat 18:00-23:00",
+          "price_range": "CHF 25-45",
+          "cuisine": "Swiss raclette",
+          "baby_friendly": true,
+          "baby_notes": "Small cozy restaurant — call ahead to request stroller-friendly table. Intimate atmosphere; early dinner slot recommended with baby.",
+          "description": "Dedicated raclette restaurant in the Old Town. Traditional Swiss raclette with potatoes, pickles, and onions — a quintessential alpine experience.",
+          "tags": [
+            "raclette",
+            "swiss",
+            "old-town",
+            "dinner",
+            "cozy"
+          ]
+        },
+        {
+          "name": "Sternen Grill",
+          "type": "restaurant",
+          "subtype": "casual",
+          "lat": 47.368,
+          "lng": 8.5465,
+          "address": "Theaterstrasse 22, 8001 Zürich",
+          "hours": "Daily 11:30-23:00",
+          "price_range": "CHF 8-15",
+          "cuisine": "Swiss street food (bratwurst)",
+          "baby_friendly": true,
+          "baby_notes": "Outdoor standing/seating area — easy with a stroller. Quick service, no wait. Zurich's best bratwurst is a fast no-fuss meal for busy parents.",
+          "description": "Zurich's most beloved bratwurst stand since 1963. The Sternen Grill sausage with bürli bread is a local institution near Bellevueplatz.",
+          "tags": [
+            "street-food",
+            "bratwurst",
+            "quick",
+            "cheap",
+            "local-favorite"
+          ]
+        },
+        {
+          "name": "Markthalle im Viadukt",
+          "type": "restaurant",
+          "subtype": "food-hall",
+          "lat": 47.3856,
+          "lng": 8.5265,
+          "address": "Limmatstrasse 231, 8005 Zürich",
+          "hours": "Mon-Sat 07:30-20:00 (food stalls vary)",
+          "price_range": "CHF 12-25",
+          "cuisine": "Multi-cuisine food hall",
+          "baby_friendly": true,
+          "baby_notes": "Wide aisles, casual atmosphere, multiple food options so both parents can eat what they want. Stroller-friendly throughout. Baby changing available.",
+          "description": "Artisan food market under the railway viaduct arches in Zurich West. Fresh produce, cheese, bread, Asian food, and specialty goods — great for grazing.",
+          "tags": [
+            "food-hall",
+            "market",
+            "casual",
+            "variety",
+            "zurich-west"
+          ]
+        },
+        {
+          "name": "Bauernschänke",
+          "type": "restaurant",
+          "subtype": "traditional",
+          "lat": 47.3725,
+          "lng": 8.5434,
+          "address": "Rindermarkt 24, 8001 Zürich",
+          "hours": "Mon-Sat 11:00-23:00",
+          "price_range": "CHF 25-45",
+          "cuisine": "Swiss-German traditional",
+          "baby_friendly": true,
+          "baby_notes": "Rustic atmosphere with wooden interiors. High chairs available. Traditional Swiss comfort food — generous portions good for sharing.",
+          "description": "Traditional Swiss-German restaurant on charming Rindermarkt square in the Old Town. Hearty classics: Kalbsgeschnetzeltes, rösti, and Swiss sausages.",
+          "tags": [
+            "swiss",
+            "traditional",
+            "old-town",
+            "hearty",
+            "cozy"
+          ]
+        }
+      ],
+      "notes": [
+        "Last full day in Zurich",
+        "Pack for tomorrow's flight home"
+      ]
     },
     {
       "date": "2026-05-17",
       "day_number": 15,
       "day_type": "travel",
       "label": "Fly Home",
-      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "location": {
+        "city": "Zurich",
+        "country": "Switzerland",
+        "emoji": "🇨🇭"
+      },
       "checkout": {
         "property": "Radisson Blu Hotel, Zurich Airport",
         "time": "Before 9:50 AM flight",
@@ -469,8 +2838,14 @@
           "operated_for": null,
           "flight_number": "UA12",
           "confirmation": "N0RGPN",
-          "from": { "code": "ZRH", "name": "Zurich" },
-          "to": { "code": "ORD", "name": "Chicago O'Hare" },
+          "from": {
+            "code": "ZRH",
+            "name": "Zurich"
+          },
+          "to": {
+            "code": "ORD",
+            "name": "Chicago O'Hare"
+          },
           "depart_time": "09:50",
           "depart_date": "2026-05-17",
           "arrive_time": "12:45",
@@ -480,9 +2855,21 @@
           "aircraft": "Boeing 767-300",
           "class": "United Economy (X)",
           "passengers": [
-            { "name": "Daniel", "seat": "42D", "eticket": "01623767605305" },
-            { "name": "Michelle", "seat": "42E", "eticket": "01623767605316" },
-            { "name": "Owen", "seat": "Lap", "notes": "Infant" }
+            {
+              "name": "Daniel",
+              "seat": "42D",
+              "eticket": "01623767605305"
+            },
+            {
+              "name": "Michelle",
+              "seat": "42E",
+              "eticket": "01623767605316"
+            },
+            {
+              "name": "Owen",
+              "seat": "Lap",
+              "notes": "Infant"
+            }
           ],
           "payment": "120,000 MileagePlus miles + $145.49"
         }
@@ -491,20 +2878,78 @@
       "transport_mode": null,
       "activities": [],
       "restaurants": [],
-      "notes": ["Check out hotel early", "Flight departs 9:50 AM CEST", "Arrive Chicago 12:45 PM CDT", "Welcome home!"]
+      "notes": [
+        "Check out hotel early",
+        "Flight departs 9:50 AM CEST",
+        "Arrive Chicago 12:45 PM CDT",
+        "Welcome home!"
+      ]
     }
   ],
   "bookings": {
     "flights": [
-      { "segment": "Chicago \u2192 Vienna", "flight": "OS46", "confirmation": "NZFNK5", "date": "May 3", "depart": "4:20 PM ORD", "arrive": "8:15 AM+1 VIE", "status": "confirmed" },
-      { "segment": "Vienna \u2192 Crete", "flight": "OS811", "confirmation": "7O7964", "date": "May 7", "depart": "2:55 PM VIE", "arrive": "6:20 PM HER", "status": "confirmed" },
-      { "segment": "Crete \u2192 Zurich", "flight": "LX8349", "confirmation": "ZWQAO7/BO3KQS", "date": "May 14", "depart": "10:55 AM HER", "arrive": "12:50 PM ZRH", "status": "confirmed" },
-      { "segment": "Zurich \u2192 Chicago", "flight": "UA12", "confirmation": "N0RGPN", "date": "May 17", "depart": "9:50 AM ZRH", "arrive": "12:45 PM ORD", "status": "confirmed" }
+      {
+        "segment": "Chicago → Vienna",
+        "flight": "OS46",
+        "confirmation": "NZFNK5",
+        "date": "May 3",
+        "depart": "4:20 PM ORD",
+        "arrive": "8:15 AM+1 VIE",
+        "status": "confirmed"
+      },
+      {
+        "segment": "Vienna → Crete",
+        "flight": "OS811",
+        "confirmation": "7O7964",
+        "date": "May 7",
+        "depart": "2:55 PM VIE",
+        "arrive": "6:20 PM HER",
+        "status": "confirmed"
+      },
+      {
+        "segment": "Crete → Zurich",
+        "flight": "LX8349",
+        "confirmation": "ZWQAO7/BO3KQS",
+        "date": "May 14",
+        "depart": "10:55 AM HER",
+        "arrive": "12:50 PM ZRH",
+        "status": "confirmed"
+      },
+      {
+        "segment": "Zurich → Chicago",
+        "flight": "UA12",
+        "confirmation": "N0RGPN",
+        "date": "May 17",
+        "depart": "9:50 AM ZRH",
+        "arrive": "12:45 PM ORD",
+        "status": "confirmed"
+      }
     ],
     "accommodations": [
-      { "property": "LUXUS-Apartment mit Weitblick", "city": "Vienna", "dates": "May 3-7", "nights": 4, "confirmation": "6729256409", "platform": "Booking.com" },
-      { "property": "Daios Cove Luxury Resort & Villas", "city": "Crete", "dates": "May 7-14", "nights": 7, "confirmation": "57306164", "platform": "Direct" },
-      { "property": "Radisson Blu Hotel, Zurich Airport", "city": "Zurich", "dates": "May 14-17", "nights": 3, "confirmation": "2398178005", "platform": "Chase Travel" }
+      {
+        "property": "LUXUS-Apartment mit Weitblick",
+        "city": "Vienna",
+        "dates": "May 3-7",
+        "nights": 4,
+        "confirmation": "6729256409",
+        "platform": "Booking.com"
+      },
+      {
+        "property": "Daios Cove Luxury Resort & Villas",
+        "city": "Crete",
+        "dates": "May 7-14",
+        "nights": 7,
+        "confirmation": "57306164",
+        "platform": "Direct"
+      },
+      {
+        "property": "Radisson Blu Hotel, Zurich Airport",
+        "city": "Zurich",
+        "dates": "May 14-17",
+        "nights": 3,
+        "confirmation": "2398178005",
+        "platform": "Chase Travel"
+      }
     ],
     "car_rental": {
       "provider": "Expedia",
