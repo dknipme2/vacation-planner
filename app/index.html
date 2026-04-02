@@ -322,6 +322,11 @@ body{display:flex;flex-direction:column;position:relative}
 }
 .mapboxgl-popup-tip{border-top-color:var(--bg2)!important}
 .mapboxgl-popup-close-button{color:var(--text2)!important;font-size:18px!important;right:6px!important;top:4px!important}
+.mapboxgl-ctrl-geolocate{background:var(--surface-3)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+.mapboxgl-ctrl-geolocate:hover{background:var(--surface-2)!important}
+.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active{color:var(--blue)!important}
+.mapboxgl-user-location-dot,.mapboxgl-user-location-dot::before{background-color:var(--blue)!important}
+.mapboxgl-user-location-accuracy-circle{background-color:rgba(96,165,250,0.15)!important}
 .popup-name{font-size:14px;font-weight:700;margin-bottom:4px}
 .popup-type{
   display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;
@@ -1792,6 +1797,11 @@ function initMap() {
     attributionControl: false
   });
   mapInstance.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+  mapInstance.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: { enableHighAccuracy: true },
+    trackUserLocation: true,
+    showUserHeading: true
+  }), 'bottom-right');
   mapInstance.on('load', () => {
     renderMapForDay(currentDay);
   });
