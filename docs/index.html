@@ -1178,30 +1178,22 @@ function initMap() {
   });
 }
 
-// Hook into tab switching
-(function patchTabNav() {
-  const origSetupNav = setupNav;
-  setupNav = function() {
-    origSetupNav();
-    // Re-bind tab nav to also handle map
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const v = tab.dataset.view;
-        if (v === 'map') {
-          // Small delay so the view is visible before init
-          setTimeout(() => {
-            if (!mapInitialized) {
-              initMap();
-            } else {
-              mapInstance.resize();
-              renderMapForDay(currentDay);
-            }
-          }, 50);
+// Hook into tab switching — attach directly since setupNav() already ran at init
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const v = tab.dataset.view;
+    if (v === 'map') {
+      setTimeout(() => {
+        if (!mapInitialized) {
+          initMap();
+        } else {
+          mapInstance.resize();
+          renderMapForDay(currentDay);
         }
-      });
-    });
-  };
-})();
+      }, 50);
+    }
+  });
+});
 
 // Also update map when day changes (patch goToDay)
 const _origGoToDay = goToDay;
