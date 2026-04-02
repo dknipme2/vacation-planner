@@ -1,0 +1,517 @@
+{
+  "trip": {
+    "title": "Knipmeyer European Vacation",
+    "subtitle": "May 2026",
+    "route": "Chicago \u2192 Vienna \u2192 Crete \u2192 Zurich \u2192 Chicago",
+    "dates": { "start": "2026-05-03", "end": "2026-05-17" },
+    "total_days": 15,
+    "travelers": [
+      { "name": "Daniel", "full_name": "Daniel Ryan Knipmeyer", "type": "adult" },
+      { "name": "Michelle", "full_name": "Michelle Violet Knipmeyer", "type": "adult" },
+      { "name": "Owen", "full_name": "Owen S. Knipmeyer", "type": "infant" }
+    ]
+  },
+  "days": [
+    {
+      "date": "2026-05-03",
+      "day_number": 1,
+      "day_type": "travel",
+      "label": "Depart Chicago",
+      "location": { "city": "Chicago", "country": "USA", "emoji": "\ud83c\uddfa\ud83c\uddf8" },
+      "accommodation": null,
+      "flights": [
+        {
+          "airline": "Austrian Airlines",
+          "operated_for": "United Airlines",
+          "flight_number": "OS46",
+          "confirmation": "NZFNK5",
+          "from": { "code": "ORD", "name": "Chicago O'Hare" },
+          "to": { "code": "VIE", "name": "Vienna Schwechat" },
+          "depart_time": "16:20",
+          "depart_date": "2026-05-03",
+          "arrive_time": "08:15",
+          "arrive_date": "2026-05-04",
+          "arrive_next_day": true,
+          "duration": "~10h",
+          "aircraft": null,
+          "class": "Economy (X)",
+          "passengers": [
+            { "name": "Daniel", "seat": null, "eticket": "0162376748844" },
+            { "name": "Michelle", "seat": null, "eticket": "0162376748845" },
+            { "name": "Owen", "seat": null, "notes": "Infant" }
+          ],
+          "payment": "120,000 MileagePlus miles + $16.80"
+        }
+      ],
+      "car_rental": null,
+      "transport_mode": null,
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Flight departs 4:20 PM CDT, arrives 8:15 AM+1 CEST"]
+    },
+    {
+      "date": "2026-05-04",
+      "day_number": 2,
+      "day_type": "stay",
+      "label": "Arrive Vienna",
+      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "accommodation": {
+        "name": "LUXUS-Apartment mit Weitblick",
+        "confirmation": "6729256409",
+        "pin": "9183",
+        "platform": "Booking.com",
+        "room": "One-Bedroom Apartment",
+        "address": "12 Arsenalstrasse, 10. Favoriten, Vienna, 1100",
+        "phone": "+436766435101",
+        "night_n": 1,
+        "total_nights": 4,
+        "check_in": "2026-05-03",
+        "check_out": "2026-05-07",
+        "baby_amenities": null
+      },
+      "flights": [],
+      "car_rental": null,
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Arrive VIE 8:15 AM from OS46", "Head to apartment via train/transit"]
+    },
+    {
+      "date": "2026-05-05",
+      "day_number": 3,
+      "day_type": "stay",
+      "label": "Vienna",
+      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "accommodation": {
+        "name": "LUXUS-Apartment mit Weitblick",
+        "confirmation": "6729256409",
+        "pin": "9183",
+        "platform": "Booking.com",
+        "room": "One-Bedroom Apartment",
+        "address": "12 Arsenalstrasse, 10. Favoriten, Vienna, 1100",
+        "phone": "+436766435101",
+        "night_n": 2,
+        "total_nights": 4,
+        "check_in": "2026-05-03",
+        "check_out": "2026-05-07",
+        "baby_amenities": null
+      },
+      "flights": [],
+      "car_rental": null,
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-06",
+      "day_number": 4,
+      "day_type": "stay",
+      "label": "Vienna",
+      "location": { "city": "Vienna", "country": "Austria", "emoji": "\ud83c\udde6\ud83c\uddf9" },
+      "accommodation": {
+        "name": "LUXUS-Apartment mit Weitblick",
+        "confirmation": "6729256409",
+        "pin": "9183",
+        "platform": "Booking.com",
+        "room": "One-Bedroom Apartment",
+        "address": "12 Arsenalstrasse, 10. Favoriten, Vienna, 1100",
+        "phone": "+436766435101",
+        "night_n": 3,
+        "total_nights": 4,
+        "check_in": "2026-05-03",
+        "check_out": "2026-05-07",
+        "baby_amenities": null
+      },
+      "flights": [],
+      "car_rental": null,
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Last full day in Vienna"]
+    },
+    {
+      "date": "2026-05-07",
+      "day_number": 5,
+      "day_type": "transfer",
+      "label": "Vienna \u2192 Crete",
+      "location": { "city": "Vienna \u2192 Crete", "country": "Austria/Greece", "emoji": "\ud83c\udde6\ud83c\uddf9\u2192\ud83c\uddec\ud83c\uddf7" },
+      "checkout": {
+        "property": "LUXUS-Apartment mit Weitblick",
+        "time": "10:30 AM",
+        "notes": "Check out by 10:30-11:00 AM"
+      },
+      "checkin": {
+        "property": "Daios Cove Luxury Resort & Villas",
+        "time": "After 6:20 PM arrival",
+        "confirmation": "57306164"
+      },
+      "accommodation": null,
+      "flights": [
+        {
+          "airline": "Austrian Airlines",
+          "operated_for": null,
+          "flight_number": "OS811",
+          "confirmation": "7O7964",
+          "from": { "code": "VIE", "name": "Vienna (Terminal 3)" },
+          "to": { "code": "HER", "name": "Heraklion" },
+          "depart_time": "14:55",
+          "depart_date": "2026-05-07",
+          "arrive_time": "18:20",
+          "arrive_date": "2026-05-07",
+          "arrive_next_day": false,
+          "duration": "2h 25m",
+          "aircraft": "Airbus A320",
+          "class": "Economy Classic",
+          "passengers": [
+            { "name": "Daniel", "seat": null, "ticket": "2572171206387" },
+            { "name": "Michelle", "seat": null, "ticket": "2572171206386" },
+            { "name": "Owen", "seat": null, "notes": "Lap infant" }
+          ],
+          "payment": "EUR 542.94"
+        }
+      ],
+      "car_rental": {
+        "active": true,
+        "provider": "Expedia",
+        "confirmation": "73378810976626",
+        "pickup_date": "2026-05-07",
+        "notes": "Pickup details TBD - verify on Expedia.com"
+      },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Checkout Vienna apartment by 10:30 AM", "Flight VIE 2:55 PM \u2192 HER 6:20 PM", "Pick up rental car at airport", "Drive to Daios Cove resort"]
+    },
+    {
+      "date": "2026-05-08",
+      "day_number": 6,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "pin": null,
+        "platform": "Direct",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 1,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-09",
+      "day_number": 7,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 2,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-10",
+      "day_number": 8,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 3,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-11",
+      "day_number": 9,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 4,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-12",
+      "day_number": 10,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 5,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-13",
+      "day_number": 11,
+      "day_type": "stay",
+      "label": "Crete",
+      "location": { "city": "Crete", "country": "Greece", "emoji": "\ud83c\uddec\ud83c\uddf7" },
+      "accommodation": {
+        "name": "Daios Cove Luxury Resort & Villas",
+        "confirmation": "57306164",
+        "room": "Deluxe Sea View w/ Individual Pool",
+        "address": "Vathi, Agios Nikolaos, Crete 72100",
+        "phone": "+302841062600",
+        "night_n": 6,
+        "total_nights": 7,
+        "check_in": "2026-05-07",
+        "check_out": "2026-05-14",
+        "baby_amenities": ["Baby cot", "Baby bath", "Changing mat", "Baby audio monitor (upon availability)", "Bottle sterilizer", "Baby high chair"],
+        "dining_notes": "Baby puree available at all restaurants and Mini Market",
+        "contact": "Elena Andritsa, reservations@daioscove.com"
+      },
+      "flights": [],
+      "car_rental": { "active": true, "provider": "Expedia", "confirmation": "73378810976626" },
+      "transport_mode": "driving",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Last full day at Daios Cove", "Pack for tomorrow's transfer"]
+    },
+    {
+      "date": "2026-05-14",
+      "day_number": 12,
+      "day_type": "transfer",
+      "label": "Crete \u2192 Zurich",
+      "location": { "city": "Crete \u2192 Zurich", "country": "Greece/Switzerland", "emoji": "\ud83c\uddec\ud83c\uddf7\u2192\ud83c\udde8\ud83c\udded" },
+      "checkout": {
+        "property": "Daios Cove Luxury Resort & Villas",
+        "time": "Early AM",
+        "notes": "Check out early for 10:55 AM flight"
+      },
+      "checkin": {
+        "property": "Radisson Blu Hotel, Zurich Airport",
+        "time": "3:00 PM",
+        "confirmation": "2398178005"
+      },
+      "accommodation": null,
+      "flights": [
+        {
+          "airline": "SWISS",
+          "operated_for": "Edelweiss Air",
+          "flight_number": "LX8349",
+          "confirmation": "ZWQAO7 / BO3KQS",
+          "from": { "code": "HER", "name": "Heraklion" },
+          "to": { "code": "ZRH", "name": "Zurich" },
+          "depart_time": "10:55",
+          "depart_date": "2026-05-14",
+          "arrive_time": "12:50",
+          "arrive_date": "2026-05-14",
+          "arrive_next_day": false,
+          "duration": "2h 55m",
+          "aircraft": "Airbus A320",
+          "class": "Economy",
+          "passengers": [
+            { "name": "Michelle", "seat": "34C (Aisle)", "booking": "ZWQAO7" },
+            { "name": "Owen", "seat": "Lap", "booking": "ZWQAO7" },
+            { "name": "Daniel", "seat": "34A (Window)", "booking": "BO3KQS" }
+          ],
+          "payment": "EUR 269.80 + $381.50 (Chase)"
+        }
+      ],
+      "car_rental": {
+        "active": false,
+        "notes": "Return rental car at HER airport before flight"
+      },
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Return rental car at Heraklion airport", "Flight HER 10:55 AM \u2192 ZRH 12:50 PM", "Hotel is at Zurich Airport - walk from terminal"]
+    },
+    {
+      "date": "2026-05-15",
+      "day_number": 13,
+      "day_type": "stay",
+      "label": "Zurich",
+      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "accommodation": {
+        "name": "Radisson Blu Hotel, Zurich Airport",
+        "confirmation": "2398178005",
+        "chase_trip_id": "1013771579",
+        "platform": "Chase Travel",
+        "room": "Standard Room, 1 Twin/King bed",
+        "address": "Zurich Airport, Kloten 8058, CH",
+        "phone": null,
+        "night_n": 1,
+        "total_nights": 3,
+        "check_in": "2026-05-14",
+        "check_out": "2026-05-17",
+        "baby_amenities": null
+      },
+      "flights": [],
+      "car_rental": null,
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": []
+    },
+    {
+      "date": "2026-05-16",
+      "day_number": 14,
+      "day_type": "stay",
+      "label": "Zurich",
+      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "accommodation": {
+        "name": "Radisson Blu Hotel, Zurich Airport",
+        "confirmation": "2398178005",
+        "chase_trip_id": "1013771579",
+        "platform": "Chase Travel",
+        "room": "Standard Room, 1 Twin/King bed",
+        "address": "Zurich Airport, Kloten 8058, CH",
+        "phone": null,
+        "night_n": 2,
+        "total_nights": 3,
+        "check_in": "2026-05-14",
+        "check_out": "2026-05-17",
+        "baby_amenities": null
+      },
+      "flights": [],
+      "car_rental": null,
+      "transport_mode": "transit",
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Last full day in Zurich", "Pack for tomorrow's flight home"]
+    },
+    {
+      "date": "2026-05-17",
+      "day_number": 15,
+      "day_type": "travel",
+      "label": "Fly Home",
+      "location": { "city": "Zurich", "country": "Switzerland", "emoji": "\ud83c\udde8\ud83c\udded" },
+      "checkout": {
+        "property": "Radisson Blu Hotel, Zurich Airport",
+        "time": "Before 9:50 AM flight",
+        "notes": "Hotel is at the airport"
+      },
+      "accommodation": null,
+      "flights": [
+        {
+          "airline": "United Airlines",
+          "operated_for": null,
+          "flight_number": "UA12",
+          "confirmation": "N0RGPN",
+          "from": { "code": "ZRH", "name": "Zurich" },
+          "to": { "code": "ORD", "name": "Chicago O'Hare" },
+          "depart_time": "09:50",
+          "depart_date": "2026-05-17",
+          "arrive_time": "12:45",
+          "arrive_date": "2026-05-17",
+          "arrive_next_day": false,
+          "duration": "9h 55m",
+          "aircraft": "Boeing 767-300",
+          "class": "United Economy (X)",
+          "passengers": [
+            { "name": "Daniel", "seat": "42D", "eticket": "01623767605305" },
+            { "name": "Michelle", "seat": "42E", "eticket": "01623767605316" },
+            { "name": "Owen", "seat": "Lap", "notes": "Infant" }
+          ],
+          "payment": "120,000 MileagePlus miles + $145.49"
+        }
+      ],
+      "car_rental": null,
+      "transport_mode": null,
+      "activities": [],
+      "restaurants": [],
+      "notes": ["Check out hotel early", "Flight departs 9:50 AM CEST", "Arrive Chicago 12:45 PM CDT", "Welcome home!"]
+    }
+  ],
+  "bookings": {
+    "flights": [
+      { "segment": "Chicago \u2192 Vienna", "flight": "OS46", "confirmation": "NZFNK5", "date": "May 3", "depart": "4:20 PM ORD", "arrive": "8:15 AM+1 VIE", "status": "confirmed" },
+      { "segment": "Vienna \u2192 Crete", "flight": "OS811", "confirmation": "7O7964", "date": "May 7", "depart": "2:55 PM VIE", "arrive": "6:20 PM HER", "status": "confirmed" },
+      { "segment": "Crete \u2192 Zurich", "flight": "LX8349", "confirmation": "ZWQAO7/BO3KQS", "date": "May 14", "depart": "10:55 AM HER", "arrive": "12:50 PM ZRH", "status": "confirmed" },
+      { "segment": "Zurich \u2192 Chicago", "flight": "UA12", "confirmation": "N0RGPN", "date": "May 17", "depart": "9:50 AM ZRH", "arrive": "12:45 PM ORD", "status": "confirmed" }
+    ],
+    "accommodations": [
+      { "property": "LUXUS-Apartment mit Weitblick", "city": "Vienna", "dates": "May 3-7", "nights": 4, "confirmation": "6729256409", "platform": "Booking.com" },
+      { "property": "Daios Cove Luxury Resort & Villas", "city": "Crete", "dates": "May 7-14", "nights": 7, "confirmation": "57306164", "platform": "Direct" },
+      { "property": "Radisson Blu Hotel, Zurich Airport", "city": "Zurich", "dates": "May 14-17", "nights": 3, "confirmation": "2398178005", "platform": "Chase Travel" }
+    ],
+    "car_rental": {
+      "provider": "Expedia",
+      "confirmation": "73378810976626",
+      "dates": "May 7-14",
+      "location": "Crete",
+      "status": "confirmed"
+    }
+  }
+}
