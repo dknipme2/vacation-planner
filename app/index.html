@@ -555,6 +555,61 @@ body{display:flex;flex-direction:column;position:relative}
 .tl-card-title{font-size:13px;font-weight:600}
 .tl-card-sub{font-size:11px;color:var(--text2);margin-top:2px}
 
+/* ===== FAB + ADD MODAL ===== */
+.fab{
+  position:fixed;bottom:76px;right:16px;z-index:100;
+  width:52px;height:52px;border-radius:50%;border:none;
+  background:var(--blue);color:#0f172a;font-size:28px;font-weight:300;
+  box-shadow:0 4px 16px rgba(96,165,250,0.4);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  -webkit-appearance:none;touch-action:manipulation;
+  transition:transform .15s,box-shadow .15s;
+}
+.fab:active{transform:scale(0.9);box-shadow:0 2px 8px rgba(96,165,250,0.3)}
+
+.add-modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.add-modal-overlay.open{opacity:1;pointer-events:auto}
+.add-modal{
+  position:fixed;bottom:0;left:0;right:0;z-index:301;
+  background:var(--surface-1);border-top-left-radius:16px;border-top-right-radius:16px;
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+  padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  max-height:80vh;overflow-y:auto;
+}
+.add-modal.open{transform:translateY(0)}
+.add-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.add-tabs{display:flex;gap:4px;margin-bottom:12px;background:var(--surface-0);border-radius:8px;padding:3px}
+.add-tab{
+  flex:1;padding:8px;border:none;background:none;color:var(--text3);
+  font-size:12px;font-weight:600;border-radius:6px;cursor:pointer;
+}
+.add-tab.active{background:var(--surface-3);color:var(--text)}
+.add-tab-content{display:none}
+.add-tab-content.active{display:block}
+.add-input{
+  width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--surface-0);color:var(--text);font-size:14px;margin-bottom:8px;
+  font-family:inherit;resize:none;
+}
+.add-input::placeholder{color:var(--text3)}
+.add-input:focus{outline:none;border-color:var(--blue)}
+.add-select{
+  padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--surface-0);color:var(--text);font-size:13px;
+  font-family:inherit;flex:1;-webkit-appearance:none;
+}
+.add-row{display:flex;gap:8px;margin-bottom:8px}
+.add-submit{
+  width:100%;padding:12px;border:none;border-radius:var(--radius-sm);
+  background:var(--blue);color:#0f172a;font-size:14px;font-weight:600;
+  cursor:pointer;margin-top:8px;
+}
+.add-submit:active{opacity:0.8}
+.add-hint{font-size:11px;color:var(--text3);margin-top:8px;text-align:center}
+
 /* ===== PLACE DETAIL BOTTOM SHEET ===== */
 .place-sheet{
   position:fixed;bottom:0;left:0;right:0;z-index:200;
@@ -700,6 +755,44 @@ body{display:flex;flex-direction:column;position:relative}
   <div class="status-view" id="status-content"></div>
 </div>
 
+<!-- FAB (Floating Action Button) -->
+<button class="fab" id="fab-add" onclick="openAddModal()" aria-label="Add place">+</button>
+
+<!-- ADD PLACE MODAL -->
+<div class="add-modal-overlay" id="add-overlay" onclick="closeAddModal()"></div>
+<div class="add-modal" id="add-modal">
+  <div class="add-modal-header">
+    <span style="font-size:16px;font-weight:700">Add a Place</span>
+    <button onclick="closeAddModal()" style="background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer">&times;</button>
+  </div>
+  <div class="add-modal-body">
+    <div class="add-tabs">
+      <button class="add-tab active" onclick="switchAddTab('manual',this)">Manual</button>
+      <button class="add-tab" onclick="switchAddTab('gmaps',this)">Google Maps Link</button>
+    </div>
+    <div id="add-tab-manual" class="add-tab-content active">
+      <input class="add-input" id="add-name" placeholder="Place name" autocomplete="off">
+      <div class="add-row">
+        <select class="add-select" id="add-type">
+          <option value="activity">Activity</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="beach">Beach</option>
+        </select>
+        <select class="add-select" id="add-day">
+        </select>
+      </div>
+      <textarea class="add-input" id="add-notes" placeholder="Notes (optional)" rows="2"></textarea>
+      <button class="add-submit" onclick="submitManualAdd()">Add to Trip</button>
+    </div>
+    <div id="add-tab-gmaps" class="add-tab-content">
+      <input class="add-input" id="add-gmaps-url" placeholder="Paste Google Maps link or place URL">
+      <select class="add-select" id="add-gmaps-day" style="width:100%;margin-top:8px"></select>
+      <button class="add-submit" onclick="submitGmapsAdd()" style="margin-top:12px">Import from Google Maps</button>
+      <div class="add-hint">Open Google Maps → find a place → Share → Copy link → Paste here</div>
+    </div>
+  </div>
+</div>
+
 <!-- PLACE DETAIL BOTTOM SHEET -->
 <div class="sheet-overlay" id="sheet-overlay"></div>
 <div class="place-sheet" id="place-sheet">
@@ -738,6 +831,7 @@ fetch('trip.json').then(r=>r.json()).then(data=>{
 });
 
 function init(){
+  loadUserAdditions(); // Restore user-added places from localStorage
   buildDots();
   buildAllPanels();
   buildBookings();
@@ -1648,6 +1742,153 @@ function shareTrip() {
   } else {
     navigator.clipboard.writeText(url).then(() => showToast('Link Copied!', url)).catch(()=>{});
   }
+}
+
+// ===== AD-HOC PLACE ADDITION =====
+function openAddModal() {
+  const modal = document.getElementById('add-modal');
+  const overlay = document.getElementById('add-overlay');
+  // Populate day selectors
+  ['add-day', 'add-gmaps-day'].forEach(id => {
+    const sel = document.getElementById(id);
+    sel.innerHTML = TRIP.days.map((d,i) => {
+      const label = `Day ${d.day_number} — ${d.location.city}`;
+      return `<option value="${i}" ${i === currentDay ? 'selected' : ''}>${label}</option>`;
+    }).join('');
+  });
+  modal.classList.add('open');
+  overlay.classList.add('open');
+  document.getElementById('add-name').focus();
+}
+
+function closeAddModal() {
+  document.getElementById('add-modal').classList.remove('open');
+  document.getElementById('add-overlay').classList.remove('open');
+}
+
+function switchAddTab(tab, btn) {
+  document.querySelectorAll('.add-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.add-tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('add-tab-' + tab).classList.add('active');
+}
+
+function submitManualAdd() {
+  const name = document.getElementById('add-name').value.trim();
+  if (!name) { showToast('Error', 'Please enter a place name'); return; }
+  const type = document.getElementById('add-type').value;
+  const dayIdx = parseInt(document.getElementById('add-day').value);
+  const notes = document.getElementById('add-notes').value.trim();
+
+  const item = {
+    name: name,
+    type: type === 'restaurant' ? 'restaurant' : 'activity',
+    subtype: type,
+    lat: 0, lng: 0,
+    description: notes,
+    baby_friendly: true,
+    baby_notes: '',
+    tags: ['user-added'],
+    _userAdded: true
+  };
+
+  const category = type === 'restaurant' ? 'restaurants' : 'activities';
+  if (!TRIP.days[dayIdx][category]) TRIP.days[dayIdx][category] = [];
+  TRIP.days[dayIdx][category].push(item);
+
+  // Save to localStorage for persistence
+  saveUserAdditions();
+
+  // Rebuild panels
+  buildAllPanels();
+  goToDay(dayIdx, false);
+  closeAddModal();
+  showToast('Added!', `${name} added to Day ${TRIP.days[dayIdx].day_number}`);
+
+  // Clear form
+  document.getElementById('add-name').value = '';
+  document.getElementById('add-notes').value = '';
+}
+
+async function submitGmapsAdd() {
+  const url = document.getElementById('add-gmaps-url').value.trim();
+  if (!url) { showToast('Error', 'Please paste a Google Maps link'); return; }
+  const dayIdx = parseInt(document.getElementById('add-gmaps-day').value);
+
+  // Extract place name from Google Maps URL patterns
+  // Formats: google.com/maps/place/Place+Name/... or maps.app.goo.gl/...
+  let placeName = '';
+  try {
+    const match = url.match(/\/place\/([^\/]+)/);
+    if (match) {
+      placeName = decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+  } catch(e) {}
+
+  if (!placeName) {
+    placeName = prompt('Could not extract name from URL. Enter the place name:') || '';
+    if (!placeName) return;
+  }
+
+  // Extract coordinates if present
+  let lat = 0, lng = 0;
+  const coordMatch = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+  if (coordMatch) {
+    lat = parseFloat(coordMatch[1]);
+    lng = parseFloat(coordMatch[2]);
+  }
+
+  const item = {
+    name: placeName,
+    type: 'activity',
+    subtype: 'place',
+    lat: lat, lng: lng,
+    google_maps_url: url,
+    description: '',
+    baby_friendly: true,
+    tags: ['user-added', 'google-maps-import'],
+    _userAdded: true
+  };
+
+  if (!TRIP.days[dayIdx].activities) TRIP.days[dayIdx].activities = [];
+  TRIP.days[dayIdx].activities.push(item);
+
+  saveUserAdditions();
+  buildAllPanels();
+  goToDay(dayIdx, false);
+  closeAddModal();
+  showToast('Imported!', `${placeName} added to Day ${TRIP.days[dayIdx].day_number}`);
+  document.getElementById('add-gmaps-url').value = '';
+}
+
+function saveUserAdditions() {
+  // Save user-added items to localStorage
+  const userItems = [];
+  TRIP.days.forEach((day, i) => {
+    ['activities', 'restaurants'].forEach(cat => {
+      (day[cat] || []).forEach(item => {
+        if (item._userAdded) {
+          userItems.push({ dayIdx: i, category: cat, item: item });
+        }
+      });
+    });
+  });
+  try { localStorage.setItem('trip_user_additions', JSON.stringify(userItems)); } catch(e) {}
+}
+
+function loadUserAdditions() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('trip_user_additions') || '[]');
+    saved.forEach(({ dayIdx, category, item }) => {
+      if (TRIP.days[dayIdx]) {
+        if (!TRIP.days[dayIdx][category]) TRIP.days[dayIdx][category] = [];
+        // Avoid duplicates
+        if (!TRIP.days[dayIdx][category].some(x => x.name === item.name && x._userAdded)) {
+          TRIP.days[dayIdx][category].push(item);
+        }
+      }
+    });
+  } catch(e) {}
 }
 
 // ===== PLACE DETAIL BOTTOM SHEET =====
