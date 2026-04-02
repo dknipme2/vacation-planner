@@ -370,6 +370,144 @@ body{display:flex;flex-direction:column;position:relative}
 .tl-pm{background:rgba(52,211,153,0.15);color:var(--green)}
 .transfer-label .tl-text{font-size:13px;color:var(--text2)}
 
+/* Tips view */
+.tips-view{padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.tips-dest-header{
+  font-size:18px;font-weight:700;margin-bottom:4px;
+}
+.tips-dest-sub{font-size:12px;color:var(--text2);margin-bottom:16px}
+.tips-section{margin-bottom:20px}
+.tips-section-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--text3);font-weight:600;margin-bottom:8px;
+}
+.emergency-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;
+}
+.emergency-card{
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:12px;text-align:center;
+}
+.emergency-card a{color:var(--blue);text-decoration:none;font-size:18px;font-weight:800;display:block;margin-top:4px}
+.emergency-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+.phrase-card{
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:12px 14px;margin-bottom:6px;display:flex;justify-content:space-between;
+  align-items:center;cursor:pointer;transition:background .15s;
+}
+.phrase-card:active{background:var(--surface-2)}
+.phrase-local{font-size:14px;font-weight:600}
+.phrase-phonetic{font-size:11px;color:var(--text2);font-style:italic}
+.phrase-english{font-size:12px;color:var(--text3)}
+.phrase-copy{font-size:10px;color:var(--blue);flex-shrink:0;margin-left:8px}
+.tip-info-card{
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;margin-bottom:8px;
+}
+.tip-info-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.tip-info-text{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* Baby clock card */
+.baby-clock{
+  background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(168,85,247,0.06));
+  border:1px solid rgba(251,191,36,0.15);border-radius:var(--radius);
+  padding:14px;margin-bottom:12px;
+}
+.baby-clock-title{font-size:12px;font-weight:600;color:#fef3c7;margin-bottom:8px}
+.baby-clock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.baby-clock-item{text-align:center;padding:6px 4px;border-radius:var(--radius-sm);font-size:11px}
+.baby-clock-item.sleeping{background:rgba(99,102,241,0.12);color:#a5b4fc}
+.baby-clock-item.awake{background:rgba(52,211,153,0.1);color:var(--green)}
+.baby-clock-item.nap{background:rgba(251,191,36,0.1);color:#fef3c7}
+.bcl-local{font-weight:700;font-size:13px}
+.bcl-body{font-size:10px;color:var(--text3);margin-top:2px}
+.bcl-label{font-size:9px;margin-top:2px;opacity:0.7}
+
+/* Toast notification */
+.toast{
+  position:fixed;top:env(safe-area-inset-top,16px);left:16px;right:16px;
+  background:var(--surface-3);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px 16px;z-index:1000;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  transform:translateY(-120%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+.toast.show{transform:translateY(0)}
+.toast-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.toast-body{font-size:12px;color:var(--text2)}
+
+/* Activity & restaurant cards */
+.activity-card,.restaurant-card{
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;margin-bottom:8px;cursor:pointer;
+  transition:transform .15s,background .15s;
+}
+.activity-card:active,.restaurant-card:active{transform:scale(0.98);background:var(--surface-2)}
+.ar-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ar-icon{
+  width:36px;height:36px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+}
+.ar-icon.activity{background:var(--cat-activity-muted)}
+.ar-icon.restaurant{background:var(--cat-restaurant-muted)}
+.ar-icon.beach{background:var(--cat-beach-muted)}
+.ar-name{font-size:14px;font-weight:600;flex:1}
+.ar-baby{font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(52,211,153,0.1);color:var(--green);flex-shrink:0}
+.ar-details{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--text2);margin-bottom:6px}
+.ar-detail{display:flex;align-items:center;gap:3px}
+.ar-desc{font-size:12px;color:var(--text2);line-height:1.4;display:none}
+.activity-card.expanded .ar-desc,.restaurant-card.expanded .ar-desc{display:block;margin-top:6px}
+.ar-baby-notes{font-size:11px;color:var(--green);margin-top:4px;display:none}
+.activity-card.expanded .ar-baby-notes,.restaurant-card.expanded .ar-baby-notes{display:block}
+.ar-actions{display:none;margin-top:8px;gap:8px}
+.activity-card.expanded .ar-actions,.restaurant-card.expanded .ar-actions{display:flex}
+.ar-dir-link{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600}
+
+/* Timeline view */
+.timeline-toggle{
+  display:flex;gap:2px;background:var(--surface-1);border-radius:6px;padding:2px;margin-left:auto;
+}
+.timeline-toggle button{
+  padding:4px 10px;border:none;background:none;color:var(--text3);
+  font-size:11px;font-weight:600;border-radius:4px;cursor:pointer;
+}
+.timeline-toggle button.active{background:var(--surface-3);color:var(--text)}
+.timeline-container{padding:12px 16px 20px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.timeline-rail{position:relative;padding-left:44px}
+.timeline-rail::before{
+  content:'';position:absolute;left:18px;top:0;bottom:0;
+  width:2px;background:var(--border);
+}
+.tl-event{
+  position:relative;padding:8px 0 16px;
+}
+.tl-event::before{
+  content:'';position:absolute;left:-30px;top:12px;
+  width:10px;height:10px;border-radius:50%;border:2px solid var(--border);
+  background:var(--surface-0);z-index:1;
+}
+.tl-event.flight::before{background:var(--cat-flight);border-color:var(--cat-flight)}
+.tl-event.hotel::before{background:var(--cat-hotel);border-color:var(--cat-hotel)}
+.tl-event.activity::before{background:var(--cat-activity);border-color:var(--cat-activity)}
+.tl-event.restaurant::before{background:var(--cat-restaurant);border-color:var(--cat-restaurant)}
+.tl-event.transport::before{background:var(--purple);border-color:var(--purple)}
+.tl-event.checkout::before{background:var(--red);border-color:var(--red)}
+.tl-event.checkin::before{background:var(--green);border-color:var(--green)}
+.tl-time{
+  position:absolute;left:-44px;top:9px;font-size:10px;font-weight:700;
+  color:var(--text3);width:32px;text-align:right;
+}
+.tl-card{
+  background:var(--surface-glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:10px 12px;
+}
+.tl-card-title{font-size:13px;font-weight:600}
+.tl-card-sub{font-size:11px;color:var(--text2);margin-top:2px}
+
 /* Scrollbar */
 ::-webkit-scrollbar{width:0;height:0}
 </style>
@@ -422,6 +560,11 @@ body{display:flex;flex-direction:column;position:relative}
   <div class="bookings-view" id="bookings-content"></div>
 </div>
 
+<!-- TIPS VIEW -->
+<div class="view" id="view-tips">
+  <div class="tips-view" id="tips-content"></div>
+</div>
+
 <!-- STATUS VIEW -->
 <div class="view" id="view-status">
   <div class="status-view" id="status-content"></div>
@@ -432,6 +575,7 @@ body{display:flex;flex-direction:column;position:relative}
   <button class="nav-tab active" data-view="daily"><span class="tab-icon">📅</span>Daily</button>
   <button class="nav-tab" data-view="map"><span class="tab-icon">🗺️</span>Map</button>
   <button class="nav-tab" data-view="bookings"><span class="tab-icon">📋</span>Bookings</button>
+  <button class="nav-tab" data-view="tips"><span class="tab-icon">💡</span>Tips</button>
   <button class="nav-tab" data-view="status"><span class="tab-icon">⚡</span>Status</button>
 </div>
 
@@ -461,9 +605,12 @@ function init(){
   buildAllPanels();
   buildBookings();
   buildStatus();
+  buildTips();
   setupNav();
   setupSwipe();
   goToDay(0, false);
+  requestNotifications();
+  scheduleReminders();
 }
 
 // Format date
@@ -566,7 +713,9 @@ function renderDay(day){
     return html;
   }
 
-  // STAY day
+  // STAY day — baby clock first
+  html += renderBabyClock(TRIP.days.indexOf(day));
+
   if(day.accommodation){
     html += renderAccommodation(day.accommodation);
     // Baby amenities
@@ -584,11 +733,9 @@ function renderDay(day){
       </div></div>`;
   }
 
-  // Placeholders
-  html += `<div class="section-title">Activities Nearby</div>`;
-  html += `<div class="placeholder-card"><div class="ph-icon">🏛️</div><div class="ph-text">Activities coming soon</div></div>`;
-  html += `<div class="section-title">Restaurant Picks</div>`;
-  html += `<div class="placeholder-card"><div class="ph-icon">🍽️</div><div class="ph-text">Restaurant picks coming soon</div></div>`;
+  // Activities & restaurants (real data or placeholders)
+  html += renderActivities(day.activities);
+  html += renderRestaurants(day.restaurants);
 
   if(day.notes && day.notes.length){
     html += renderNotes(day.notes);
@@ -741,6 +888,9 @@ function goToDay(i, animate){
   // Update nav buttons
   document.getElementById('btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
   document.getElementById('btn-next').style.visibility = i === TRIP.days.length-1 ? 'hidden' : 'visible';
+
+  // Refresh tips for new destination
+  if(document.getElementById('view-tips').classList.contains('active')) buildTips();
 }
 
 function dayBadgeText(day){
@@ -754,14 +904,22 @@ function setupNav(){
   document.getElementById('btn-prev').addEventListener('click', ()=> goToDay(currentDay-1, true));
   document.getElementById('btn-next').addEventListener('click', ()=> goToDay(currentDay+1, true));
 
-  // Tab nav
+  // Tab nav with view transitions
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', ()=>{
       const v = tab.dataset.view;
-      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
-      document.getElementById('view-'+v).classList.add('active');
+      const switchView = () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+        document.getElementById('view-'+v).classList.add('active');
+        if (v === 'tips') buildTips();
+      };
+      if (document.startViewTransition) {
+        document.startViewTransition(switchView);
+      } else {
+        switchView();
+      }
     });
   });
 }
@@ -906,7 +1064,7 @@ function buildStatus(){
     <div class="si-icon">📋</div>
     <div class="si-info">
       <div class="si-title">Activities</div>
-      <div class="si-detail">Not yet planned &mdash; coming soon</div>
+      <div class="si-detail">Curated picks per destination</div>
     </div>
   </div>`;
 
@@ -914,11 +1072,412 @@ function buildStatus(){
     <div class="si-icon">🍽️</div>
     <div class="si-info">
       <div class="si-title">Restaurants</div>
-      <div class="si-detail">Not yet planned &mdash; coming soon</div>
+      <div class="si-detail">Curated picks per destination</div>
     </div>
   </div>`;
 
+  html += `<div class="status-item">
+    <div class="si-icon">🔔</div>
+    <div class="si-info">
+      <div class="si-title">Reminders</div>
+      <div class="si-detail">Check-in &amp; checkout alerts (app must be open)</div>
+    </div>
+  </div>`;
+
+  html += `<div style="margin-top:16px;text-align:center">
+    <button onclick="shareTrip()" style="
+      padding:12px 24px;border:1px solid var(--blue);background:rgba(96,165,250,0.1);
+      color:var(--blue);border-radius:var(--radius);font-size:14px;font-weight:600;
+      cursor:pointer;-webkit-appearance:none;
+    ">📤 Share Trip with Michelle</button>
+  </div>`;
+
   el.innerHTML = html;
+}
+
+// ===== LOCAL TIPS & PHRASEBOOK =====
+const LOCAL_TIPS = {
+  vienna: {
+    country: 'Austria', flag: '🇦🇹', language: 'German',
+    emergency: [
+      {label:'Emergency',number:'112'},
+      {label:'Police',number:'133'},
+      {label:'Ambulance',number:'144'},
+      {label:'Fire',number:'122'}
+    ],
+    phrases: [
+      {local:'Guten Tag',phonetic:'GOO-ten tahg',english:'Hello / Good day'},
+      {local:'Bitte',phonetic:'BIT-teh',english:'Please / You\'re welcome'},
+      {local:'Danke',phonetic:'DAHN-keh',english:'Thank you'},
+      {local:'Entschuldigung',phonetic:'ent-SHOOL-dee-goong',english:'Excuse me'},
+      {local:'Sprechen Sie Englisch?',phonetic:'SHPREH-khen zee ENG-lish',english:'Do you speak English?'},
+      {local:'Wo ist die Toilette?',phonetic:'vo ist dee toy-LET-teh',english:'Where is the toilet?'},
+      {local:'Die Rechnung, bitte',phonetic:'dee REKH-noong BIT-teh',english:'The check, please'},
+      {local:'Einen Kinderwagen, bitte',phonetic:'EYE-nen KIN-der-vah-gen BIT-teh',english:'A stroller, please'},
+      {local:'Wo ist die nächste Apotheke?',phonetic:'vo ist dee NEKH-steh ah-po-TAY-keh',english:'Where is the nearest pharmacy?'},
+      {local:'Mein Baby braucht einen Arzt',phonetic:'mine BAY-bee browkht EYE-nen artst',english:'My baby needs a doctor'},
+      {local:'Haben Sie einen Hochstuhl?',phonetic:'HAH-ben zee EYE-nen HOKH-shtool',english:'Do you have a high chair?'},
+      {local:'Ja / Nein',phonetic:'yah / nine',english:'Yes / No'},
+      {local:'Eins, Zwei, Drei',phonetic:'eyns, tsvey, dry',english:'One, Two, Three'}
+    ],
+    tips: [
+      {title:'💰 Tipping',text:'Round up 5-10%. Service charge ("Gedeck") often included. Leave coins on table.'},
+      {title:'💊 Pharmacies',text:'Look for green cross signs ("Apotheke"). Open Mon-Fri 8-18, Sat 8-12. Night pharmacies rotate.'},
+      {title:'🔌 Power',text:'Type C/F plugs, 230V. Same as most of Europe.'},
+      {title:'🚇 Transit',text:'Vienna has excellent public transit. Buy a 72-hour pass (€17.10). Strollers ride free.'},
+      {title:'💧 Water',text:'Tap water is excellent — Vienna\'s comes from Alpine springs. Safe for baby formula.'},
+      {title:'👶 Baby Supplies',text:'DM and BIPA drugstores have great baby sections. Formula brands: Aptamil, HiPP.'}
+    ]
+  },
+  crete: {
+    country: 'Greece', flag: '🇬🇷', language: 'Greek',
+    emergency: [
+      {label:'Emergency',number:'112'},
+      {label:'Police',number:'100'},
+      {label:'Ambulance',number:'166'},
+      {label:'Tourist Police',number:'171'}
+    ],
+    phrases: [
+      {local:'Γεια σας (Yia sas)',phonetic:'YAH-sahs',english:'Hello (formal)'},
+      {local:'Παρακαλώ (Parakaló)',phonetic:'pah-rah-kah-LO',english:'Please / You\'re welcome'},
+      {local:'Ευχαριστώ (Efcharistó)',phonetic:'ef-hah-ree-STO',english:'Thank you'},
+      {local:'Συγνώμη (Signómi)',phonetic:'see-GNO-mee',english:'Excuse me / Sorry'},
+      {local:'Μιλάτε Αγγλικά? (Miláte Angliká?)',phonetic:'mee-LAH-teh ang-lee-KAH',english:'Do you speak English?'},
+      {local:'Πού είναι η τουαλέτα? (Poú eínai i toualéta?)',phonetic:'POO EE-neh ee too-ah-LET-ah',english:'Where is the toilet?'},
+      {local:'Τον λογαριασμό (Ton logariasmó)',phonetic:'ton lo-gah-ree-as-MO',english:'The bill, please'},
+      {local:'Ναι / Όχι (Nai / Óchi)',phonetic:'neh / OH-hee',english:'Yes / No'},
+      {local:'Πόσο κάνει? (Póso kánei?)',phonetic:'PO-so KAH-nee',english:'How much does it cost?'},
+      {local:'Το μωρό μου χρειάζεται γιατρό',phonetic:'to mo-RO moo hree-AH-zeh-teh yah-TRO',english:'My baby needs a doctor'},
+      {local:'Πού είναι το φαρμακείο?',phonetic:'POO EE-neh to far-mah-KEE-oh',english:'Where is the pharmacy?'},
+      {local:'Νερό (Neró)',phonetic:'neh-RO',english:'Water'},
+      {local:'Καλημέρα (Kaliméra)',phonetic:'kah-lee-MEH-rah',english:'Good morning'}
+    ],
+    tips: [
+      {title:'💰 Tipping',text:'5-10% is generous. Many locals just round up. Tips always in cash.'},
+      {title:'💊 Pharmacies',text:'Green cross signs. Open Mon-Fri 8:30-14:00. Some open evening hours. Elounda has one on main road.'},
+      {title:'🔌 Power',text:'Type C/F plugs, 230V. Same adapter as Austria.'},
+      {title:'🚗 Driving',text:'Drive on the right. Mountain roads can be narrow. Car seats required by law for infants.'},
+      {title:'💧 Water',text:'Bottled water recommended for baby formula in Crete. Tap water is safe but tastes mineral-heavy.'},
+      {title:'☀️ Sun Safety',text:'May sun is strong (UV 7-8). Keep Owen in shade 11AM-3PM. SPF 50+ baby sunscreen.'},
+      {title:'👶 Baby Supplies',text:'Pharmacies stock Frezyderm and Apivita baby products. Formula: Nutrilak, NAN.'}
+    ]
+  },
+  zurich: {
+    country: 'Switzerland', flag: '🇨🇭', language: 'Swiss German',
+    emergency: [
+      {label:'Emergency',number:'112'},
+      {label:'Police',number:'117'},
+      {label:'Ambulance',number:'144'},
+      {label:'Fire',number:'118'}
+    ],
+    phrases: [
+      {local:'Grüezi',phonetic:'GROO-et-see',english:'Hello (Swiss German)'},
+      {local:'Bitte',phonetic:'BIT-teh',english:'Please'},
+      {local:'Danke / Merci',phonetic:'DAHN-keh / mair-SEE',english:'Thank you'},
+      {local:'Entschuldigung',phonetic:'ent-SHOOL-dee-goong',english:'Excuse me'},
+      {local:'Sprechen Sie Englisch?',phonetic:'SHPREH-khen zee ENG-lish',english:'Do you speak English?'},
+      {local:'Wo ist die Toilette?',phonetic:'vo ist dee toy-LET-teh',english:'Where is the toilet?'},
+      {local:'Zahlen, bitte',phonetic:'TSAH-len BIT-teh',english:'The check, please'},
+      {local:'Wo ist die nächste Apotheke?',phonetic:'vo ist dee NEKH-steh ah-po-TAY-keh',english:'Where is the nearest pharmacy?'},
+      {local:'Mein Baby braucht einen Arzt',phonetic:'mine BAY-bee browkht EYE-nen artst',english:'My baby needs a doctor'},
+      {local:'Ja / Nein',phonetic:'yah / nine',english:'Yes / No'}
+    ],
+    tips: [
+      {title:'💰 Tipping',text:'Service included by law. Rounding up is polite but not expected. Switzerland is expensive.'},
+      {title:'💊 Pharmacies',text:'Look for green cross. Open Mon-Fri 8-18:30, Sat 8-16. Sunday pharmacies at Hauptbahnhof.'},
+      {title:'🔌 Power',text:'Type J plugs (3-pin). You may need a Swiss adapter — different from Austria/Greece!'},
+      {title:'🚇 Transit',text:'ZVV day pass covers trams, buses, boats, trains in zones 1-2. Strollers ride free.'},
+      {title:'💧 Water',text:'Tap water is pristine. Zurich fountains are safe to drink from. Perfect for formula.'},
+      {title:'👶 Baby Supplies',text:'Migros and Coop supermarkets have excellent baby aisles. Formula: Aptamil, HiPP.'},
+      {title:'💶 Currency',text:'Swiss Francs (CHF), not Euros. Cards accepted almost everywhere. Current rate ~1 CHF = $1.10 USD.'}
+    ]
+  }
+};
+
+function getDestination(dayIdx) {
+  const day = TRIP.days[dayIdx];
+  const city = day.location.city.toLowerCase();
+  if (city.includes('vienna') || city.includes('wien')) return 'vienna';
+  if (city.includes('crete') || city.includes('elounda') || city.includes('agios') || city.includes('heraklion')) return 'crete';
+  if (city.includes('zurich') || city.includes('zürich')) return 'zurich';
+  return null;
+}
+
+function buildTips() {
+  const el = document.getElementById('tips-content');
+  const dest = getDestination(currentDay);
+  if (!dest) {
+    el.innerHTML = `<div style="text-align:center;padding:40px 16px;color:var(--text3)">
+      <div style="font-size:32px;margin-bottom:8px">✈️</div>
+      <p>Tips will show for your destination cities.</p>
+      <p style="margin-top:4px;font-size:12px">Navigate to a Vienna, Crete, or Zurich day.</p>
+    </div>`;
+    return;
+  }
+  const tips = LOCAL_TIPS[dest];
+  let html = `<div class="tips-dest-header">${tips.flag} ${tips.country} — ${tips.language}</div>`;
+  html += `<div class="tips-dest-sub">Tap phrases to copy</div>`;
+
+  // Emergency numbers
+  html += `<div class="tips-section"><div class="tips-section-title">🚨 Emergency Numbers</div>`;
+  html += `<div class="emergency-grid">`;
+  tips.emergency.forEach(e => {
+    html += `<div class="emergency-card"><div class="emergency-label">${e.label}</div><a href="tel:${e.number}">${e.number}</a></div>`;
+  });
+  html += `</div></div>`;
+
+  // Phrases
+  html += `<div class="tips-section"><div class="tips-section-title">🗣️ Key Phrases</div>`;
+  tips.phrases.forEach(p => {
+    html += `<div class="phrase-card" onclick="copyPhrase('${p.local.replace(/'/g,"\\'")}')">
+      <div><div class="phrase-local">${p.local}</div>
+      <div class="phrase-phonetic">${p.phonetic}</div>
+      <div class="phrase-english">${p.english}</div></div>
+      <span class="phrase-copy">copy</span>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // Tips
+  html += `<div class="tips-section"><div class="tips-section-title">📌 Local Tips</div>`;
+  tips.tips.forEach(t => {
+    html += `<div class="tip-info-card"><div class="tip-info-title">${t.title}</div><div class="tip-info-text">${t.text}</div></div>`;
+  });
+  html += `</div>`;
+
+  el.innerHTML = html;
+}
+
+function copyPhrase(text) {
+  // Strip parenthetical romanization for clean copy
+  const clean = text.replace(/\s*\(.*?\)\s*/g, '');
+  navigator.clipboard.writeText(clean).then(() => {
+    showToast('Copied!', clean);
+  }).catch(() => {});
+}
+
+// ===== BABY TIME ZONE HELPER =====
+function renderBabyClock(dayIdx) {
+  const day = TRIP.days[dayIdx];
+  const city = day.location.city;
+  if (city === 'Chicago') return '';
+
+  // CDT (UTC-5) to CEST (UTC+2) = +7h, EEST (UTC+3) = +8h
+  const dest = getDestination(dayIdx);
+  const offset = (dest === 'crete') ? 8 : 7;
+  const tzName = (dest === 'crete') ? 'EEST' : 'CEST';
+
+  const slots = [
+    {local: 7, label: 'Morning'},
+    {local: 9, label: 'Mid-morning'},
+    {local: 12, label: 'Lunch'},
+    {local: 15, label: 'Afternoon'},
+    {local: 18, label: 'Dinner'},
+    {local: 20, label: 'Bedtime'}
+  ];
+
+  let html = `<div class="baby-clock"><div class="baby-clock-title">👶 Owen's Body Clock (CDT → ${tzName})</div>`;
+  html += `<div class="baby-clock-grid">`;
+  slots.forEach(s => {
+    let bodyHour = ((s.local - offset) % 24 + 24) % 24;
+    const fmtLocal = s.local > 12 ? (s.local-12)+'PM' : s.local+'AM';
+    const fmtBody = bodyHour > 12 ? (bodyHour-12)+'PM' : (bodyHour===0?'12AM':bodyHour+'AM');
+    // Categorize by Owen's body clock
+    let cls = 'awake';
+    if (bodyHour >= 19 || bodyHour < 6) cls = 'sleeping';
+    else if (bodyHour >= 12 && bodyHour <= 14) cls = 'nap';
+    html += `<div class="baby-clock-item ${cls}">
+      <div class="bcl-local">${fmtLocal}</div>
+      <div class="bcl-body">Owen: ${fmtBody}</div>
+      <div class="bcl-label">${cls === 'sleeping' ? '💤 Sleep time' : cls === 'nap' ? '😴 Nap window' : '☀️ Awake'}</div>
+    </div>`;
+  });
+  html += `</div></div>`;
+  return html;
+}
+
+// ===== NOTIFICATIONS & REMINDERS =====
+let toastTimeout = null;
+function showToast(title, body) {
+  let toast = document.getElementById('app-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'app-toast';
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<div class="toast-title">${title}</div><div class="toast-body">${body}</div>`;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+function scheduleReminders() {
+  if (!TRIP) return;
+  const now = new Date();
+
+  TRIP.days.forEach(day => {
+    // Flight check-in reminders (T-24h)
+    if (day.flights) {
+      day.flights.forEach(f => {
+        const depart = new Date(f.depart_date + 'T' + f.depart_time + ':00');
+        const checkIn = new Date(depart.getTime() - 24 * 60 * 60 * 1000);
+        const msUntil = checkIn.getTime() - now.getTime();
+        if (msUntil > 0 && msUntil < 7 * 24 * 60 * 60 * 1000) {
+          setTimeout(() => {
+            notifyUser(`✈️ Check-in Open`, `${f.airline} ${f.flight_number}: ${f.from.code} → ${f.to.code}. Check in now!`);
+          }, msUntil);
+        }
+      });
+    }
+    // Checkout reminders (8AM on checkout day)
+    if (day.checkout) {
+      const co = new Date(day.date + 'T08:00:00');
+      const msUntil = co.getTime() - now.getTime();
+      if (msUntil > 0 && msUntil < 7 * 24 * 60 * 60 * 1000) {
+        setTimeout(() => {
+          notifyUser(`🏨 Checkout Today`, `${day.checkout.property} — checkout by ${day.checkout.time || 'morning'}`);
+        }, msUntil);
+      }
+    }
+  });
+}
+
+function notifyUser(title, body) {
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification(title, { body, icon: 'manifest.json' });
+  }
+  showToast(title, body);
+}
+
+function requestNotifications() {
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+}
+
+// ===== TIMELINE VIEW =====
+let viewMode = 'cards';
+
+function renderTimeline(day) {
+  let events = [];
+
+  // Collect timed events
+  if (day.checkout) {
+    events.push({time: day.checkout.time || '10:00', title: `Checkout: ${day.checkout.property}`, type: 'checkout'});
+  }
+  if (day.flights) {
+    day.flights.forEach(f => {
+      events.push({time: f.depart_time, title: `${f.airline} ${f.flight_number}`, sub: `${f.from.code} → ${f.to.code}`, type: 'flight'});
+    });
+  }
+  if (day.checkin) {
+    events.push({time: day.checkin.time || '15:00', title: `Check in: ${day.checkin.property}`, type: 'checkin'});
+  }
+  if (day.accommodation && day.day_type === 'stay') {
+    events.push({time: '09:00', title: day.accommodation.name, sub: `Night ${day.accommodation.night_n} of ${day.accommodation.total_nights}`, type: 'hotel'});
+  }
+  if (day.activities) {
+    day.activities.forEach(a => {
+      events.push({time: a.suggested_time || '10:00', title: a.name, sub: a.duration ? `${a.duration} · ${a.cost || 'Free'}` : '', type: 'activity'});
+    });
+  }
+  if (day.restaurants) {
+    day.restaurants.forEach(r => {
+      events.push({time: r.suggested_time || '12:00', title: r.name, sub: r.cuisine ? `${r.cuisine} · ${r.price_range || ''}` : '', type: 'restaurant'});
+    });
+  }
+  if (day.car_rental && day.car_rental.active) {
+    events.push({time: '08:00', title: `🚗 ${day.car_rental.provider || 'Rental Car'}`, sub: day.car_rental.notes || '', type: 'transport'});
+  }
+
+  // Sort by time
+  events.sort((a, b) => a.time.localeCompare(b.time));
+
+  if (events.length === 0) {
+    return `<div style="text-align:center;padding:40px;color:var(--text3)">No timed events for this day</div>`;
+  }
+
+  let html = `<div class="timeline-rail">`;
+  events.forEach(e => {
+    const fmtT = fmtTime(e.time);
+    html += `<div class="tl-event ${e.type}">
+      <div class="tl-time">${fmtT}</div>
+      <div class="tl-card">
+        <div class="tl-card-title">${e.title}</div>
+        ${e.sub ? `<div class="tl-card-sub">${e.sub}</div>` : ''}
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+  return html;
+}
+
+// ===== ACTIVITY/RESTAURANT RENDERING =====
+function renderActivities(activities) {
+  if (!activities || activities.length === 0) {
+    return `<div class="section-title">ACTIVITIES NEARBY</div>
+      <div class="placeholder-card"><div class="ph-icon">🏛️</div><div class="ph-text">Activities coming soon</div></div>`;
+  }
+  let html = `<div class="section-title">ACTIVITIES NEARBY</div>`;
+  activities.forEach(a => {
+    const icon = a.subtype === 'beach' ? '🏖️' : a.subtype === 'park' || a.subtype === 'garden' ? '🌿' : a.subtype === 'market' ? '🛍️' : '📍';
+    const iconClass = a.subtype === 'beach' ? 'beach' : 'activity';
+    const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${a.lat},${a.lng}`;
+    html += `<div class="activity-card" onclick="this.classList.toggle('expanded')">
+      <div class="ar-header">
+        <div class="ar-icon ${iconClass}">${icon}</div>
+        <div class="ar-name">${a.name}</div>
+        ${a.baby_friendly ? '<span class="ar-baby">👶 Baby OK</span>' : ''}
+      </div>
+      <div class="ar-details">
+        ${a.cost ? `<span class="ar-detail">💰 ${a.cost}</span>` : ''}
+        ${a.duration ? `<span class="ar-detail">⏱️ ${a.duration}</span>` : ''}
+        ${a.hours ? `<span class="ar-detail">🕐 ${a.hours}</span>` : ''}
+      </div>
+      <div class="ar-desc">${a.description || ''}</div>
+      ${a.baby_notes ? `<div class="ar-baby-notes">👶 ${a.baby_notes}</div>` : ''}
+      <div class="ar-actions"><a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">Directions ↗</a></div>
+    </div>`;
+  });
+  return html;
+}
+
+function renderRestaurants(restaurants) {
+  if (!restaurants || restaurants.length === 0) {
+    return `<div class="section-title">RESTAURANT PICKS</div>
+      <div class="placeholder-card"><div class="ph-icon">🍽️</div><div class="ph-text">Restaurant picks coming soon</div></div>`;
+  }
+  let html = `<div class="section-title">RESTAURANT PICKS</div>`;
+  restaurants.forEach(r => {
+    const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}`;
+    html += `<div class="restaurant-card" onclick="this.classList.toggle('expanded')">
+      <div class="ar-header">
+        <div class="ar-icon restaurant">🍽️</div>
+        <div class="ar-name">${r.name}</div>
+        ${r.baby_friendly ? '<span class="ar-baby">👶 Baby OK</span>' : ''}
+      </div>
+      <div class="ar-details">
+        ${r.cuisine ? `<span class="ar-detail">🍴 ${r.cuisine}</span>` : ''}
+        ${r.price_range ? `<span class="ar-detail">💰 ${r.price_range}</span>` : ''}
+        ${r.hours ? `<span class="ar-detail">🕐 ${r.hours}</span>` : ''}
+      </div>
+      <div class="ar-desc">${r.description || ''}</div>
+      ${r.baby_notes ? `<div class="ar-baby-notes">👶 ${r.baby_notes}</div>` : ''}
+      <div class="ar-actions"><a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">Directions ↗</a></div>
+    </div>`;
+  });
+  return html;
+}
+
+// ===== SHARING =====
+function shareTrip() {
+  const url = 'https://dknipme2.github.io/vacation-planner/';
+  if (navigator.share) {
+    navigator.share({title: 'Knipmeyer Europe 2026', url}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(url).then(() => showToast('Link Copied!', url)).catch(()=>{});
+  }
 }
 
 // ===== MAPBOX MAP =====
