@@ -8,6 +8,8 @@
 <meta name="theme-color" content="#0f172a">
 <link rel="manifest" href="manifest.json">
 <title>Trip Planner</title>
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -236,10 +238,56 @@ body{display:flex;flex-direction:column;position:relative}
 .view{display:none;flex:1;overflow:hidden}
 .view.active{display:flex;flex-direction:column}
 
-/* Map placeholder */
-.map-view{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
-.map-view .map-icon{font-size:60px;opacity:.3}
-.map-view .map-text{color:var(--text3);font-size:14px}
+/* Map */
+#map-container{flex:1;position:relative}
+#mapbox-map{width:100%;height:100%}
+.map-filters{
+  position:absolute;top:12px;left:12px;right:12px;z-index:5;
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.map-chip{
+  padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;
+  background:rgba(15,23,42,0.85);color:var(--text2);border:1px solid var(--border);
+  cursor:pointer;-webkit-appearance:none;touch-action:manipulation;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:all .15s;white-space:nowrap;
+}
+.map-chip.active{color:var(--blue);border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.15)}
+.map-marker{
+  width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;cursor:pointer;border:2px solid rgba(255,255,255,0.3);
+  box-shadow:0 2px 8px rgba(0,0,0,0.4);transition:transform .15s;
+}
+.map-marker:hover{transform:scale(1.15)}
+.map-marker.accommodation{background:#059669}
+.map-marker.activity{background:#ea580c}
+.map-marker.restaurant{background:#dc2626}
+.map-marker.beach{background:#7c3aed}
+.map-marker.market{background:#d97706}
+.map-marker.airport{background:#2563eb}
+.mapboxgl-popup-content{
+  background:var(--bg2)!important;color:var(--text)!important;
+  border-radius:var(--radius)!important;padding:14px 16px!important;
+  box-shadow:0 4px 24px rgba(0,0,0,0.5)!important;
+  border:1px solid var(--border)!important;max-width:220px!important;
+}
+.mapboxgl-popup-tip{border-top-color:var(--bg2)!important}
+.mapboxgl-popup-close-button{color:var(--text2)!important;font-size:18px!important;right:6px!important;top:4px!important}
+.popup-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.popup-type{
+  display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;
+  padding:2px 8px;border-radius:10px;margin-bottom:8px;letter-spacing:.5px;
+}
+.popup-type.accommodation{background:rgba(5,150,105,0.2);color:#34d399}
+.popup-type.activity{background:rgba(234,88,12,0.2);color:#fb923c}
+.popup-type.restaurant{background:rgba(220,38,38,0.2);color:#f87171}
+.popup-type.beach{background:rgba(124,58,237,0.2);color:#a78bfa}
+.popup-type.market{background:rgba(217,119,6,0.2);color:#fbbf24}
+.popup-type.airport{background:rgba(37,99,235,0.2);color:#60a5fa}
+.popup-dir{
+  display:inline-block;font-size:12px;color:var(--blue);text-decoration:none;font-weight:600;
+}
+.popup-dir:hover{text-decoration:underline}
 
 /* Status view */
 .status-view{padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -309,12 +357,14 @@ body{display:flex;flex-direction:column;position:relative}
 
 <!-- MAP VIEW -->
 <div class="view" id="view-map">
-  <div class="map-view">
-    <div class="map-icon">🗺️</div>
-    <div class="map-text">Interactive map coming soon</div>
-    <div style="color:var(--text3);font-size:12px;text-align:center;padding:0 32px;margin-top:8px">
-      ORD &rarr; VIE &rarr; HER &rarr; ZRH &rarr; ORD
-    </div>
+  <div class="map-filters" id="map-filters">
+    <button class="map-chip active" data-filter="all">All</button>
+    <button class="map-chip" data-filter="activity">📍 Activities</button>
+    <button class="map-chip" data-filter="restaurant">🍽️ Restaurants</button>
+    <button class="map-chip" data-filter="beach">🏖️ Beaches</button>
+  </div>
+  <div id="map-container">
+    <div id="mapbox-map"></div>
   </div>
 </div>
 
@@ -814,6 +864,354 @@ function buildStatus(){
 
   el.innerHTML = html;
 }
+
+// ===== MAPBOX MAP =====
+const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFuaWVsa25pcG1leWVyIiwiYSI6ImNtbmd1YW1xNDBjdjQycnB1ZDBlaDN4cTcifQ.KJd5NbrJ2iDKez4K6wg43g';
+
+let mapInstance = null;
+let mapMarkers = [];
+let mapPopup = null;
+let activeFilter = 'all';
+let mapInitialized = false;
+
+// Coordinates
+const COORDS = {
+  accommodations: {
+    vienna: { lat: 48.1815, lng: 16.3896, name: 'LUXUS-Apartment mit Weitblick' },
+    crete:  { lat: 35.2601, lng: 25.7314, name: 'Daios Cove Luxury Resort' },
+    zurich: { lat: 47.4515, lng: 8.5620, name: 'Radisson Blu, Zurich Airport' }
+  },
+  airports: {
+    ORD: { lat: 41.9742, lng: -87.9073, name: 'Chicago O\'Hare (ORD)' },
+    VIE: { lat: 48.1103, lng: 16.5697, name: 'Vienna Schwechat (VIE)' },
+    HER: { lat: 35.3396, lng: 25.1802, name: 'Heraklion Airport (HER)' },
+    ZRH: { lat: 47.4502, lng: 8.5616, name: 'Zurich Airport (ZRH)' }
+  },
+  pois: {
+    vienna: [
+      { lat: 48.2082, lng: 16.3738, name: 'Stephansdom (St. Stephen\'s Cathedral)', type: 'activity' },
+      { lat: 48.1988, lng: 16.3630, name: 'Naschmarkt', type: 'market' },
+      { lat: 48.2106, lng: 16.3651, name: 'Caf\u00e9 Central', type: 'restaurant' },
+      { lat: 48.1845, lng: 16.3122, name: 'Sch\u00f6nbrunn Palace', type: 'activity' },
+      { lat: 48.1914, lng: 16.3809, name: 'Belvedere Palace', type: 'activity' }
+    ],
+    crete: [
+      { lat: 35.3023, lng: 25.7453, name: 'Spinalonga Island', type: 'activity' },
+      { lat: 35.2600, lng: 25.7280, name: 'Elounda Old Town', type: 'activity' },
+      { lat: 35.2967, lng: 25.7380, name: 'Plaka Village', type: 'activity' },
+      { lat: 35.1907, lng: 25.7167, name: 'Agios Nikolaos Lake', type: 'activity' },
+      { lat: 35.2195, lng: 25.8015, name: 'Voulisma Beach', type: 'beach' },
+      { lat: 35.2702, lng: 25.7344, name: 'Kolokithia Beach', type: 'beach' }
+    ],
+    zurich: [
+      { lat: 47.3717, lng: 8.5422, name: 'Old Town (Altstadt)', type: 'activity' },
+      { lat: 47.3531, lng: 8.5458, name: 'Lake Zurich Promenade', type: 'activity' },
+      { lat: 47.3691, lng: 8.5388, name: 'Bahnhofstrasse', type: 'activity' },
+      { lat: 47.3791, lng: 8.5397, name: 'Swiss National Museum', type: 'activity' }
+    ]
+  }
+};
+
+// Map day index -> city key
+function getCityForDay(dayIdx) {
+  const d = TRIP.days[dayIdx];
+  const city = d.location.city.toLowerCase();
+  if (city.includes('vienna') || city.includes('wien')) return 'vienna';
+  if (city.includes('crete') || city.includes('heraklion') || city.includes('agios')) return 'crete';
+  if (city.includes('zurich') || city.includes('z\u00fcrich')) return 'zurich';
+  if (city.includes('chicago')) return 'chicago';
+  // Transfer days
+  if (city.includes('vienna') && city.includes('crete')) return 'transfer_vie_her';
+  if (city.includes('crete') && city.includes('zurich')) return 'transfer_her_zrh';
+  return null;
+}
+
+function getMapConfigForDay(dayIdx) {
+  const day = TRIP.days[dayIdx];
+  const dt = day.day_type;
+  const city = getCityForDay(dayIdx);
+
+  if (dt === 'stay') {
+    let accomKey, poisKey;
+    if (city === 'vienna') { accomKey = 'vienna'; poisKey = 'vienna'; }
+    else if (city === 'crete') { accomKey = 'crete'; poisKey = 'crete'; }
+    else if (city === 'zurich') { accomKey = 'zurich'; poisKey = 'zurich'; }
+    else return null;
+    const accom = COORDS.accommodations[accomKey];
+    return {
+      type: 'stay',
+      center: [accom.lng, accom.lat],
+      zoom: poisKey === 'crete' ? 11 : 12,
+      accommodation: accom,
+      pois: COORDS.pois[poisKey] || []
+    };
+  }
+
+  if (dt === 'transfer') {
+    // May 7: Vienna -> VIE -> HER -> Daios Cove
+    if (dayIdx === 4) {
+      return {
+        type: 'transfer',
+        segments: [
+          { from: COORDS.accommodations.vienna, to: COORDS.airports.VIE, mode: 'ground' },
+          { from: COORDS.airports.VIE, to: COORDS.airports.HER, mode: 'flight' },
+          { from: COORDS.airports.HER, to: COORDS.accommodations.crete, mode: 'ground' }
+        ],
+        airports: [COORDS.airports.VIE, COORDS.airports.HER],
+        accommodations: [COORDS.accommodations.vienna, COORDS.accommodations.crete]
+      };
+    }
+    // May 14: Daios Cove -> HER -> ZRH -> Radisson
+    if (dayIdx === 11) {
+      return {
+        type: 'transfer',
+        segments: [
+          { from: COORDS.accommodations.crete, to: COORDS.airports.HER, mode: 'ground' },
+          { from: COORDS.airports.HER, to: COORDS.airports.ZRH, mode: 'flight' },
+          { from: COORDS.airports.ZRH, to: COORDS.accommodations.zurich, mode: 'ground' }
+        ],
+        airports: [COORDS.airports.HER, COORDS.airports.ZRH],
+        accommodations: [COORDS.accommodations.crete, COORDS.accommodations.zurich]
+      };
+    }
+    return null;
+  }
+
+  if (dt === 'travel') {
+    // May 3: ORD -> VIE
+    if (dayIdx === 0) {
+      return {
+        type: 'travel',
+        segments: [
+          { from: COORDS.airports.ORD, to: COORDS.airports.VIE, mode: 'flight' }
+        ],
+        airports: [COORDS.airports.ORD, COORDS.airports.VIE]
+      };
+    }
+    // May 17: ZRH -> ORD
+    if (dayIdx === 14) {
+      return {
+        type: 'travel',
+        segments: [
+          { from: COORDS.airports.ZRH, to: COORDS.airports.ORD, mode: 'flight' }
+        ],
+        airports: [COORDS.airports.ZRH, COORDS.airports.ORD]
+      };
+    }
+    return null;
+  }
+
+  return null;
+}
+
+function createMarkerEl(type) {
+  const el = document.createElement('div');
+  el.className = 'map-marker ' + type;
+  const icons = {
+    accommodation: '\uD83C\uDFE8',
+    activity: '\uD83D\uDCCD',
+    restaurant: '\uD83C\uDF7D\uFE0F',
+    beach: '\uD83C\uDFD6\uFE0F',
+    market: '\uD83D\uDED2',
+    airport: '\u2708\uFE0F'
+  };
+  el.textContent = icons[type] || '\uD83D\uDCCD';
+  return el;
+}
+
+function makePopupHTML(name, type, lat, lng) {
+  const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  return `<div class="popup-name">${name}</div>
+    <span class="popup-type ${type}">${type}</span><br>
+    <a class="popup-dir" href="${dirUrl}" target="_blank" rel="noopener">Directions \u2197</a>`;
+}
+
+function clearMap() {
+  mapMarkers.forEach(m => m.marker.remove());
+  mapMarkers = [];
+  if (mapPopup) { mapPopup.remove(); mapPopup = null; }
+  // Remove route layers/sources
+  if (mapInstance) {
+    ['route-flight', 'route-ground'].forEach(id => {
+      if (mapInstance.getLayer(id)) mapInstance.removeLayer(id);
+      if (mapInstance.getSource(id)) mapInstance.removeSource(id);
+    });
+    // Remove any numbered route sources
+    for (let i = 0; i < 10; i++) {
+      ['route-flight-' + i, 'route-ground-' + i].forEach(id => {
+        if (mapInstance.getLayer(id)) mapInstance.removeLayer(id);
+        if (mapInstance.getSource(id)) mapInstance.removeSource(id);
+      });
+    }
+  }
+}
+
+function addMarker(lat, lng, name, type) {
+  const el = createMarkerEl(type);
+  const marker = new mapboxgl.Marker({ element: el })
+    .setLngLat([lng, lat])
+    .addTo(mapInstance);
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (mapPopup) mapPopup.remove();
+    mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
+      .setLngLat([lng, lat])
+      .setHTML(makePopupHTML(name, type, lat, lng))
+      .addTo(mapInstance);
+  });
+  mapMarkers.push({ marker, type, el });
+}
+
+function addRouteLine(from, to, mode, idx) {
+  const id = 'route-' + mode + '-' + idx;
+  // For flights, create a curved great-circle-ish arc
+  const coords = [];
+  if (mode === 'flight') {
+    const steps = 60;
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const lng = from.lng + t * (to.lng - from.lng);
+      const lat = from.lat + t * (to.lat - from.lat);
+      // Add arc height
+      const arc = Math.sin(t * Math.PI) * Math.abs(to.lng - from.lng) * 0.15;
+      coords.push([lng, lat + arc]);
+    }
+  } else {
+    coords.push([from.lng, from.lat]);
+    coords.push([to.lng, to.lat]);
+  }
+  mapInstance.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: coords } } });
+  mapInstance.addLayer({
+    id: id,
+    type: 'line',
+    source: id,
+    paint: {
+      'line-color': mode === 'flight' ? '#60a5fa' : '#34d399',
+      'line-width': mode === 'flight' ? 2.5 : 2,
+      'line-dasharray': mode === 'flight' ? [4, 4] : [1]
+    }
+  });
+}
+
+function renderMapForDay(dayIdx) {
+  if (!mapInstance) return;
+  clearMap();
+  const config = getMapConfigForDay(dayIdx);
+  if (!config) {
+    mapInstance.flyTo({ center: [12, 48], zoom: 3 });
+    return;
+  }
+
+  if (config.type === 'stay') {
+    mapInstance.flyTo({ center: config.center, zoom: config.zoom, duration: 800 });
+    // Accommodation marker
+    addMarker(config.accommodation.lat, config.accommodation.lng, config.accommodation.name, 'accommodation');
+    // POI markers
+    config.pois.forEach(p => addMarker(p.lat, p.lng, p.name, p.type));
+    applyFilter();
+    return;
+  }
+
+  if (config.type === 'transfer' || config.type === 'travel') {
+    // Fit bounds to all points
+    const bounds = new mapboxgl.LngLatBounds();
+    if (config.segments) {
+      config.segments.forEach((seg, i) => {
+        bounds.extend([seg.from.lng, seg.from.lat]);
+        bounds.extend([seg.to.lng, seg.to.lat]);
+        // defer line add until style ready
+        addRouteLine(seg.from, seg.to, seg.mode, i);
+      });
+    }
+    if (config.airports) {
+      config.airports.forEach(a => {
+        addMarker(a.lat, a.lng, a.name, 'airport');
+        bounds.extend([a.lng, a.lat]);
+      });
+    }
+    if (config.accommodations) {
+      config.accommodations.forEach(a => {
+        addMarker(a.lat, a.lng, a.name, 'accommodation');
+        bounds.extend([a.lng, a.lat]);
+      });
+    }
+    mapInstance.fitBounds(bounds, { padding: 60, duration: 800, maxZoom: 8 });
+    applyFilter();
+    return;
+  }
+}
+
+function applyFilter() {
+  mapMarkers.forEach(m => {
+    if (activeFilter === 'all') {
+      m.el.style.display = '';
+    } else {
+      m.el.style.display = (m.type === activeFilter || m.type === 'accommodation' || m.type === 'airport') ? '' : 'none';
+    }
+  });
+}
+
+function initMap() {
+  if (mapInitialized) return;
+  mapboxgl.accessToken = MAPBOX_TOKEN;
+  mapInstance = new mapboxgl.Map({
+    container: 'mapbox-map',
+    style: 'mapbox://styles/mapbox/dark-v11',
+    center: [12, 48],
+    zoom: 3,
+    attributionControl: false
+  });
+  mapInstance.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+  mapInstance.on('load', () => {
+    renderMapForDay(currentDay);
+  });
+  mapInitialized = true;
+
+  // Filter chips
+  document.querySelectorAll('#map-filters .map-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#map-filters .map-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilter = chip.dataset.filter;
+      applyFilter();
+    });
+  });
+}
+
+// Hook into tab switching
+(function patchTabNav() {
+  const origSetupNav = setupNav;
+  setupNav = function() {
+    origSetupNav();
+    // Re-bind tab nav to also handle map
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const v = tab.dataset.view;
+        if (v === 'map') {
+          // Small delay so the view is visible before init
+          setTimeout(() => {
+            if (!mapInitialized) {
+              initMap();
+            } else {
+              mapInstance.resize();
+              renderMapForDay(currentDay);
+            }
+          }, 50);
+        }
+      });
+    });
+  };
+})();
+
+// Also update map when day changes (patch goToDay)
+const _origGoToDay = goToDay;
+goToDay = function(i, animate) {
+  _origGoToDay(i, animate);
+  // If map tab is active, re-render
+  if (mapInitialized && document.getElementById('view-map').classList.contains('active')) {
+    renderMapForDay(currentDay);
+  }
+};
 </script>
 </body>
 </html>
