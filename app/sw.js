@@ -1,10 +1,12 @@
-const CACHE_NAME = 'trip-planner-v1';
+const CACHE_NAME = 'trip-planner-v2';
 const ASSETS = [
   './',
   './index.html',
   './trip.json',
   './manifest.json'
 ];
+
+const FONT_ORIGINS = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -23,6 +25,21 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // Cache Google Fonts at runtime
+  if (FONT_ORIGINS.some(o => e.request.url.startsWith(o))) {
+    e.respondWith(
+      caches.open(CACHE_NAME).then(cache =>
+        cache.match(e.request).then(cached => {
+          if (cached) return cached;
+          return fetch(e.request).then(resp => {
+            cache.put(e.request, resp.clone());
+            return resp;
+          });
+        })
+      )
+    );
+    return;
+  }
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request))
   );
