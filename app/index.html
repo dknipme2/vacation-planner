@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f172a">
+<link rel="manifest" href="manifest.json">
+<title>Trip Planner</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f172a;--bg2:#1e293b;--card:rgba(255,255,255,0.05);
+  --border:rgba(255,255,255,0.08);--blue:#60a5fa;--green:#34d399;
+  --amber:#fbbf24;--red:#f87171;--purple:#a855f7;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --radius:12px;--radius-sm:8px;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--text);background:var(--bg);
+  -webkit-tap-highlight-color:transparent;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{display:flex;flex-direction:column;position:relative}
+
+/* Status bar spacer for iOS */
+.safe-top{height:env(safe-area-inset-top,0px);background:var(--bg)}
+
+/* Header */
+.header{
+  padding:12px 16px 8px;background:var(--bg);position:relative;z-index:10;
+  border-bottom:1px solid var(--border);flex-shrink:0;
+}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.trip-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);font-weight:600}
+.traveler-pills{display:flex;gap:6px}
+.pill{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,0.06);color:var(--text2)}
+.date-nav{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.nav-btn{
+  width:44px;height:44px;border:none;background:rgba(255,255,255,0.05);
+  color:var(--text);font-size:20px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  -webkit-appearance:none;touch-action:manipulation;
+}
+.nav-btn:active{background:rgba(255,255,255,0.12)}
+.date-center{text-align:center;flex:1}
+.date-main{font-size:18px;font-weight:700;color:var(--text)}
+.date-sub{font-size:12px;color:var(--text2);margin-top:1px}
+.day-badge{
+  display:inline-block;font-size:10px;padding:2px 10px;border-radius:20px;
+  margin-top:4px;font-weight:600;
+}
+.badge-travel{background:rgba(96,165,250,0.15);color:var(--blue)}
+.badge-stay{background:rgba(52,211,153,0.15);color:var(--green)}
+.badge-transfer{background:rgba(251,191,36,0.15);color:var(--amber)}
+
+/* Day dots */
+.day-dots{
+  display:flex;justify-content:center;gap:4px;padding:8px 0 4px;flex-shrink:0;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1);
+  transition:all .2s;flex-shrink:0;
+}
+.dot.active{background:var(--blue);width:20px;border-radius:4px}
+.dot.travel{background:rgba(96,165,250,0.3)}
+.dot.stay{background:rgba(52,211,153,0.2)}
+.dot.transfer{background:rgba(251,191,36,0.3)}
+.dot.active.travel{background:var(--blue)}
+.dot.active.stay{background:var(--green)}
+.dot.active.transfer{background:var(--amber)}
+
+/* Swipe container */
+.swipe-container{
+  flex:1;overflow:hidden;position:relative;
+}
+.swipe-track{
+  display:flex;height:100%;transition:transform .3s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
+}
+.day-panel{
+  min-width:100%;height:100%;overflow-y:auto;overflow-x:hidden;
+  padding:12px 16px 20px;-webkit-overflow-scrolling:touch;
+}
+
+/* Cards */
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px;margin-bottom:12px;
+}
+.card-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.card-icon{
+  width:40px;height:40px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.card-icon.flight{background:rgba(96,165,250,0.15)}
+.card-icon.hotel{background:rgba(52,211,153,0.15)}
+.card-icon.car{background:rgba(168,85,247,0.15)}
+.card-icon.checkout{background:rgba(248,113,113,0.15)}
+.card-icon.checkin{background:rgba(52,211,153,0.15)}
+.card-icon.baby{background:rgba(251,191,36,0.15)}
+.card-icon.transport{background:rgba(148,163,184,0.12)}
+.card-icon.info{background:rgba(96,165,250,0.1)}
+.card-title{font-size:15px;font-weight:700}
+.card-subtitle{font-size:12px;color:var(--text2)}
+
+.flight-route{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;margin:8px 0;border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.route-point{text-align:center}
+.route-code{font-size:22px;font-weight:800;letter-spacing:1px}
+.route-city{font-size:11px;color:var(--text2)}
+.route-time{font-size:13px;color:var(--blue);font-weight:600;margin-top:2px}
+.route-line{
+  flex:1;height:1px;background:var(--border);margin:0 12px;position:relative;
+}
+.route-line::after{
+  content:'';position:absolute;right:-2px;top:-3px;
+  width:0;height:0;border-left:6px solid var(--text3);
+  border-top:3px solid transparent;border-bottom:3px solid transparent;
+}
+.route-duration{
+  position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+  font-size:10px;color:var(--text3);white-space:nowrap;
+}
+.next-day{font-size:9px;color:var(--amber);font-weight:600}
+
+.detail-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:6px 0;font-size:13px;
+}
+.detail-label{color:var(--text2)}
+.detail-value{font-weight:600;text-align:right}
+.conf-code{
+  font-family:'SF Mono',SFMono-Regular,Menlo,monospace;
+  color:var(--amber);font-weight:700;letter-spacing:.5px;
+}
+
+.passenger-row{
+  display:flex;align-items:center;gap:8px;padding:6px 0;
+  border-bottom:1px solid var(--border);font-size:13px;
+}
+.passenger-row:last-child{border-bottom:none}
+.pax-name{flex:1}
+.pax-seat{
+  font-size:11px;padding:2px 8px;background:rgba(255,255,255,0.06);
+  border-radius:4px;color:var(--text2);font-family:monospace;
+}
+.pax-type{font-size:10px;color:var(--text3)}
+
+.night-counter{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;background:rgba(52,211,153,0.1);
+  border-radius:20px;font-size:12px;color:var(--green);font-weight:600;
+}
+
+.amenity-tag{
+  display:inline-block;padding:4px 10px;margin:3px;
+  background:rgba(251,191,36,0.1);border-radius:20px;
+  font-size:11px;color:var(--amber);
+}
+
+.section-title{
+  font-size:12px;text-transform:uppercase;letter-spacing:1px;
+  color:var(--text3);font-weight:600;margin:16px 0 8px;
+}
+
+.placeholder-card{
+  background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:12px;
+}
+.placeholder-card .ph-icon{font-size:24px;margin-bottom:4px}
+.placeholder-card .ph-text{font-size:12px;color:var(--text3)}
+
+.notes-card{
+  background:rgba(96,165,250,0.05);border:1px solid rgba(96,165,250,0.1);
+  border-radius:var(--radius);padding:12px;margin-bottom:12px;
+}
+.note-item{font-size:13px;color:var(--text2);padding:3px 0;padding-left:16px;position:relative}
+.note-item::before{content:'\2022';position:absolute;left:0;color:var(--blue)}
+
+/* Transport badge */
+.transport-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;background:rgba(148,163,184,0.08);
+  border-radius:20px;font-size:12px;color:var(--text2);margin-bottom:12px;
+}
+
+/* Bookings tab */
+.bookings-view{padding:12px 16px 20px;overflow-y:auto;height:100%;-webkit-overflow-scrolling:touch}
+.booking-flight{
+  display:flex;align-items:center;gap:12px;padding:12px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:8px;
+}
+.bf-icon{font-size:20px;width:40px;text-align:center;flex-shrink:0}
+.bf-info{flex:1}
+.bf-route{font-size:14px;font-weight:700}
+.bf-detail{font-size:12px;color:var(--text2)}
+.bf-conf{font-size:11px;font-family:monospace;color:var(--amber)}
+.bf-status{
+  font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;
+  background:rgba(52,211,153,0.12);color:var(--green);text-transform:uppercase;
+}
+
+.booking-hotel{
+  padding:14px;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:8px;
+}
+.bh-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.bh-city{font-size:12px;color:var(--text2)}
+.bh-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.bh-dates{font-size:12px;color:var(--text2)}
+.bh-nights{font-size:11px;padding:2px 8px;background:rgba(52,211,153,0.1);border-radius:20px;color:var(--green)}
+.bh-conf{font-size:11px;font-family:monospace;color:var(--amber);margin-top:4px}
+
+/* Bottom nav */
+.bottom-nav{
+  display:flex;background:var(--bg2);border-top:1px solid var(--border);
+  padding-bottom:env(safe-area-inset-bottom,0px);flex-shrink:0;
+}
+.nav-tab{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  padding:10px 0 8px;gap:2px;border:none;background:none;
+  color:var(--text3);font-size:10px;cursor:pointer;
+  -webkit-appearance:none;touch-action:manipulation;min-height:44px;
+}
+.nav-tab.active{color:var(--blue)}
+.nav-tab .tab-icon{font-size:20px;line-height:1}
+
+/* Views */
+.view{display:none;flex:1;overflow:hidden}
+.view.active{display:flex;flex-direction:column}
+
+/* Map placeholder */
+.map-view{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.map-view .map-icon{font-size:60px;opacity:.3}
+.map-view .map-text{color:var(--text3);font-size:14px}
+
+/* Status view */
+.status-view{padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.status-countdown{
+  text-align:center;padding:24px;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(96,165,250,0.1),rgba(168,85,247,0.1));
+  border-radius:var(--radius);border:1px solid var(--border);
+}
+.countdown-num{font-size:48px;font-weight:800;color:var(--blue)}
+.countdown-label{font-size:14px;color:var(--text2);margin-top:4px}
+.status-item{
+  display:flex;align-items:center;gap:12px;padding:12px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:8px;
+}
+.si-icon{font-size:20px;width:36px;text-align:center}
+.si-info{flex:1}
+.si-title{font-size:14px;font-weight:600}
+.si-detail{font-size:12px;color:var(--text2)}
+
+/* AM/PM transfer sections */
+.transfer-label{
+  display:flex;align-items:center;gap:8px;margin:12px 0 8px;
+}
+.transfer-label .tl-badge{
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.tl-am{background:rgba(251,191,36,0.15);color:var(--amber)}
+.tl-mid{background:rgba(96,165,250,0.15);color:var(--blue)}
+.tl-pm{background:rgba(52,211,153,0.15);color:var(--green)}
+.transfer-label .tl-text{font-size:13px;color:var(--text2)}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:0;height:0}
+</style>
+</head>
+<body>
+<div class="safe-top"></div>
+
+<!-- DAILY VIEW -->
+<div class="view active" id="view-daily">
+  <div class="header">
+    <div class="header-top">
+      <div class="trip-title">EUROPE 2026</div>
+      <div class="traveler-pills">
+        <span class="pill">Daniel</span>
+        <span class="pill">Michelle</span>
+        <span class="pill">Owen</span>
+      </div>
+    </div>
+    <div class="date-nav">
+      <button class="nav-btn" id="btn-prev" aria-label="Previous day">&lsaquo;</button>
+      <div class="date-center">
+        <div class="date-main" id="hdr-date">Saturday, May 3</div>
+        <div class="date-sub" id="hdr-loc">Chicago, USA</div>
+        <div class="day-badge badge-travel" id="hdr-badge">Day 1 of 15</div>
+      </div>
+      <button class="nav-btn" id="btn-next" aria-label="Next day">&rsaquo;</button>
+    </div>
+  </div>
+  <div class="day-dots" id="day-dots"></div>
+  <div class="swipe-container" id="swipe-container">
+    <div class="swipe-track" id="swipe-track"></div>
+  </div>
+</div>
+
+<!-- MAP VIEW -->
+<div class="view" id="view-map">
+  <div class="map-view">
+    <div class="map-icon">🗺️</div>
+    <div class="map-text">Interactive map coming soon</div>
+    <div style="color:var(--text3);font-size:12px;text-align:center;padding:0 32px;margin-top:8px">
+      ORD &rarr; VIE &rarr; HER &rarr; ZRH &rarr; ORD
+    </div>
+  </div>
+</div>
+
+<!-- BOOKINGS VIEW -->
+<div class="view" id="view-bookings">
+  <div class="bookings-view" id="bookings-content"></div>
+</div>
+
+<!-- STATUS VIEW -->
+<div class="view" id="view-status">
+  <div class="status-view" id="status-content"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-tab active" data-view="daily"><span class="tab-icon">📅</span>Daily</button>
+  <button class="nav-tab" data-view="map"><span class="tab-icon">🗺️</span>Map</button>
+  <button class="nav-tab" data-view="bookings"><span class="tab-icon">📋</span>Bookings</button>
+  <button class="nav-tab" data-view="status"><span class="tab-icon">⚡</span>Status</button>
+</div>
+
+<script>
+// Register service worker
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+
+let TRIP = null;
+let currentDay = 0;
+let touchStartX = 0;
+let touchDeltaX = 0;
+let isDragging = false;
+const SWIPE_THRESHOLD = 50;
+
+// Load data
+fetch('trip.json').then(r=>r.json()).then(data=>{
+  TRIP = data;
+  init();
+}).catch(()=>{
+  document.getElementById('swipe-track').innerHTML='<div class="day-panel" style="display:flex;align-items:center;justify-content:center"><p style="color:var(--text3)">Could not load trip data.</p></div>';
+});
+
+function init(){
+  buildDots();
+  buildAllPanels();
+  buildBookings();
+  buildStatus();
+  setupNav();
+  setupSwipe();
+  goToDay(0, false);
+}
+
+// Format date
+function fmtDate(str){
+  const d = new Date(str + 'T12:00:00');
+  return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+}
+function fmtShort(str){
+  const d = new Date(str + 'T12:00:00');
+  return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+function fmtTime(t){
+  if(!t) return '';
+  const [h,m] = t.split(':').map(Number);
+  const ampm = h>=12?'PM':'AM';
+  const hr = h%12||12;
+  return `${hr}:${m.toString().padStart(2,'0')} ${ampm}`;
+}
+
+// Build day indicator dots
+function buildDots(){
+  const el = document.getElementById('day-dots');
+  el.innerHTML = TRIP.days.map((_,i)=>`<div class="dot ${TRIP.days[i].day_type}" data-i="${i}"></div>`).join('');
+  el.addEventListener('click', e=>{
+    const i = e.target.dataset.i;
+    if(i !== undefined) goToDay(+i, true);
+  });
+}
+
+function updateDots(){
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.classList.toggle('active', i===currentDay);
+  });
+}
+
+// Build all day panels
+function buildAllPanels(){
+  const track = document.getElementById('swipe-track');
+  track.innerHTML = TRIP.days.map((day,i) => `<div class="day-panel">${renderDay(day)}</div>`).join('');
+}
+
+function renderDay(day){
+  let html = '';
+
+  // Transport badge
+  if(day.transport_mode){
+    const tm = day.transport_mode === 'transit' ? '🚇 Public Transit' : '🚗 Rental Car';
+    html += `<div class="transport-badge">${tm}</div>`;
+  }
+
+  // TRANSFER day structure
+  if(day.day_type === 'transfer'){
+    // AM: checkout
+    if(day.checkout){
+      html += `<div class="transfer-label"><span class="tl-badge tl-am">AM</span><span class="tl-text">Checkout</span></div>`;
+      html += renderCheckout(day.checkout);
+    }
+    // MID: flight
+    if(day.flights && day.flights.length){
+      html += `<div class="transfer-label"><span class="tl-badge tl-mid">MID</span><span class="tl-text">Flight</span></div>`;
+      day.flights.forEach(f => html += renderFlight(f));
+    }
+    // Car rental on May 7
+    if(day.car_rental && day.car_rental.active){
+      html += renderCarRental(day.car_rental);
+    }
+    // PM: checkin
+    if(day.checkin){
+      html += `<div class="transfer-label"><span class="tl-badge tl-pm">PM</span><span class="tl-text">Check In</span></div>`;
+      html += renderCheckin(day.checkin);
+    }
+
+    // Notes
+    if(day.notes && day.notes.length){
+      html += renderNotes(day.notes);
+    }
+    return html;
+  }
+
+  // TRAVEL day
+  if(day.day_type === 'travel'){
+    // Checkout if exists (May 17)
+    if(day.checkout){
+      html += renderCheckout(day.checkout);
+    }
+    // Flights
+    if(day.flights && day.flights.length){
+      day.flights.forEach(f => html += renderFlight(f));
+    }
+    if(day.notes && day.notes.length){
+      html += renderNotes(day.notes);
+    }
+    return html;
+  }
+
+  // STAY day
+  if(day.accommodation){
+    html += renderAccommodation(day.accommodation);
+    // Baby amenities
+    if(day.accommodation.baby_amenities && day.accommodation.baby_amenities.length){
+      html += renderBabyAmenities(day.accommodation);
+    }
+  }
+  // Car rental badge
+  if(day.car_rental && day.car_rental.active){
+    html += `<div class="card" style="padding:12px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="card-icon car">🚗</div>
+        <div><div style="font-size:13px;font-weight:600">Rental Car Active</div>
+        <div style="font-size:11px;color:var(--text2)">Expedia #${day.car_rental.confirmation}</div></div>
+      </div></div>`;
+  }
+
+  // Placeholders
+  html += `<div class="section-title">Activities Nearby</div>`;
+  html += `<div class="placeholder-card"><div class="ph-icon">🏛️</div><div class="ph-text">Activities coming soon</div></div>`;
+  html += `<div class="section-title">Restaurant Picks</div>`;
+  html += `<div class="placeholder-card"><div class="ph-icon">🍽️</div><div class="ph-text">Restaurant picks coming soon</div></div>`;
+
+  if(day.notes && day.notes.length){
+    html += renderNotes(day.notes);
+  }
+  return html;
+}
+
+function renderFlight(f){
+  const nextDay = f.arrive_next_day ? `<div class="next-day">+1 DAY</div>` : '';
+  const paxHtml = (f.passengers||[]).map(p => {
+    const seat = p.seat ? `<span class="pax-seat">${p.seat}</span>` : (p.notes ? `<span class="pax-type">${p.notes}</span>` : '');
+    return `<div class="passenger-row"><span class="pax-name">${p.name}</span>${seat}</div>`;
+  }).join('');
+
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon flight">✈️</div>
+      <div>
+        <div class="card-title">${f.airline} ${f.flight_number}</div>
+        <div class="card-subtitle">${f.aircraft || f.class || ''}</div>
+      </div>
+    </div>
+    <div class="flight-route">
+      <div class="route-point">
+        <div class="route-code">${f.from.code}</div>
+        <div class="route-city">${f.from.name}</div>
+        <div class="route-time">${fmtTime(f.depart_time)}</div>
+      </div>
+      <div class="route-line">${f.duration ? `<span class="route-duration">${f.duration}</span>` : ''}</div>
+      <div class="route-point">
+        <div class="route-code">${f.to.code}</div>
+        <div class="route-city">${f.to.name}</div>
+        <div class="route-time">${fmtTime(f.arrive_time)}</div>
+        ${nextDay}
+      </div>
+    </div>
+    <div class="detail-row"><span class="detail-label">Confirmation</span><span class="detail-value conf-code">${f.confirmation}</span></div>
+    <div class="detail-row"><span class="detail-label">Class</span><span class="detail-value">${f.class}</span></div>
+    ${f.payment ? `<div class="detail-row"><span class="detail-label">Payment</span><span class="detail-value" style="font-size:11px">${f.payment}</span></div>` : ''}
+    <div class="section-title" style="margin-top:8px">Passengers</div>
+    ${paxHtml}
+  </div>`;
+}
+
+function renderAccommodation(a){
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon hotel">🏨</div>
+      <div>
+        <div class="card-title">${a.name}</div>
+        <div class="card-subtitle">${a.room || ''}</div>
+      </div>
+    </div>
+    <div style="margin-bottom:10px">
+      <span class="night-counter">🌙 Night ${a.night_n} of ${a.total_nights}</span>
+    </div>
+    <div class="detail-row"><span class="detail-label">Confirmation</span><span class="detail-value conf-code">${a.confirmation}</span></div>
+    ${a.pin ? `<div class="detail-row"><span class="detail-label">PIN</span><span class="detail-value conf-code">${a.pin}</span></div>` : ''}
+    ${a.platform ? `<div class="detail-row"><span class="detail-label">Booked via</span><span class="detail-value">${a.platform}</span></div>` : ''}
+    ${a.address ? `<div class="detail-row"><span class="detail-label">Address</span><span class="detail-value" style="font-size:11px;max-width:60%">${a.address}</span></div>` : ''}
+    ${a.phone ? `<div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value"><a href="tel:${a.phone}" style="color:var(--blue);text-decoration:none">${a.phone}</a></span></div>` : ''}
+    ${a.contact ? `<div class="detail-row"><span class="detail-label">Contact</span><span class="detail-value" style="font-size:11px">${a.contact}</span></div>` : ''}
+  </div>`;
+}
+
+function renderBabyAmenities(a){
+  const tags = a.baby_amenities.map(t => `<span class="amenity-tag">${t}</span>`).join('');
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon baby">👶</div>
+      <div>
+        <div class="card-title">Baby Amenities</div>
+        <div class="card-subtitle">Confirmed for Owen</div>
+      </div>
+    </div>
+    <div>${tags}</div>
+    ${a.dining_notes ? `<div style="margin-top:8px;font-size:12px;color:var(--text2)">🍼 ${a.dining_notes}</div>` : ''}
+  </div>`;
+}
+
+function renderCheckout(co){
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon checkout">📤</div>
+      <div>
+        <div class="card-title">Check Out</div>
+        <div class="card-subtitle">${co.property}</div>
+      </div>
+    </div>
+    <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${co.time}</span></div>
+    ${co.notes ? `<div style="font-size:12px;color:var(--text2);margin-top:4px">${co.notes}</div>` : ''}
+  </div>`;
+}
+
+function renderCheckin(ci){
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon checkin">📥</div>
+      <div>
+        <div class="card-title">Check In</div>
+        <div class="card-subtitle">${ci.property}</div>
+      </div>
+    </div>
+    <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">${ci.time}</span></div>
+    <div class="detail-row"><span class="detail-label">Confirmation</span><span class="detail-value conf-code">${ci.confirmation}</span></div>
+  </div>`;
+}
+
+function renderCarRental(cr){
+  return `<div class="card">
+    <div class="card-header">
+      <div class="card-icon car">🚗</div>
+      <div>
+        <div class="card-title">Rental Car Pickup</div>
+        <div class="card-subtitle">${cr.provider}</div>
+      </div>
+    </div>
+    <div class="detail-row"><span class="detail-label">Confirmation</span><span class="detail-value conf-code">${cr.confirmation}</span></div>
+    ${cr.notes ? `<div style="font-size:12px;color:var(--text2);margin-top:4px">⚠️ ${cr.notes}</div>` : ''}
+  </div>`;
+}
+
+function renderNotes(notes){
+  if(!notes || !notes.length) return '';
+  return `<div class="notes-card">${notes.map(n => `<div class="note-item">${n}</div>`).join('')}</div>`;
+}
+
+// Navigate days
+function goToDay(i, animate){
+  if(i < 0 || i >= TRIP.days.length) return;
+  currentDay = i;
+  const day = TRIP.days[i];
+
+  // Update header
+  document.getElementById('hdr-date').textContent = fmtDate(day.date);
+  const locText = day.location.emoji + ' ' + day.location.city + ', ' + day.location.country;
+  document.getElementById('hdr-loc').textContent = locText;
+
+  const badge = document.getElementById('hdr-badge');
+  badge.textContent = dayBadgeText(day);
+  badge.className = 'day-badge badge-' + day.day_type;
+
+  // Move track
+  const track = document.getElementById('swipe-track');
+  track.style.transition = animate ? 'transform .3s cubic-bezier(.4,0,.2,1)' : 'none';
+  track.style.transform = `translateX(-${i * 100}%)`;
+
+  updateDots();
+
+  // Update nav buttons
+  document.getElementById('btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
+  document.getElementById('btn-next').style.visibility = i === TRIP.days.length-1 ? 'hidden' : 'visible';
+}
+
+function dayBadgeText(day){
+  const icons = {travel:'✈️',stay:'🏠',transfer:'🔄'};
+  const labels = {travel:'Travel',stay:'Stay',transfer:'Transfer'};
+  return `${icons[day.day_type]} ${labels[day.day_type]} \u2022 Day ${day.day_number} of ${TRIP.trip.total_days}`;
+}
+
+// Navigation
+function setupNav(){
+  document.getElementById('btn-prev').addEventListener('click', ()=> goToDay(currentDay-1, true));
+  document.getElementById('btn-next').addEventListener('click', ()=> goToDay(currentDay+1, true));
+
+  // Tab nav
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', ()=>{
+      const v = tab.dataset.view;
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+      document.getElementById('view-'+v).classList.add('active');
+    });
+  });
+}
+
+// Swipe handling
+function setupSwipe(){
+  const container = document.getElementById('swipe-container');
+  const track = document.getElementById('swipe-track');
+
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+    isDragging = true;
+    track.style.transition = 'none';
+  }, {passive:true});
+
+  container.addEventListener('touchmove', e => {
+    if(!isDragging) return;
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+    // Resist at edges
+    if((currentDay === 0 && touchDeltaX > 0) || (currentDay === TRIP.days.length-1 && touchDeltaX < 0)){
+      touchDeltaX *= 0.3;
+    }
+    const offset = -(currentDay * container.offsetWidth) + touchDeltaX;
+    track.style.transform = `translateX(${offset}px)`;
+  }, {passive:true});
+
+  container.addEventListener('touchend', () => {
+    if(!isDragging) return;
+    isDragging = false;
+    if(touchDeltaX < -SWIPE_THRESHOLD && currentDay < TRIP.days.length-1){
+      goToDay(currentDay+1, true);
+    } else if(touchDeltaX > SWIPE_THRESHOLD && currentDay > 0){
+      goToDay(currentDay-1, true);
+    } else {
+      goToDay(currentDay, true);
+    }
+  }, {passive:true});
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight') goToDay(currentDay+1, true);
+    if(e.key === 'ArrowLeft') goToDay(currentDay-1, true);
+  });
+}
+
+// BOOKINGS TAB
+function buildBookings(){
+  const el = document.getElementById('bookings-content');
+  let html = '<div class="section-title">Flights</div>';
+
+  TRIP.bookings.flights.forEach(f => {
+    html += `<div class="booking-flight">
+      <div class="bf-icon">✈️</div>
+      <div class="bf-info">
+        <div class="bf-route">${f.segment}</div>
+        <div class="bf-detail">${f.flight} &bull; ${f.date}</div>
+        <div class="bf-detail">${f.depart} &rarr; ${f.arrive}</div>
+        <div class="bf-conf">${f.confirmation}</div>
+      </div>
+      <div class="bf-status">${f.status}</div>
+    </div>`;
+  });
+
+  html += '<div class="section-title" style="margin-top:16px">Accommodations</div>';
+  TRIP.bookings.accommodations.forEach(h => {
+    html += `<div class="booking-hotel">
+      <div class="bh-name">${h.property}</div>
+      <div class="bh-city">${h.city} &bull; ${h.platform}</div>
+      <div class="bh-meta">
+        <span class="bh-dates">${h.dates}</span>
+        <span class="bh-nights">${h.nights} nights</span>
+      </div>
+      <div class="bh-conf">Conf: ${h.confirmation}</div>
+    </div>`;
+  });
+
+  html += '<div class="section-title" style="margin-top:16px">Car Rental</div>';
+  const cr = TRIP.bookings.car_rental;
+  html += `<div class="booking-flight">
+    <div class="bf-icon">🚗</div>
+    <div class="bf-info">
+      <div class="bf-route">${cr.provider} &mdash; ${cr.location}</div>
+      <div class="bf-detail">${cr.dates}</div>
+      <div class="bf-conf">${cr.confirmation}</div>
+    </div>
+    <div class="bf-status">${cr.status}</div>
+  </div>`;
+
+  html += `<div class="section-title" style="margin-top:16px">Trip Route</div>`;
+  html += `<div class="placeholder-card"><div class="ph-icon">🗺️</div><div class="ph-text">ORD &rarr; VIE &rarr; HER &rarr; ZRH &rarr; ORD</div></div>`;
+
+  el.innerHTML = html;
+}
+
+// STATUS TAB
+function buildStatus(){
+  const el = document.getElementById('status-content');
+  const tripStart = new Date('2026-05-03T16:20:00-05:00');
+  const now = new Date();
+  const diff = tripStart - now;
+  const daysUntil = Math.max(0, Math.ceil(diff / (1000*60*60*24)));
+
+  let html = `<div class="status-countdown">
+    <div class="countdown-num">${daysUntil}</div>
+    <div class="countdown-label">days until departure</div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">✈️</div>
+    <div class="si-info">
+      <div class="si-title">4 Flights Booked</div>
+      <div class="si-detail">All confirmed</div>
+    </div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">🏨</div>
+    <div class="si-info">
+      <div class="si-title">3 Accommodations</div>
+      <div class="si-detail">14 nights total</div>
+    </div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">🚗</div>
+    <div class="si-info">
+      <div class="si-title">Car Rental</div>
+      <div class="si-detail">Crete, May 7-14 via Expedia</div>
+    </div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">👶</div>
+    <div class="si-info">
+      <div class="si-title">Baby Amenities</div>
+      <div class="si-detail">Confirmed at Daios Cove</div>
+    </div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">📋</div>
+    <div class="si-info">
+      <div class="si-title">Activities</div>
+      <div class="si-detail">Not yet planned &mdash; coming soon</div>
+    </div>
+  </div>`;
+
+  html += `<div class="status-item">
+    <div class="si-icon">🍽️</div>
+    <div class="si-info">
+      <div class="si-title">Restaurants</div>
+      <div class="si-detail">Not yet planned &mdash; coming soon</div>
+    </div>
+  </div>`;
+
+  el.innerHTML = html;
+}
+</script>
+</body>
+</html>
