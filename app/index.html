@@ -1493,7 +1493,10 @@ function renderActivities(activities) {
       </div>
       <div class="ar-desc">${a.description || ''}</div>
       ${a.baby_notes ? `<div class="ar-baby-notes">👶 ${a.baby_notes}</div>` : ''}
-      <div class="ar-actions"><a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">Directions ↗</a></div>
+      <div class="ar-actions">
+        <a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">📍 Directions ↗</a>
+        <button class="ar-dir-link" onclick="event.stopPropagation();showOnMap(${a.lat},${a.lng},'${a.name.replace(/'/g,"\\'")}','activity')" style="border:none;background:none;cursor:pointer">🗺️ Show on Map</button>
+      </div>
     </div>`;
   });
   return html;
@@ -1520,7 +1523,10 @@ function renderRestaurants(restaurants) {
       </div>
       <div class="ar-desc">${r.description || ''}</div>
       ${r.baby_notes ? `<div class="ar-baby-notes">👶 ${r.baby_notes}</div>` : ''}
-      <div class="ar-actions"><a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">Directions ↗</a></div>
+      <div class="ar-actions">
+        <a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">📍 Directions ↗</a>
+        <button class="ar-dir-link" onclick="event.stopPropagation();showOnMap(${r.lat},${r.lng},'${r.name.replace(/'/g,"\\'")}','restaurant')" style="border:none;background:none;cursor:pointer">🗺️ Show on Map</button>
+      </div>
     </div>`;
   });
   return html;
@@ -1894,6 +1900,39 @@ function haversine(lat1, lon1, lat2, lon2) {
 function formatDist(km) {
   if (km < 1) return Math.round(km * 1000) + 'm';
   return km.toFixed(1) + 'km';
+}
+
+function showOnMap(lat, lng, name, type) {
+  // Switch to map tab
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.nav-tab[data-view="map"]').classList.add('active');
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-map').classList.add('active');
+
+  setTimeout(() => {
+    if (!mapInitialized) {
+      initMap();
+      mapInstance.on('load', () => {
+        mapInstance.flyTo({ center: [lng, lat], zoom: 16, duration: 800 });
+        if (mapPopup) mapPopup.remove();
+        mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
+          .setLngLat([lng, lat])
+          .setHTML(makePopupHTML(name, type, lat, lng))
+          .addTo(mapInstance);
+      });
+    } else {
+      mapInstance.resize();
+      mapInstance.flyTo({ center: [lng, lat], zoom: 16, duration: 800 });
+      if (mapPopup) mapPopup.remove();
+      mapPopup = new mapboxgl.Popup({ offset: 20, closeButton: true })
+        .setLngLat([lng, lat])
+        .setHTML(makePopupHTML(name, type, lat, lng))
+        .addTo(mapInstance);
+    }
+    // Collapse drawer so map is visible
+    const drawer = document.getElementById('map-drawer');
+    if (drawer) { drawerCollapsed = true; drawer.classList.add('collapsed'); }
+  }, 100);
 }
 
 function setupDrawer() {
