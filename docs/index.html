@@ -555,6 +555,80 @@ body{display:flex;flex-direction:column;position:relative}
 .tl-card-title{font-size:13px;font-weight:600}
 .tl-card-sub{font-size:11px;color:var(--text2);margin-top:2px}
 
+/* ===== PLACE DETAIL BOTTOM SHEET ===== */
+.place-sheet{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--surface-1);border-top-left-radius:16px;border-top-right-radius:16px;
+  box-shadow:0 -4px 32px rgba(0,0,0,0.5);
+  transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1),height .35s cubic-bezier(.4,0,.2,1);
+  max-height:92vh;overflow:hidden;
+}
+.place-sheet.open{transform:translateY(0)}
+.place-sheet.dragging{transition:none}
+.sheet-handle{padding:10px 0 6px;text-align:center;cursor:grab;touch-action:none}
+.sheet-handle-bar{width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);margin:0 auto}
+.sheet-content{overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom,16px)}
+
+/* Photo carousel */
+.sheet-photos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:4px;scrollbar-width:none;padding:0 16px 12px}
+.sheet-photos::-webkit-scrollbar{display:none}
+.sheet-photo{flex-shrink:0;width:85%;scroll-snap-align:center;border-radius:12px;aspect-ratio:3/2;object-fit:cover;background:var(--surface-2)}
+.sheet-photo:first-child{width:85%}
+.sheet-dots{display:flex;justify-content:center;gap:4px;padding:0 0 8px}
+.sheet-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2)}
+.sheet-dot.active{background:var(--blue)}
+
+/* Sheet header */
+.sheet-header{padding:0 16px 8px}
+.sheet-name{font-size:20px;font-weight:700;line-height:1.3}
+.sheet-meta{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:13px;color:var(--text2)}
+.sheet-rating{display:flex;align-items:center;gap:4px;color:var(--amber)}
+.sheet-rating-num{font-weight:700;color:var(--text)}
+.sheet-reviews{color:var(--text3)}
+.sheet-status{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px}
+.sheet-status.open-now{background:rgba(52,211,153,0.12);color:var(--green)}
+.sheet-status.closed{background:rgba(248,113,113,0.12);color:var(--red)}
+.sheet-category{color:var(--text3);font-size:12px}
+
+/* Action buttons row */
+.sheet-actions{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;scrollbar-width:none}
+.sheet-actions::-webkit-scrollbar{display:none}
+.sheet-action{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:10px 16px;border-radius:12px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text2);font-size:11px;font-weight:500;
+  cursor:pointer;min-width:64px;text-decoration:none;
+  -webkit-appearance:none;touch-action:manipulation;
+}
+.sheet-action:active{background:var(--surface-3)}
+.sheet-action.primary{background:var(--blue);color:#0f172a;border-color:var(--blue);font-weight:600}
+.sheet-action .sa-icon{font-size:18px}
+
+/* Info section */
+.sheet-info{padding:8px 16px 16px}
+.sheet-info-row{
+  display:flex;align-items:flex-start;gap:12px;padding:12px 0;
+  border-bottom:1px solid var(--border-subtle);font-size:13px;color:var(--text2);
+}
+.sheet-info-row:last-child{border-bottom:none}
+.sheet-info-icon{width:18px;flex-shrink:0;text-align:center;color:var(--text3)}
+.sheet-info-row a{color:var(--blue);text-decoration:none;word-break:break-all}
+
+/* Hours accordion */
+.sheet-hours-toggle{background:none;border:none;color:inherit;font:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;padding:0}
+.sheet-hours-toggle .chevron{transition:transform .2s;font-size:10px}
+.sheet-hours-toggle[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.sheet-hours-full{padding:6px 0 0 30px}
+.sheet-hours-day{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:var(--text3)}
+.sheet-hours-day.today{font-weight:600;color:var(--text)}
+
+/* Baby badge in sheet */
+.sheet-baby{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:10px;background:rgba(52,211,153,0.1);color:var(--green);font-size:11px;font-weight:500;margin-top:8px}
+
+/* Sheet overlay */
+.sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s}
+.sheet-overlay.open{opacity:1;pointer-events:auto}
+
 /* Scrollbar */
 ::-webkit-scrollbar{width:0;height:0}
 </style>
@@ -624,6 +698,13 @@ body{display:flex;flex-direction:column;position:relative}
 <!-- STATUS VIEW -->
 <div class="view" id="view-status">
   <div class="status-view" id="status-content"></div>
+</div>
+
+<!-- PLACE DETAIL BOTTOM SHEET -->
+<div class="sheet-overlay" id="sheet-overlay"></div>
+<div class="place-sheet" id="place-sheet">
+  <div class="sheet-handle" id="sheet-handle"><div class="sheet-handle-bar"></div></div>
+  <div class="sheet-content" id="sheet-content"></div>
 </div>
 
 <!-- BOTTOM NAV -->
@@ -711,6 +792,7 @@ function updateDots(){
 
 // Build all day panels
 function buildAllPanels(){
+  _allPlaceItems = []; // Reset place items for sheet lookup
   const track = document.getElementById('swipe-track');
   track.innerHTML = TRIP.days.map((day,i) => `<div class="day-panel">${renderDay(day)}</div>`).join('');
 }
@@ -1499,6 +1581,9 @@ function renderTimeline(day) {
 }
 
 // ===== ACTIVITY/RESTAURANT RENDERING =====
+// Store all items for sheet lookup
+let _allPlaceItems = [];
+
 function renderActivities(activities) {
   if (!activities || activities.length === 0) {
     return `<div class="section-title">ACTIVITIES NEARBY</div>
@@ -1506,25 +1591,22 @@ function renderActivities(activities) {
   }
   let html = `<div class="section-title">ACTIVITIES NEARBY</div>`;
   activities.forEach(a => {
+    const idx = _allPlaceItems.length;
+    _allPlaceItems.push(a);
     const icon = a.subtype === 'beach' ? '🏖️' : a.subtype === 'park' || a.subtype === 'garden' ? '🌿' : a.subtype === 'market' ? '🛍️' : '📍';
     const iconClass = a.subtype === 'beach' ? 'beach' : 'activity';
-    const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${a.lat},${a.lng}`;
-    html += `<div class="activity-card" onclick="this.classList.toggle('expanded')">
+    const ratingHtml = a.google_rating ? `<span class="ar-detail" style="color:var(--amber)">★ ${a.google_rating}</span>` : '';
+    const reviewHtml = a.google_review_count ? `<span class="ar-detail" style="color:var(--text3)">(${a.google_review_count.toLocaleString()})</span>` : '';
+    html += `<div class="activity-card" onclick="openSheet(_allPlaceItems[${idx}])">
       <div class="ar-header">
         <div class="ar-icon ${iconClass}">${icon}</div>
         <div class="ar-name">${a.name}</div>
-        ${a.baby_friendly ? '<span class="ar-baby">👶 Baby OK</span>' : ''}
+        ${a.baby_friendly ? '<span class="ar-baby">👶</span>' : ''}
       </div>
       <div class="ar-details">
+        ${ratingHtml}${reviewHtml}
         ${a.cost ? `<span class="ar-detail">💰 ${a.cost}</span>` : ''}
         ${a.duration ? `<span class="ar-detail">⏱️ ${a.duration}</span>` : ''}
-        ${a.hours ? `<span class="ar-detail">🕐 ${a.hours}</span>` : ''}
-      </div>
-      <div class="ar-desc">${a.description || ''}</div>
-      ${a.baby_notes ? `<div class="ar-baby-notes">👶 ${a.baby_notes}</div>` : ''}
-      <div class="ar-actions">
-        <a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">📍 Directions ↗</a>
-        <button class="ar-dir-link" onclick="event.stopPropagation();showOnMap(${a.lat},${a.lng},'${a.name.replace(/'/g,"\\'")}','activity')" style="border:none;background:none;cursor:pointer">🗺️ Show on Map</button>
       </div>
     </div>`;
   });
@@ -1538,23 +1620,20 @@ function renderRestaurants(restaurants) {
   }
   let html = `<div class="section-title">RESTAURANT PICKS</div>`;
   restaurants.forEach(r => {
-    const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${r.lat},${r.lng}`;
-    html += `<div class="restaurant-card" onclick="this.classList.toggle('expanded')">
+    const idx = _allPlaceItems.length;
+    _allPlaceItems.push(r);
+    const ratingHtml = r.google_rating ? `<span class="ar-detail" style="color:var(--amber)">★ ${r.google_rating}</span>` : '';
+    const reviewHtml = r.google_review_count ? `<span class="ar-detail" style="color:var(--text3)">(${r.google_review_count.toLocaleString()})</span>` : '';
+    html += `<div class="restaurant-card" onclick="openSheet(_allPlaceItems[${idx}])">
       <div class="ar-header">
         <div class="ar-icon restaurant">🍽️</div>
         <div class="ar-name">${r.name}</div>
-        ${r.baby_friendly ? '<span class="ar-baby">👶 Baby OK</span>' : ''}
+        ${r.baby_friendly ? '<span class="ar-baby">👶</span>' : ''}
       </div>
       <div class="ar-details">
+        ${ratingHtml}${reviewHtml}
         ${r.cuisine ? `<span class="ar-detail">🍴 ${r.cuisine}</span>` : ''}
         ${r.price_range ? `<span class="ar-detail">💰 ${r.price_range}</span>` : ''}
-        ${r.hours ? `<span class="ar-detail">🕐 ${r.hours}</span>` : ''}
-      </div>
-      <div class="ar-desc">${r.description || ''}</div>
-      ${r.baby_notes ? `<div class="ar-baby-notes">👶 ${r.baby_notes}</div>` : ''}
-      <div class="ar-actions">
-        <a class="ar-dir-link" href="${dirUrl}" target="_blank" onclick="event.stopPropagation()">📍 Directions ↗</a>
-        <button class="ar-dir-link" onclick="event.stopPropagation();showOnMap(${r.lat},${r.lng},'${r.name.replace(/'/g,"\\'")}','restaurant')" style="border:none;background:none;cursor:pointer">🗺️ Show on Map</button>
       </div>
     </div>`;
   });
@@ -1570,6 +1649,177 @@ function shareTrip() {
     navigator.clipboard.writeText(url).then(() => showToast('Link Copied!', url)).catch(()=>{});
   }
 }
+
+// ===== PLACE DETAIL BOTTOM SHEET =====
+let sheetOpen = false;
+let sheetDragging = false;
+let sheetStartY = 0;
+let sheetStartH = 0;
+let sheetVelocity = 0;
+let sheetLastY = 0;
+let sheetLastTime = 0;
+
+function initSheet() {
+  const sheet = document.getElementById('place-sheet');
+  const handle = document.getElementById('sheet-handle');
+  const overlay = document.getElementById('sheet-overlay');
+
+  handle.addEventListener('pointerdown', e => {
+    sheetDragging = true;
+    sheetStartY = e.clientY;
+    sheetStartH = sheet.getBoundingClientRect().height;
+    sheetLastY = e.clientY;
+    sheetLastTime = Date.now();
+    sheetVelocity = 0;
+    sheet.classList.add('dragging');
+    handle.setPointerCapture(e.pointerId);
+  });
+
+  window.addEventListener('pointermove', e => {
+    if (!sheetDragging) return;
+    const deltaY = sheetStartY - e.clientY;
+    const newH = Math.max(80, Math.min(window.innerHeight * 0.92, sheetStartH + deltaY));
+    const now = Date.now();
+    const dt = now - sheetLastTime;
+    if (dt > 0) sheetVelocity = (sheetLastY - e.clientY) / dt;
+    sheetLastY = e.clientY;
+    sheetLastTime = now;
+    sheet.style.height = newH + 'px';
+  });
+
+  window.addEventListener('pointerup', e => {
+    if (!sheetDragging) return;
+    sheetDragging = false;
+    sheet.classList.remove('dragging');
+    const vh = window.innerHeight;
+    const currentH = sheet.getBoundingClientRect().height;
+    const frac = currentH / vh;
+
+    if (sheetVelocity < -0.4 || frac < 0.12) {
+      closeSheet();
+    } else if (sheetVelocity > 0.4 || frac > 0.7) {
+      sheet.style.height = '92vh';
+    } else if (frac > 0.35) {
+      sheet.style.height = '55vh';
+    } else {
+      sheet.style.height = '40vh';
+    }
+  });
+
+  overlay.addEventListener('click', closeSheet);
+}
+
+function openSheet(item) {
+  const sheet = document.getElementById('place-sheet');
+  const content = document.getElementById('sheet-content');
+  const overlay = document.getElementById('sheet-overlay');
+
+  let html = '';
+
+  // Photo carousel
+  const photos = item.photo_urls || [];
+  if (photos.length) {
+    html += `<div class="sheet-photos">`;
+    photos.forEach(url => {
+      html += `<img class="sheet-photo" src="${url}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+    });
+    html += `</div>`;
+    if (photos.length > 1) {
+      html += `<div class="sheet-dots">${photos.map((_,i) => `<div class="sheet-dot${i===0?' active':''}"></div>`).join('')}</div>`;
+    }
+  }
+
+  // Header
+  html += `<div class="sheet-header">`;
+  html += `<div class="sheet-name">${item.name}</div>`;
+  html += `<div class="sheet-meta">`;
+  if (item.google_rating) {
+    const stars = '★'.repeat(Math.round(item.google_rating)) + '☆'.repeat(5 - Math.round(item.google_rating));
+    html += `<span class="sheet-rating"><span class="sheet-rating-num">${item.google_rating}</span> <span style="font-size:11px">${stars}</span></span>`;
+    if (item.google_review_count) html += `<span class="sheet-reviews">(${item.google_review_count.toLocaleString()})</span>`;
+  }
+  if (item.google_price_level) {
+    const priceMap = {PRICE_LEVEL_INEXPENSIVE:'$',PRICE_LEVEL_MODERATE:'$$',PRICE_LEVEL_EXPENSIVE:'$$$',PRICE_LEVEL_VERY_EXPENSIVE:'$$$$'};
+    html += `<span>${priceMap[item.google_price_level] || ''}</span>`;
+  }
+  html += `</div>`;
+  html += `<div class="sheet-category">${item.cuisine || item.subtype || item.type}</div>`;
+  if (item.baby_friendly) {
+    html += `<div class="sheet-baby">👶 Baby-friendly${item.baby_notes ? ' — ' + item.baby_notes : ''}</div>`;
+  }
+  html += `</div>`;
+
+  // Action buttons
+  const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}`;
+  html += `<div class="sheet-actions">`;
+  html += `<a class="sheet-action primary" href="${dirUrl}" target="_blank"><span class="sa-icon">🧭</span>Directions</a>`;
+  if (item.phone) html += `<a class="sheet-action" href="tel:${item.phone}"><span class="sa-icon">📞</span>Call</a>`;
+  if (item.website) html += `<a class="sheet-action" href="${item.website}" target="_blank"><span class="sa-icon">🌐</span>Website</a>`;
+  if (item.google_maps_url) html += `<a class="sheet-action" href="${item.google_maps_url}" target="_blank"><span class="sa-icon">🗺️</span>Google Maps</a>`;
+  html += `<button class="sheet-action" onclick="showOnMap(${item.lat},${item.lng},'${item.name.replace(/'/g,"\\'")}','${item.type}');closeSheet()"><span class="sa-icon">📍</span>Map</button>`;
+  html += `</div>`;
+
+  // Info rows
+  html += `<div class="sheet-info">`;
+  if (item.address) html += `<div class="sheet-info-row"><span class="sheet-info-icon">📍</span><span>${item.address}</span></div>`;
+
+  // Hours
+  if (item.google_hours && item.google_hours.length) {
+    const today = new Date().getDay();
+    const todayIdx = today === 0 ? 6 : today - 1; // Google uses Mon=0
+    html += `<div class="sheet-info-row"><span class="sheet-info-icon">🕐</span><div>`;
+    html += `<button class="sheet-hours-toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true');this.nextElementSibling.style.display=this.getAttribute('aria-expanded')==='true'?'block':'none'">`;
+    html += `<span>${item.google_hours[todayIdx] || 'See hours'}</span> <span class="chevron">▼</span></button>`;
+    html += `<div class="sheet-hours-full" style="display:none">`;
+    item.google_hours.forEach((h, i) => {
+      html += `<div class="sheet-hours-day${i === todayIdx ? ' today' : ''}">${h}</div>`;
+    });
+    html += `</div></div></div>`;
+  } else if (item.hours) {
+    html += `<div class="sheet-info-row"><span class="sheet-info-icon">🕐</span><span>${item.hours}</span></div>`;
+  }
+
+  if (item.phone) html += `<div class="sheet-info-row"><span class="sheet-info-icon">📞</span><a href="tel:${item.phone}">${item.phone}</a></div>`;
+  if (item.website) html += `<div class="sheet-info-row"><span class="sheet-info-icon">🌐</span><a href="${item.website}" target="_blank">${item.website.replace(/^https?:\/\/(www\.)?/,'').slice(0,40)}...</a></div>`;
+  if (item.cost || item.price_range) html += `<div class="sheet-info-row"><span class="sheet-info-icon">💰</span><span>${item.cost || item.price_range}</span></div>`;
+  if (item.duration) html += `<div class="sheet-info-row"><span class="sheet-info-icon">⏱️</span><span>${item.duration}</span></div>`;
+  if (item.description) html += `<div class="sheet-info-row"><span class="sheet-info-icon">📝</span><span>${item.description}</span></div>`;
+  html += `</div>`;
+
+  content.innerHTML = html;
+
+  // Photo scroll dots
+  const photosEl = content.querySelector('.sheet-photos');
+  if (photosEl && photos.length > 1) {
+    const dots = content.querySelectorAll('.sheet-dot');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = Array.from(photosEl.children).indexOf(e.target);
+          dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, {root: photosEl, threshold: 0.6});
+    photosEl.querySelectorAll('.sheet-photo').forEach(img => observer.observe(img));
+  }
+
+  sheet.style.height = '55vh';
+  sheet.classList.add('open');
+  overlay.classList.add('open');
+  sheetOpen = true;
+}
+
+function closeSheet() {
+  const sheet = document.getElementById('place-sheet');
+  const overlay = document.getElementById('sheet-overlay');
+  sheet.classList.remove('open');
+  sheet.style.height = '';
+  overlay.classList.remove('open');
+  sheetOpen = false;
+}
+
+// Init sheet on load
+document.addEventListener('DOMContentLoaded', initSheet);
 
 // ===== MAPBOX MAP =====
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiZGFuaWVsa25pcG1leWVyIiwiYSI6ImNtbmd1YW1xNDBjdjQycnB1ZDBlaDN4cTcifQ.KJd5NbrJ2iDKez4K6wg43g';
